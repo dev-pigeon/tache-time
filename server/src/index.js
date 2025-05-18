@@ -9,5 +9,5 @@ app.get("/", (_req,res) => {
 })
 
 app.listen(PORT,() => {
-    console.log("running theoretically");
+    console.log("Server started succesfully.");
 })
