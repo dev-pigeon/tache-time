@@ -1,6 +1,6 @@
 const express = require("express")
-const util = require("../tests/util/util.js")
-const PORT = 8080;
+const util = require("./util/util")
+const PORT = util.findServerPort(8080);
 
 const app = express()
 app.use(express.json())

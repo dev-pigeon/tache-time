@@ -1,31 +1,31 @@
-const express = require("express")
-const app = express()
+const net = require("net");
 
-function findServerPort(port) {
-    const cannotFindPort = "ERROR: Cannot find valid port not in use."
+function findServerPort(startPort = 3000) {
+    const MAX_PORT = 64000;
     const invalidPort = "ERROR: Input port must be greater than 1023.";
-    console.log(port);
-    if(port < 1023) {
+    const cannotFindPort = "ERROR: Cannot find valid port not in use.";
+
+    if (startPort < 1024) {
         throw new Error(invalidPort);
     }
 
-    while(port < 64000) {
+    for (let port = startPort; port < MAX_PORT; port++) {
         try {
-           const server =  app.listen(port, () => {
-                console.log("port found")
-                server.close();
-            })
-        
+            const server = net.createServer().listen(port);
+            server.close();
             return port;
-        } catch(error) {
-            ++port;
-            continue
-        }   
+        } catch (err) {
+            if (err.code === 'EADDRINUSE') {
+                continue;
+            } else {
+                throw err;
+            }
+        }
     }
-    
-    throw new error(cannotFindPort);
+
+    throw new Error(cannotFindPort);
 }
 
 module.exports = {
     findServerPort
-}
+};
