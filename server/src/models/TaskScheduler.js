@@ -1,6 +1,18 @@
 const { createTaskDictionary } = require("../util/util.js");
+const WorkUnit = require("./WorkUnit.js");
+
 class TaskScheduler {
   constructor() {}
+
+  scheduleTasks(taskList) {
+    try {
+      this.verifyTasks(taskList);
+      const unit = new WorkUnit("x", "x");
+      return [unit];
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 
   verifyTasks(taskList) {
     const taskDictionary = createTaskDictionary(taskList);

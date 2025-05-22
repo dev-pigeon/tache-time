@@ -1,7 +1,7 @@
 const Task = require("../models/Task.js");
 const TaskScheduler = require("../models/TaskScheduler.js");
 
-describe("TaskScheduler can validate that tasks can be successfully scheduled", () => {
+describe("TaskScheduler verifies correctly tasks ", () => {
   let scheduler;
   let task1;
   let task2;
@@ -42,5 +42,27 @@ describe("TaskScheduler can validate that tasks can be successfully scheduled", 
     const position = Math.floor(Math.random() * taskList.length);
     taskList[position].timeRemaining *= 3;
     expect(() => scheduler.verifyTasks(taskList)).toThrow();
+  });
+});
+
+describe("TaskScheduler correctly schedules tasks", () => {
+  let scheduler;
+  let task1;
+  let task2;
+
+  beforeEach(() => {
+    scheduler = new TaskScheduler();
+    task1 = new Task("Task1", "t1", 3, 2);
+    task2 = new Task("Task2", "t2", 5, 3);
+  });
+
+  test("Simple two task scheduling", () => {
+    const taskList = [task1, task2];
+    const expectedOrder = ["Task1", "Task1", "Task2", "Task2", "Task2"];
+    const workUnits = scheduler.scheduleTasks(taskList);
+    for (let i = 0; i < workUnits.length; ++i) {
+      const unit = workUnits[i];
+      expect(unit.name).toBe(expectedOrder[i]);
+    }
   });
 });
