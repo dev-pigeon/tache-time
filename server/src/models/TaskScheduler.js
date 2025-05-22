@@ -7,7 +7,7 @@ class TaskScheduler {
     let systemTime = 0;
     let overtime = 0;
     for (const deadline in taskDictionary) {
-      const relativeDeadline = deadline + overtime - systemTime;
+      const relativeDeadline = Number(deadline) + overtime - systemTime;
       const totalTaskTime = this.#getTotalTaskTime(taskDictionary[deadline]);
       if (!this.#isValidDeadline(relativeDeadline, totalTaskTime)) {
         throw new Error(
@@ -15,8 +15,7 @@ class TaskScheduler {
         );
       }
       overtime = relativeDeadline - totalTaskTime;
-      systemTime = deadline - overtime;
-      å;
+      systemTime = Number(deadline) - overtime;
     }
   }
 
