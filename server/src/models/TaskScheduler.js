@@ -1,13 +1,12 @@
-import { createTaskDictionary } from "../util/util";
+const { createTaskDictionary } = require("../util/util.js");
 class TaskScheduler {
-    constructor() {}
+  constructor() {}
 
-    verifyTasks(taskList) {
-        const taskDictionary = createTaskDictionary(taskList);
-        console.log(taskDictionary);
-        throw new Error("Not implemented!")
-    }
-
+  verifyTasks(taskList) {
+    const taskDictionary = createTaskDictionary(taskList);
+    console.log(taskDictionary);
+    throw new Error("Not implemented!");
+  }
 }
 
-module.exports = TaskScheduler
+module.exports = TaskScheduler;
