@@ -9,7 +9,7 @@ describe("TaskScheduler can validate that tasks can be successfully scheduled", 
 
     beforeEach(() => {
         scheduler = new TaskScheduler();
-    })
+    }) 
 
     test("Basic Pass", () => {
         const task1 = new Task("Task1", "t1", 5,2);
