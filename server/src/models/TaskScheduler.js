@@ -1,7 +1,9 @@
 
 class TaskScheduler {
-    constructor(taskList) {
-        this.taskList = taskList
+    constructor() {}
+
+    verifyTasks(taskList) {
+        throw new Error("Not implemented!")
     }
 }
 
