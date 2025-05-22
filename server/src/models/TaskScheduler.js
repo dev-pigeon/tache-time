@@ -4,8 +4,32 @@ class TaskScheduler {
 
   verifyTasks(taskList) {
     const taskDictionary = createTaskDictionary(taskList);
-    console.log(taskDictionary);
-    throw new Error("Not implemented!");
+    let systemTime = 0;
+    let overtime = 0;
+    for (const deadline in taskDictionary) {
+      const relativeDeadline = deadline + overtime - systemTime;
+      const totalTaskTime = this.#getTotalTaskTime(taskDictionary[deadline]);
+      if (!this.#isValidDeadline(relativeDeadline, totalTaskTime)) {
+        throw new Error(
+          "ERROR: Tasks cannot be scheduled, impossible to complete before the deadline."
+        );
+      }
+      overtime = relativeDeadline - totalTaskTime;
+      systemTime = deadline - overtime;
+      å;
+    }
+  }
+
+  #isValidDeadline(relativeDeadline, totalTaskTime) {
+    return totalTaskTime < relativeDeadline;
+  }
+
+  #getTotalTaskTime(deadlineList) {
+    let sum = 0;
+    for (const task of deadlineList) {
+      sum += task.timeRemaining;
+    }
+    return sum;
   }
 }
 
