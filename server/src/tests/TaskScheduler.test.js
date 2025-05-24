@@ -90,4 +90,31 @@ describe("TaskScheduler correctly schedules tasks", () => {
       expect(unit.name).toBe(expectedOrder[i]);
     }
   });
+
+  test("Non-whole number time remaining", () => {
+    const t1 = new Task("t1", "t1", 3, 1.5);
+    const t2 = new Task("t2", "t2", 3, 1);
+    const t3 = new Task("t3", "t3", 7, 3.27);
+    const t4 = new Task("t4", "t4", 13, 4.4);
+    const taskList = [t1, t2, t3, t4];
+    const expectedOrder = [
+      "t1",
+      "t2",
+      "t1",
+      "t3",
+      "t3",
+      "t3",
+      "t3",
+      "t4",
+      "t4",
+      "t4",
+      "t4",
+      "t4",
+    ];
+    const workUnits = scheduler.scheduleTasks(taskList);
+    for (let i = 0; i < workUnits.length; ++i) {
+      const unit = workUnits[i];
+      expect(unit.name).toBe(expectedOrder[i]);
+    }
+  });
 });
