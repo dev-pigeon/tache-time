@@ -1,6 +1,37 @@
 const { createTaskDictionary } = require("../util/util.js");
+const WorkUnit = require("./WorkUnit.js");
+
 class TaskScheduler {
   constructor() {}
+
+  scheduleTasks(taskList) {
+    try {
+      let scheduledWorkUnits = [];
+      this.verifyTasks(taskList);
+      let systemTime = 0;
+
+      while (taskList.length > 0) {
+        const taskToScheduleIndex = this.#getTaskToScheduleIndex(
+          taskList,
+          systemTime
+        );
+        const taskToSchedule = taskList[taskToScheduleIndex];
+        const dispatchedWorkUnit = new WorkUnit(
+          taskToSchedule.name,
+          taskToSchedule.description
+        );
+        scheduledWorkUnits.push(dispatchedWorkUnit);
+        taskToSchedule.timeRemaining -= 1;
+        if (this.#shouldRemoveTask(taskToSchedule)) {
+          taskList.splice(taskToScheduleIndex, 1);
+        }
+        systemTime++;
+      }
+      return scheduledWorkUnits;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 
   verifyTasks(taskList) {
     const taskDictionary = createTaskDictionary(taskList);
@@ -17,6 +48,39 @@ class TaskScheduler {
       overtime = relativeDeadline - totalTaskTime;
       systemTime = Number(deadline) - overtime;
     }
+  }
+
+  #shouldRemoveTask(task) {
+    return task.timeRemaining <= 0;
+  }
+
+  #getTaskToScheduleIndex(taskList, systemTime) {
+    let maxWeight = -1;
+    let taskIndex = -1;
+    for (let i = 0; i < taskList.length; ++i) {
+      const task = taskList[i];
+      const taskWeight = this.#calculateTaskWeight(task, systemTime);
+      if (taskWeight > maxWeight) {
+        taskIndex = i;
+        maxWeight = taskWeight;
+      } else if (taskWeight == maxWeight) {
+        const minTask = taskList[taskIndex];
+        if (task.deadline < minTask.deadline) {
+          // means that current task is due sooner than the previously set min task & they have equal weight, so we should schedule the sooner one
+          taskIndex = i;
+          maxWeight = taskWeight;
+        }
+      }
+    }
+    return taskIndex;
+  }
+
+  #calculateTaskWeight(task, systemTime) {
+    const denominator = Math.max(
+      1,
+      task.deadline - systemTime - task.timeRemaining
+    );
+    return 1 / denominator;
   }
 
   #isValidDeadline(relativeDeadline, totalTaskTime) {
