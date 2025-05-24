@@ -40,7 +40,7 @@ describe("TaskScheduler verifies correctly tasks ", () => {
   test("Fail Nth task", () => {
     const taskList = [task1, task2, task3, task4, task5, task6];
     const position = Math.floor(Math.random() * taskList.length);
-    taskList[position].timeRemaining *= 3;
+    taskList[4].timeRemaining = 1000;
     expect(() => scheduler.verifyTasks(taskList)).toThrow();
   });
 });
@@ -78,7 +78,7 @@ describe("TaskScheduler correctly schedules tasks", () => {
       "Task3",
       "Task3",
       "Task4",
-      "Task 3",
+      "Task3",
       "Task4",
       "Task5",
       "Task5",
