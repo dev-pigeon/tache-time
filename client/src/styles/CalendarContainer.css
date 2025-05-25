@@ -1,9 +1,9 @@
 #container {
     padding: 10;
     width: 80%;
-    height:50%;
+    height:70%;
     background-color: var(--background-paper);
-    top: 30%;
+    top: 40%;
     left: 50%;
     position: fixed;
     transform:translate(-50%, -50%);
