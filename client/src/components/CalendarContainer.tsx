@@ -2,12 +2,12 @@ import { Box } from "@mui/material";
 import type { PropsWithChildren } from "react";
 
 import "../styles/CalendarContainer.css";
+import DateContainer from "./DateContainer";
 
 const CalendarContainer = ({ children }: PropsWithChildren<{}>) => {
   return (
     <Box id={"container"} sx={{ boxShadow: 10 }}>
-      {/* @ts-ignore */}
-      {children}
+      <DateContainer date="May 25th" />
     </Box>
   );
 };
