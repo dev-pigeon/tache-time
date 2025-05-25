@@ -5,8 +5,10 @@
     background-color: var(--background-paper);
     top: 40%;
     left: 50%;
+    border-style: solid;
+    border-width: 1px;
     position: fixed;
     transform:translate(-50%, -50%);
-    border-color: var(--secondary-main);
+    border-color: var(--accent-main);
     
 }

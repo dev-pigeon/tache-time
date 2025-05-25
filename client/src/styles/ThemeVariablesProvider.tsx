@@ -11,10 +11,10 @@ export function ThemeVariablesProvider({
   useEffect(() => {
     const root = document.body;
 
-    root.style.setProperty("--background-default", "#1e1e1e");
-    root.style.setProperty("--background-paper", "#333");
+    root.style.setProperty("--background-default", "#101517");
+    root.style.setProperty("--background-paper", "#1e1e1e");
 
-    root.style.setProperty("--secondary-main", "#7851A9");
+    root.style.setProperty("--accent-main", "#7851A9");
     root.style.setProperty("--text-primary", theme.palette.text.primary);
 
     return () => {
