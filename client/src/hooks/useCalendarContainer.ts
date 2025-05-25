@@ -9,13 +9,14 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     const [dates, setDates] = useState<string[] | undefined>(undefined)
 
     const initializeDates = () => {
-        const date : Date = new Date();
+        let date : Date = new Date();
         let newDates : string[] = [];
         for(let i = 0; i < 7; ++i) {
             const dateString = getDateString(date);
             newDates.push(dateString);
+            date.setDate(date.getDate() + 1)
         }
-        setDates(dates);
+        setDates(newDates);
     }
 
     const getDateString = (date : Date) : string => {
