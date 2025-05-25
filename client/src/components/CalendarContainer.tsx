@@ -1,14 +1,18 @@
-import { Box } from "@mui/material";
-import type { PropsWithChildren } from "react";
+import { Stack } from "@mui/material";
 
 import "../styles/CalendarContainer.css";
 import DateContainer from "./DateContainer";
 
-const CalendarContainer = ({ children }: PropsWithChildren<{}>) => {
+const CalendarContainer = () => {
   return (
-    <Box id={"container"} sx={{ boxShadow: 10 }}>
+    <Stack
+      direction={"row"}
+      id="calendar-container"
+      gap={2}
+      sx={{ boxShadow: 10 }}
+    >
       <DateContainer date="May 25th" />
-    </Box>
+    </Stack>
   );
 };
 
