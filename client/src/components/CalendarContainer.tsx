@@ -7,8 +7,8 @@ const CalendarContainer = () => {
   return (
     <Stack
       direction={"row"}
+      gap={0.5}
       id="calendar-container"
-      gap={2}
       sx={{ boxShadow: 10 }}
     >
       <DateContainer date="May 25th" />
