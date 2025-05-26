@@ -1,15 +1,15 @@
 import { useState } from "react"
 
 interface useCalendarContainerReturnProps {
-    initializeDates : () => void;
+    initializeDates : (dateIn? : Date) => void;
     dates : string[] | undefined;
 }
 
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
     const [dates, setDates] = useState<string[] | undefined>(undefined)
 
-    const initializeDates = () => {
-        let date : Date = new Date();
+    const initializeDates = (dateIn? : Date) => {
+        let date : Date = dateIn ? dateIn : new Date();
         let newDates : string[] = [];
         for(let i = 0; i < 7; ++i) {
             const dateString = getDateString(date);
