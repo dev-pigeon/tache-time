@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
+import "../styles/TimeUnit.css";
 
 interface TimeUnitProps {
   height: number;
@@ -15,20 +16,15 @@ const TimeUnit = ({ height, time }: TimeUnitProps) => {
 
   return (
     <Box
+      className="time-unit"
       sx={{
         backgroundColor: selected ? "#67ba6b" : "",
-        border: "solid",
-        borderWidth: 0.5,
       }}
-      justifyContent={"center"}
-      alignItems={"center"}
-      display={"flex"}
       date-testid="time-unit"
       onClick={handleClick}
       height={height}
-      width={150}
     >
-      <Typography fontSize={16}>{time}</Typography>
+      <Typography className="time-unit-typography">{time}</Typography>
     </Box>
   );
 };
