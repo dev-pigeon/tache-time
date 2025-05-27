@@ -3,6 +3,11 @@ import { useState } from "react"
 interface useCalendarContainerReturnProps {
     initializeDates : (dateIn? : Date) => void;
     dates : string[] | undefined;
+    getCalendarContainerHeight : () => number;
+}
+
+export const getCalendarContainerHeight = () : number => {
+    return 0;
 }
 
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
@@ -48,6 +53,7 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     return {
         initializeDates,
         dates,
+        getCalendarContainerHeight
     }
 }
 

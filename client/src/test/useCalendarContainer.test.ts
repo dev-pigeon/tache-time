@@ -2,8 +2,6 @@ import {renderHook, act} from "@testing-library/react";
 import useCalendarContainer from "../hooks/useCalendarContainer";
 
 describe("initialize dates works as expected", () => {
-    
-
     test("correctly outputs all 'th' dates", () => {
         const calendarContainerHook = renderHook(() => useCalendarContainer()).result;
         const expected = ["May 10th", "May 11th", "May 12th", "May 13th", "May 14th", "May 15th", "May 16th"];
@@ -29,4 +27,11 @@ describe("initialize dates works as expected", () => {
             expect(calendarContainerHook.current.dates![i]).toBe(expected[i])
         }
     })
+})
+
+
+test("useCalendarContainer.getCalendarContainerHeight returns proper height", ()=> {
+  const calendarContainerHook = renderHook(() => useCalendarContainer()).result;
+  const expectedHeight = Math.round(window.innerHeight * .7);
+  expect(calendarContainerHook.current.getCalendarContainerHeight()).toBe(expectedHeight);
 })
