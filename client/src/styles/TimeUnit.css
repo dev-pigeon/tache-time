@@ -1,0 +1,13 @@
+.time-unit {
+    border:solid;
+    border-width: .5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 125px;
+}
+
+.time-unit-typography {
+    font-size: 12;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

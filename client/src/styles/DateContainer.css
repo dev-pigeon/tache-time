@@ -1,5 +1,5 @@
 .time-unit-container {
-    width:150px;
+    width:125px;
     background-color:#555555; 
     align-items: center;
     justify-content: center;
@@ -9,12 +9,12 @@
 .date-container {
     align-items: center;
     display: flex;
-    width: 150px;
-    padding:3px
+    width: 125px;
+    padding-top:45px
+    
 }
 
 .date-container-label {
     font-family: 'Times New Roman', Times, serif;
-    font-weight: 750;
     color: var(--text-primary);
 }
