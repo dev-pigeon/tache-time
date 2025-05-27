@@ -10,7 +10,8 @@
     align-items: center;
     display: flex;
     width: 125px;
-    padding:3px
+    padding-top:25px
+    
 }
 
 .date-container-label {
