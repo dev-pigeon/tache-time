@@ -24,7 +24,12 @@ const TimeUnit = ({ height, time }: TimeUnitProps) => {
       onClick={handleClick}
       height={height}
     >
-      <Typography className="time-unit-typography">{time}</Typography>
+      <Typography
+        color={selected ? "black" : "#C0B9B2"}
+        className="time-unit-typography"
+      >
+        {time}
+      </Typography>
     </Box>
   );
 };

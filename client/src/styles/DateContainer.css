@@ -10,12 +10,11 @@
     align-items: center;
     display: flex;
     width: 125px;
-    padding-top:25px
+    padding-top:45px
     
 }
 
 .date-container-label {
     font-family: 'Times New Roman', Times, serif;
-    font-weight: 750;
     color: var(--text-primary);
 }

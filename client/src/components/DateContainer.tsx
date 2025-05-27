@@ -45,7 +45,9 @@ const DateContainer = ({ date }: DateContainerProps) => {
 
   return (
     <Stack className="date-container" direction={"column"} gap={1}>
-      <Typography className="date-container-label">{date}</Typography>
+      <Typography variant="h6" className="date-container-label">
+        {date}
+      </Typography>
       <Stack height={450} className="time-unit-container" direction={"column"}>
         {units &&
           units.map((unit, _index) => (
