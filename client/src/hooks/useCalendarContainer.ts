@@ -7,7 +7,7 @@ interface useCalendarContainerReturnProps {
 }
 
 export const getCalendarContainerHeight = () : number => {
-    return 0;
+    return Math.round(window.innerHeight * .7);
 }
 
 const useCalendarContainer = () : useCalendarContainerReturnProps => {

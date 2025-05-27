@@ -14,7 +14,7 @@ const CalendarContainer = () => {
 
   return (
     <Stack
-      height={"70%"}
+      height={() => calendarContainerHook.getCalendarContainerHeight()}
       direction={"row"}
       gap={0.5}
       id="calendar-container"
