@@ -13,14 +13,15 @@ const TimeUnit = ({ height }: TimeUnitProps) => {
   };
 
   return (
-    <Box
-      date-testid="time-unit"
-      onClick={() => {
-        handleClick();
-      }}
-      height={height}
-      width={150}
-    ></Box>
+    <div>
+      <Box
+        color={"#1e1e1e"}
+        date-testid="time-unit"
+        onClick={handleClick}
+        height={height}
+        width={150}
+      ></Box>
+    </div>
   );
 };
 

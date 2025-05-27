@@ -16,6 +16,7 @@ export function ThemeVariablesProvider({
 
     root.style.setProperty("--accent-main", "#7851A9");
     root.style.setProperty("--text-primary", theme.palette.text.primary);
+    root.style.setProperty("--available", "#008673");
 
     return () => {
       root.style.removeProperty("--background-default");
