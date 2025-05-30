@@ -10,10 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Remove Dependencies
-        run: rm -rf node_modules package-lock.json
-
-      - name: Re-install dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Build
