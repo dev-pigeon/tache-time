@@ -17,14 +17,22 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install dependencies
+      ###########################
+      # FRONT END
+      ###########################
+
+      - name: Install frontend dependencies
         run: npm install && npm install @mui/material @emotion/react@latest @emotion/styled@latest
         working-directory: ./client
 
-      - name: Build
+      - name: Build frontend
         run: npm run build
         working-directory: ./client
 
-      - name: Run tests
+      - name: Run frontend tests
         run: npm test
         working-directory: ./client
+
+    ###########################
+    # BACKEND
+    ###########################
