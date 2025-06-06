@@ -11,7 +11,7 @@ describe("initialize dates works as expected", () => {
         })
          expect(calendarContainerHook.current.dates).toBeDefined()
         for(let i = 0; i < expected.length; ++i) {
-            expect(calendarContainerHook.current.dates![i]).toBe(expected[i])
+            expect(calendarContainerHook.current.dates![i].date).toBe(expected[i])
         }
     })
 
@@ -24,7 +24,7 @@ describe("initialize dates works as expected", () => {
         })
          expect(calendarContainerHook.current.dates).toBeDefined()
         for(let i = 0; i < expected.length; ++i) {
-            expect(calendarContainerHook.current.dates![i]).toBe(expected[i])
+            expect(calendarContainerHook.current.dates![i].date).toBe(expected[i])
         }
     })
 })
