@@ -1,4 +1,4 @@
-import {renderHook, act, render} from "@testing-library/react";
+import {renderHook, act} from "@testing-library/react";
 import useCalendarContainer from "../hooks/useCalendarContainer";
 
 describe("initialize dates works as expected", () => {
@@ -37,7 +37,9 @@ test("useCalendarContainer.getCalendarContainerHeight returns proper height", ()
 })
 
 test("getDayOfWeekString returns correct day", () => {
-    const calendarContainerHook = renderHook(() => useCalendarContainer()).result;
-    const expectedDay = "Wednesday";
-    expect(calendarContainerHook.current.getDayOfWeekString(4)).toBe(expectedDay);
+    const expectedDays = ["Sun","Mon","Tue", "Wed", "Thu", "Fri", "Sat"]
+    const calendarContainerHook = renderHook(() => useCalendarContainer());
+    for(let i = 0; i < 7; ++i) {
+        expect(calendarContainerHook.result.current.getDayOfWeekString(i)).toBe(expectedDays[i])
+    }
 })

@@ -26,7 +26,8 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     }
 
     const getDayOfWeekString = (dayNum : number) : string => {
-        return "";
+        const days = ["Sun","Mon","Tue", "Wed", "Thu", "Fri", "Sat"]
+        return days[dayNum];
     }
 
     const getDateString = (date : Date) : string => {
