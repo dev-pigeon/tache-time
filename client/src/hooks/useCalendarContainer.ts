@@ -1,9 +1,11 @@
 import { useState } from "react"
+import { DateLabelProps } from "../components/DateLabel";
 
 interface useCalendarContainerReturnProps {
     initializeDates : (dateIn? : Date) => void;
-    dates : string[] | undefined;
+    dates : DateLabelProps[] | undefined;
     getCalendarContainerHeight : () => number;
+    getDayOfWeekString : (dayNum : number) => string;
 }
 
 export const getCalendarContainerHeight = () : number => {
@@ -11,17 +13,27 @@ export const getCalendarContainerHeight = () : number => {
 }
 
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
-    const [dates, setDates] = useState<string[] | undefined>(undefined)
+    const [dates, setDates] = useState<DateLabelProps[] | undefined>(undefined)
 
     const initializeDates = (dateIn? : Date) => {
         let date : Date = dateIn ? dateIn : new Date();
-        let newDates : string[] = [];
+        let newDates : DateLabelProps[] = [];
         for(let i = 0; i < 7; ++i) {
             const dateString = getDateString(date);
-            newDates.push(dateString);
+            const dayOfWeek = getDayOfWeekString(date.getDay());
+            const dateLabel : DateLabelProps = {
+                date : dateString,
+                dayOfWeek : dayOfWeek
+            }
+            newDates.push(dateLabel);
             date.setDate(date.getDate() + 1)
         }
-        setDates(newDates);
+        setDates(newDates)
+    }
+
+    const getDayOfWeekString = (dayNum : number) : string => {
+        const days = ["Sun","Mon","Tue", "Wed", "Thu", "Fri", "Sat"]
+        return days[dayNum];
     }
 
     const getDateString = (date : Date) : string => {
@@ -53,7 +65,8 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     return {
         initializeDates,
         dates,
-        getCalendarContainerHeight
+        getCalendarContainerHeight,
+        getDayOfWeekString,
     }
 }
 

@@ -1,0 +1,19 @@
+.date-label {
+    gap: .5;
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    max-width: 125px;
+}
+
+.dl-date {
+    font-size: 12px !important;
+    white-space: nowrap;
+    color: var(--text-primary);
+}
+
+.dl-dayofweek {
+    font-weight: 1000 !important;
+    font-size: 18px !important;
+    color: var(--text-primary);
+}

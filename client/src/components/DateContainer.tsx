@@ -1,11 +1,12 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import "../styles/DateContainer.css";
 import { useEffect } from "react";
 import TimeUnit from "./TimeUnit";
 import useDateContainer from "../hooks/useDateContainer";
+import DateLabel, { DateLabelProps } from "./DateLabel";
 
 interface DateContainerProps {
-  date: string;
+  date: DateLabelProps;
 }
 
 const DateContainer = ({ date }: DateContainerProps) => {
@@ -17,9 +18,7 @@ const DateContainer = ({ date }: DateContainerProps) => {
 
   return (
     <Stack className="date-container" direction={"column"} gap={1}>
-      <Typography variant="h6" className="date-container-label">
-        {date}
-      </Typography>
+      <DateLabel date={date.date} dayOfWeek={date.dayOfWeek} />
       <Stack height={450} className="time-unit-container" direction={"column"}>
         {dateContainerHook.units &&
           dateContainerHook.units.map((unit, _index) => (

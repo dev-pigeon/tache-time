@@ -11,7 +11,7 @@ describe("initialize dates works as expected", () => {
         })
          expect(calendarContainerHook.current.dates).toBeDefined()
         for(let i = 0; i < expected.length; ++i) {
-            expect(calendarContainerHook.current.dates![i]).toBe(expected[i])
+            expect(calendarContainerHook.current.dates![i].date).toBe(expected[i])
         }
     })
 
@@ -24,7 +24,7 @@ describe("initialize dates works as expected", () => {
         })
          expect(calendarContainerHook.current.dates).toBeDefined()
         for(let i = 0; i < expected.length; ++i) {
-            expect(calendarContainerHook.current.dates![i]).toBe(expected[i])
+            expect(calendarContainerHook.current.dates![i].date).toBe(expected[i])
         }
     })
 })
@@ -34,4 +34,12 @@ test("useCalendarContainer.getCalendarContainerHeight returns proper height", ()
   const calendarContainerHook = renderHook(() => useCalendarContainer()).result;
   const expectedHeight = Math.round(window.innerHeight * .7);
   expect(calendarContainerHook.current.getCalendarContainerHeight()).toBe(expectedHeight);
+})
+
+test("getDayOfWeekString returns correct day", () => {
+    const expectedDays = ["Sun","Mon","Tue", "Wed", "Thu", "Fri", "Sat"]
+    const calendarContainerHook = renderHook(() => useCalendarContainer());
+    for(let i = 0; i < 7; ++i) {
+        expect(calendarContainerHook.result.current.getDayOfWeekString(i)).toBe(expectedDays[i])
+    }
 })
