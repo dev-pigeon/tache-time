@@ -7,9 +7,10 @@ import DateLabel, { DateLabelProps } from "./DateLabel";
 
 interface DateContainerProps {
   date: DateLabelProps;
+  heightIn: number | string;
 }
 
-const DateContainer = ({ date }: DateContainerProps) => {
+const DateContainer = ({ date, heightIn }: DateContainerProps) => {
   const dateContainerHook = useDateContainer();
 
   useEffect(() => {
@@ -19,7 +20,11 @@ const DateContainer = ({ date }: DateContainerProps) => {
   return (
     <Stack className="date-container" direction={"column"} gap={1}>
       <DateLabel date={date.date} dayOfWeek={date.dayOfWeek} />
-      <Stack height={450} className="time-unit-container" direction={"column"}>
+      <Stack
+        height={heightIn}
+        className="time-unit-container"
+        direction={"column"}
+      >
         {dateContainerHook.units &&
           dateContainerHook.units.map((unit, _index) => (
             <TimeUnit time={unit.time} height={unit.height} />

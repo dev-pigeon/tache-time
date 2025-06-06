@@ -1,9 +1,8 @@
 #calendar-container {
     width: 50%;
-    top: 40%;
-    left: 50%;
+    top:10%;
+    left: 5%;
     position: relative;
-    transform:translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
