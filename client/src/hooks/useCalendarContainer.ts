@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { DateLabel } from "../components/DateLabel";
+import { DateLabelProps } from "../components/DateLabel";
 
 interface useCalendarContainerReturnProps {
     initializeDates : (dateIn? : Date) => void;
-    dates : DateLabel[] | undefined;
+    dates : DateLabelProps[] | undefined;
     getCalendarContainerHeight : () => number;
     getDayOfWeekString : (dayNum : number) => string;
 }
@@ -13,15 +13,15 @@ export const getCalendarContainerHeight = () : number => {
 }
 
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
-    const [dates, setDates] = useState<DateLabel[] | undefined>(undefined)
+    const [dates, setDates] = useState<DateLabelProps[] | undefined>(undefined)
 
     const initializeDates = (dateIn? : Date) => {
         let date : Date = dateIn ? dateIn : new Date();
-        let newDates : DateLabel[] = [];
+        let newDates : DateLabelProps[] = [];
         for(let i = 0; i < 7; ++i) {
             const dateString = getDateString(date);
             const dayOfWeek = getDayOfWeekString(date.getDay());
-            const dateLabel : DateLabel = {
+            const dateLabel : DateLabelProps = {
                 date : dateString,
                 dayOfWeek : dayOfWeek
             }
