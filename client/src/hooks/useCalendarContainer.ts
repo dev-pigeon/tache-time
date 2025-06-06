@@ -4,6 +4,7 @@ interface useCalendarContainerReturnProps {
     initializeDates : (dateIn? : Date) => void;
     dates : string[] | undefined;
     getCalendarContainerHeight : () => number;
+    getDayOfWeekString : (dayNum : number) => string;
 }
 
 export const getCalendarContainerHeight = () : number => {
@@ -22,6 +23,10 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
             date.setDate(date.getDate() + 1)
         }
         setDates(newDates);
+    }
+
+    const getDayOfWeekString = (dayNum : number) : string => {
+        return "";
     }
 
     const getDateString = (date : Date) : string => {
@@ -53,7 +58,8 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     return {
         initializeDates,
         dates,
-        getCalendarContainerHeight
+        getCalendarContainerHeight,
+        getDayOfWeekString,
     }
 }
 
