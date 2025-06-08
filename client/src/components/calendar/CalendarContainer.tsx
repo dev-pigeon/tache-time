@@ -1,9 +1,7 @@
 import { Stack } from "@mui/material";
-
-import "../styles/CalendarContainer.css";
-import DateContainer from "./DateContainer";
+import { useRef, useEffect } from "react";
 import useCalendarContainer from "../../hooks/useCalendarContainer";
-import { useEffect, useRef } from "react";
+import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
 
 const CalendarContainer = () => {
