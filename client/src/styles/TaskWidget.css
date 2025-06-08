@@ -1,0 +1,13 @@
+#task-widget-container {
+    background-color:var(--text-primary);
+    z-index: 10;
+    width: 60px;
+    margin: 5px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 6%;
+}
