@@ -1,0 +1,12 @@
+#view-control-container {
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    align-self: center;
+    right: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--text-primary);
+    border-radius: 50px;
+}
