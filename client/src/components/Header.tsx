@@ -8,7 +8,6 @@ const Header = () => {
   return (
     <Box id={"header"}>
       <Typography id={"header-title"}>Tâche Time</Typography>
-      <ViewControlContainer />
     </Box>
   );
 };
