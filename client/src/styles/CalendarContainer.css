@@ -2,7 +2,7 @@
     width: 50%;
     top:10%;
     left: 5%;
-    position: relative;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;

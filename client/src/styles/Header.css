@@ -1,0 +1,20 @@
+#header {
+    position: relative;
+    width: 100vw;
+    height: 40%;
+    max-height: 50px;
+    background-color:  #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid;
+    border-color: rgba(211, 211, 211, 0.61);
+    border-width: .1px;
+}
+
+#header-title {
+    color:var(--text-primary);
+    font-weight: bolder;
+    font-size: 28px;
+    font-family: 'Times New Roman', Times, serif;
+}
