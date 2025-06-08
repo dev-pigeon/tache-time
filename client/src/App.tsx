@@ -1,5 +1,6 @@
 import CalendarContainer from "./components/CalendarContainer";
 import Header from "./components/Header";
+import ViewControlContainer from "./components/ViewControlContainer";
 import "./styles/App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div id="outer-container">
       <Header />
       <CalendarContainer />
+      <ViewControlContainer />
     </div>
   );
 }
