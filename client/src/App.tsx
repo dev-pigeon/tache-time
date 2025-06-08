@@ -1,7 +1,7 @@
-import CalendarContainer from "./components/CalendarContainer";
+import CalendarContainer from "./components/Calendar/CalendarContainer";
 import Header from "./components/Header";
-import TaskWidgetContainer from "./components/TaskWidgetContainer";
-import ViewControlContainer from "./components/ViewControlContainer";
+import TaskWidgetContainer from "./components/TaskOptions/TaskWidgetContainer";
+import ViewControlContainer from "./components/ViewControl/ViewControlContainer";
 import "./styles/App.css";
 
 function App() {

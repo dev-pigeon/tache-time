@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import "../styles/DateLabel.css";
+import "../../styles/DateLabel.css";
 
 export interface DateLabelProps {
   date: string;

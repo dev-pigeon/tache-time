@@ -1,7 +1,7 @@
 import { Collapse, IconButton, Paper, Tooltip } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import "../styles/ViewControl.css";
+import "../../styles/ViewControl.css";
 import { useState } from "react";
 import ViewControl from "./ViewControl";
 

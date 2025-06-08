@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
-import "../styles/TimeUnit.css";
+import "../../styles/TimeUnit.css";
 
 interface TimeUnitProps {
   height: number;

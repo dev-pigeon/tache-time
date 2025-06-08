@@ -2,7 +2,7 @@ import { IconButton, Stack, Tooltip } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
-import "../styles/ViewControl.css";
+import "../../styles/ViewControl.css";
 
 const ViewControl = () => {
   return (

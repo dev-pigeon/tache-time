@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { DateLabelProps } from "../components/DateLabel";
+import { DateLabelProps } from "../components/Calendar/DateLabel";
 
 interface useCalendarContainerReturnProps {
     initializeDates : (dateIn? : Date) => void;

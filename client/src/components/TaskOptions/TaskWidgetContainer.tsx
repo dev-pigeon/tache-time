@@ -2,7 +2,7 @@ import { IconButton, Paper, Tooltip, Collapse } from "@mui/material";
 import { useState } from "react";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 
-import "../styles/TaskWidget.css";
+import "../../styles/TaskWidget.css";
 import TaskOptions from "./TaskOptions";
 
 const TaskWidgetContainer = () => {
