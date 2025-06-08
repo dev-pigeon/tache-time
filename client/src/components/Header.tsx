@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
 import "../styles/Header.css";
-import "../styles/ViewControlContainer.css";
 
 const Header = () => {
   return (

@@ -1,8 +1,9 @@
-import { Collapse, IconButton, Paper, Tooltip, Stack } from "@mui/material";
+import { Collapse, IconButton, Paper, Tooltip } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import "../styles/ViewControlContainer.css";
+import "../styles/ViewControl.css";
 import { useState } from "react";
+import ViewControl from "./ViewControl";
 
 const ViewControlContainer = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -14,7 +15,7 @@ const ViewControlContainer = () => {
   return (
     <Paper id={"view-control-container"}>
       <Tooltip
-        title={showMenu ? "Close Menu" : "View Menu"}
+        title={showMenu ? "Close Mode Menu" : "Open Mode Menu"}
         placement="left"
         arrow
       >
@@ -23,16 +24,7 @@ const ViewControlContainer = () => {
         </IconButton>
       </Tooltip>
       <Collapse in={showMenu}>
-        <Stack
-          display={"flex"}
-          alignItems={"center"}
-          direction={"column"}
-          spacing={2}
-        >
-          <MenuIcon></MenuIcon>
-          <MenuIcon></MenuIcon>
-          <MenuIcon></MenuIcon>
-        </Stack>
+        <ViewControl />
       </Collapse>
     </Paper>
   );

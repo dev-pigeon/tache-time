@@ -11,3 +11,12 @@
     top: 0;
     right: 6%;
 }
+
+#view-control {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2;
+}
+
+
