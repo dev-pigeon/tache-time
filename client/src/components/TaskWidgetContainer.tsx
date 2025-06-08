@@ -14,10 +14,12 @@ const TaskWidgetContainer = () => {
   return (
     <Paper id={"task-widget-container"}>
       <Tooltip
+        placement="left"
+        arrow
         title={openTaskWidget ? "Close Task Options" : "Open Task Options"}
       >
         <IconButton onClick={toggleTaskWidget}>
-          <AssignmentIndIcon sx={{ fill: "black" }} />
+          <AssignmentIndIcon sx={{ fill: "black", fontSize: 40 }} />
         </IconButton>
       </Tooltip>
     </Paper>
