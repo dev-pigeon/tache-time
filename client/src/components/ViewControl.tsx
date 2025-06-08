@@ -1,6 +1,6 @@
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { IconButton, Stack, Tooltip } from "@mui/material";
-import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 import "../styles/ViewControl.css";
 
@@ -16,13 +16,13 @@ const ViewControl = () => {
     >
       <Tooltip title="Edit Mode" arrow placement="left">
         <IconButton>
-          <EditNoteOutlinedIcon sx={{ fill: "black" }} />
+          <ModeEditIcon sx={{ fill: "black" }} />
         </IconButton>
       </Tooltip>
 
       <Tooltip title="View Mode" arrow placement="left">
         <IconButton>
-          <VisibilityOutlinedIcon sx={{ fill: "black" }} />
+          <VisibilityIcon sx={{ fill: "black" }} />
         </IconButton>
       </Tooltip>
     </Stack>
