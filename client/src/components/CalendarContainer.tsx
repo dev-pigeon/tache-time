@@ -24,9 +24,9 @@ const CalendarContainer = () => {
       id="calendar-container"
       sx={{ boxShadow: 10 }}
     >
-      <Stack position={"absolute"} top={10} right={50}>
-        <WorkLabel text="Available for work" bgColor="#67ba6b" />
-        <WorkLabel text="Unavailable for work" bgColor="#545454" />
+      <Stack position={"absolute"} top={10} right={25}>
+        <WorkLabel text="Available" bgColor="#67ba6b" />
+        <WorkLabel text="Unavailable" bgColor="#545454" />
       </Stack>
 
       {calendarContainerHook.dates &&
