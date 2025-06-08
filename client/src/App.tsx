@@ -1,5 +1,6 @@
 import CalendarContainer from "./components/CalendarContainer";
 import Header from "./components/Header";
+import TaskWidgetContainer from "./components/TaskWidgetContainer";
 import ViewControlContainer from "./components/ViewControlContainer";
 import "./styles/App.css";
 
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <CalendarContainer />
       <ViewControlContainer />
+      <TaskWidgetContainer />
     </div>
   );
 }
