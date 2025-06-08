@@ -22,7 +22,7 @@ jobs:
       ###########################
 
       - name: Install frontend dependencies
-        run: npm install && npm install @mui/material @emotion/react@latest @emotion/styled@latest
+        run: npm install && npm install @mui/material @emotion/react@latest @emotion/styled@latest @mui/icons-material
         working-directory: ./client
 
       - name: Build frontend
