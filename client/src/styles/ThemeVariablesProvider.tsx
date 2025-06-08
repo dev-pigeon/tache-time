@@ -13,6 +13,7 @@ export function ThemeVariablesProvider({
 
     root.style.setProperty("--background-default", "#101517");
     root.style.setProperty("--background-paper", "#545454");
+    root.style.setProperty("--text-secondary", "black");
 
     root.style.setProperty("--accent-main", "#7851A9");
     root.style.setProperty("--text-primary", theme.palette.text.primary);

@@ -1,0 +1,33 @@
+#add-task-outercontainer {
+    z-index: 10;
+    position: absolute;
+    background-color: rgba(211, 211, 211, 1);
+    width: 325px;
+    height: 400px;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    right: 50px;
+    bottom: 5%;
+    border-radius: 15px;
+}
+
+#title-container {
+    position: relative;
+    flex-direction: row;
+    width: 98%;
+    display: flex;
+
+}
+
+#title-label {
+    color: var(--text-secondary);
+    font-size: 24px;
+    font-family: 'Times New Roman', Times, serif;
+}
+ 
+#close-button {
+    position: absolute;
+    right: 0px;
+    top: 1px;
+}
