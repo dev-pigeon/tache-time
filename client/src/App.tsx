@@ -1,6 +1,6 @@
 import CalendarContainer from "./components/calendar/CalendarContainer";
 import Header from "./components/Header";
-import TaskWidgetContainer from "./components/TaskWidgetContainer";
+import TaskWidgetContainer from "./components/TaskOptions/TaskWidgetContainer";
 import ViewControlContainer from "./components/ViewControlContainer";
 import "./styles/App.css";
 
