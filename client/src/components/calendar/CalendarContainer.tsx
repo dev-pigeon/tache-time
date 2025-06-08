@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import useCalendarContainer from "../../hooks/useCalendarContainer";
 import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
+import "../../styles/CalendarContainer.css";
 
 const CalendarContainer = () => {
   const calendarContainerHook = useCalendarContainer();
