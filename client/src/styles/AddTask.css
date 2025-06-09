@@ -1,15 +1,19 @@
 #add-task-outercontainer {
     z-index: 10;
     position: absolute;
-    background-color: rgba(211, 211, 211, 1);
-    width: 325px;
-    height: 400px;
+    background-color: #101315;
+    width: 400px;
+    height: 450px;
     margin: 2px;
     display: flex;
     justify-content: center;
     right: 50px;
     bottom: 5%;
     border-radius: 15px;
+    border-color: #585a5b;
+    border: solid;
+    border-width: .5px;
+    box-shadow: 20px;
 }
 
 #title-container {
@@ -21,7 +25,7 @@
 }
 
 #title-label {
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-size: 24px;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -31,3 +35,17 @@
     right: 0px;
     top: 1px;
 }
+
+#name-time-container {
+    position : absolute;
+    top: 18%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    flex-direction: "column";
+}
+
+
+
+
+
