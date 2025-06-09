@@ -17,7 +17,8 @@
 }
 
 #title-container {
-    position: relative;
+    position: absolute;
+    left:3%;
     flex-direction: row;
     width: 98%;
     display: flex;
@@ -32,7 +33,7 @@
  
 #close-button {
     position: absolute;
-    right: 0px;
+    right: 7px;
     top: 1px;
 }
 

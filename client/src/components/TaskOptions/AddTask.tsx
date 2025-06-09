@@ -9,9 +9,7 @@ const AddTask = () => {
     <Paper id={"add-task-outercontainer"}>
       <Stack width={"100%"} position={"relative"} alignItems={"center"}>
         <Stack id={"title-container"} direction={"row"}>
-          <Typography padding={0.5} id={"title-label"}>
-            Create Task
-          </Typography>
+          <Typography id={"title-label"}>Create Task</Typography>
           <IconButton
             sx={{
               "& .MuiTouchRipple-root .MuiTouchRipple-rippleVisible": {
@@ -52,7 +50,7 @@ const AddTask = () => {
           widthIn={"80%"}
           label="Description"
           rows={2}
-          sxIn={{ top: "44%", right: "7%" }}
+          sxIn={{ top: "55%", right: "7%" }}
         />
 
         <Stack direction={"row"} id={"button-container"}>
