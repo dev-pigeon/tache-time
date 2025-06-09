@@ -12,7 +12,15 @@ const AddTask = () => {
           <Typography padding={0.5} id={"title-label"}>
             Create Task
           </Typography>
-          <IconButton id={"close-button"}>
+          <IconButton
+            sx={{
+              "& .MuiTouchRipple-root .MuiTouchRipple-rippleVisible": {
+                color: "#d3362e",
+                opacity: 0.5,
+              },
+            }}
+            id={"close-button"}
+          >
             <CloseIcon sx={{ fill: "white", fontSize: 30 }} />
           </IconButton>
         </Stack>
@@ -27,6 +35,7 @@ const AddTask = () => {
             widthIn={"40%"}
             label="Estimated Time"
             sxIn={{ left: "15%" }}
+            adornment="hours"
           />
         </Stack>
 

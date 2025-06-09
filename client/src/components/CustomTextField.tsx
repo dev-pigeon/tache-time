@@ -5,6 +5,7 @@ interface CustomTextFieldProps {
   label: string;
   sxIn?: object;
   rows?: number;
+  adornment?: string;
   // onChange
   // value
 }
@@ -14,9 +15,26 @@ const CustomTextField = ({
   label,
   sxIn,
   rows,
+  adornment,
 }: CustomTextFieldProps) => {
   return (
     <TextField
+      slotProps={{
+        input: {
+          endAdornment: (
+            <InputAdornment
+              position="end"
+              sx={{
+                color: "#6a6c6d",
+
+                transition: "opacity 0.2s",
+              }}
+            >
+              <Typography>{adornment}</Typography>
+            </InputAdornment>
+          ),
+        },
+      }}
       minRows={rows}
       multiline
       sx={{
