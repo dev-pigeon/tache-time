@@ -1,4 +1,4 @@
-import { IconButton, Paper, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Paper, Stack, Typography } from "@mui/material";
 import "../../styles/AddTask.css";
 import CloseIcon from "@mui/icons-material/Close";
 import CustomTextField from "../CustomTextField";
@@ -45,6 +45,15 @@ const AddTask = () => {
           rows={2}
           sxIn={{ top: "44%", right: "7%" }}
         />
+
+        <Stack direction={"row"} id={"button-container"}>
+          <Button id="confirm-button" variant="contained">
+            Confirm
+          </Button>
+          <Button id={"cancel-button"} variant="contained">
+            Cancel
+          </Button>
+        </Stack>
       </Stack>
     </Paper>
   );
