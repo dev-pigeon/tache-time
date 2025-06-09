@@ -33,15 +33,9 @@ const CustomTextField = ({
           color: "#6a6c6d",
         },
 
-        "& label.Mui-focused": {
-          color: "#7851A9",
-          fontSize: 17,
-        },
         "& .MuiOutlinedInput-root": {
           backgroundColor: "#25282a",
-          "&.Mui-focused fieldset": {
-            borderColor: "#7851A9",
-          },
+
           "& fieldset": {
             borderColor: "#585a5b",
           },

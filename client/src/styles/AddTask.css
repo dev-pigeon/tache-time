@@ -42,7 +42,16 @@
     width:100%;
     display: flex;
     align-items: center;
-    flex-direction: "column";
+    flex-direction: row;
+}
+
+#duedate-container {
+    width: 100%;
+    position : absolute;
+    top: 36%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 

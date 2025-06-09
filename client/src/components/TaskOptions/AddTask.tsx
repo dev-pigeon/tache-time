@@ -1,9 +1,9 @@
-import { IconButton, Paper, Stack, TextField, Typography } from "@mui/material";
+import { IconButton, Paper, Stack, Typography } from "@mui/material";
 import "../../styles/AddTask.css";
 import CloseIcon from "@mui/icons-material/Close";
 import CustomTextField from "../CustomTextField";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
+import CustomDatePicker from "../CustomDatePicker";
 const AddTask = () => {
   return (
     <Paper id={"add-task-outercontainer"}>
@@ -29,6 +29,22 @@ const AddTask = () => {
             sxIn={{ left: "15%" }}
           />
         </Stack>
+
+        <Stack direction={"row"} id={"duedate-container"}>
+          <CustomDatePicker
+            sxIn={{ position: "relative", width: "40%", left: "3%" }}
+          />
+          <CustomDatePicker
+            sxIn={{ position: "relative", width: "40%", left: "15%" }}
+          />
+        </Stack>
+
+        <CustomTextField
+          widthIn={"80%"}
+          label="Description"
+          rows={2}
+          sxIn={{ top: "44%", right: "7%" }}
+        />
       </Stack>
     </Paper>
   );
