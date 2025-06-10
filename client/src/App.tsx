@@ -1,6 +1,6 @@
 import CalendarContainer from "./components/Calendar/CalendarContainer";
 import Header from "./components/Header";
-import TaskWidget from "./components/TaskOptions/TaskWidget";
+import TaskWidgetContainer from "./components/TaskOptions/TaskWidgetContainer";
 
 import ViewControlContainer from "./components/ViewControl/ViewControlContainer";
 import "./styles/App.css";
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <CalendarContainer />
       <ViewControlContainer />
-      <TaskWidget />
+      <TaskWidgetContainer />
     </div>
   );
 }
