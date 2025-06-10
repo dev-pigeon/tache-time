@@ -81,3 +81,12 @@
     right: 0%;
     background-color: #d3362e;
 }
+
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}

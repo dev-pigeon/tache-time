@@ -1,4 +1,5 @@
 import { InputAdornment, TextField, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 interface CustomTextFieldProps {
   id: string;
@@ -7,7 +8,7 @@ interface CustomTextFieldProps {
   sxIn?: object;
   rows?: number;
   adornment?: string;
-  value: string | number;
+  value: string;
   onChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -23,8 +24,20 @@ const CustomTextField = ({
   id,
   value,
 }: CustomTextFieldProps) => {
+  const [adornmentOpacity, setAdornmentOpacity] = useState<number>(0);
+  const [focused, setFocused] = useState(false);
+
+  useEffect(() => {
+    if (value != "" || focused) setAdornmentOpacity(1);
+    else setAdornmentOpacity(0);
+  }, [value, focused]);
+
   return (
     <TextField
+      onFocus={() => {
+        setFocused(true);
+      }}
+      onBlur={() => setFocused(false)}
       value={value}
       id={id}
       onChange={onChange}
@@ -35,7 +48,7 @@ const CustomTextField = ({
               position="end"
               sx={{
                 color: "#6a6c6d",
-
+                opacity: adornmentOpacity,
                 transition: "opacity 0.2s",
               }}
             >
