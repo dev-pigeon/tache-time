@@ -14,7 +14,7 @@ describe("initialize dates works as expected", () => {
             expect(calendarContainerHook.current.dates![i].date).toBe(expected[i])
         }
     })
-
+    
     test("can properly set `nd` `st` and `rd` dates", () => {
         const calendarContainerHook = renderHook(() => useCalendarContainer()).result;
         const expected = ["May 1st", "May 2nd", "May 3rd", "May 4th", "May 5th", "May 6th", "May 7th"];
