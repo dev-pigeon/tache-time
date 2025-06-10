@@ -8,6 +8,7 @@ interface CustomTextFieldProps {
   sxIn?: object;
   rows?: number;
   adornment?: string;
+  multiline?: boolean;
   value: string;
   onChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -23,6 +24,7 @@ const CustomTextField = ({
   onChange,
   id,
   value,
+  multiline,
 }: CustomTextFieldProps) => {
   const [adornmentOpacity, setAdornmentOpacity] = useState<number>(0);
   const [focused, setFocused] = useState(false);
@@ -58,7 +60,7 @@ const CustomTextField = ({
         },
       }}
       minRows={rows}
-      multiline
+      multiline={multiline}
       sx={{
         position: "relative",
         ...sxIn,

@@ -62,6 +62,7 @@ const AddTask = () => {
         </Stack>
 
         <CustomTextField
+          multiline
           id="task-desc"
           value={addTaskHook.taskDescription}
           onChange={addTaskHook.handleStringElementChange}
