@@ -1,4 +1,4 @@
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { Dispatch, SetStateAction, useState } from "react"
 
 const useAddTask = () => {
@@ -6,7 +6,7 @@ const useAddTask = () => {
     const [taskDescription, setTaskDescription] = useState<string>("");
     const [estimatedHours, setEstimatedHours] = useState<string>("");
     const [taskDueDate, setTaskDueDate] = useState<Dayjs | null>(null);
-    const [taskTimeDue, setTaskTimeDue] = useState<Dayjs | null>(null);
+    const [taskTimeDue, setTaskTimeDue] = useState<Dayjs | null>(dayjs().hour(23).minute(59).second(0).millisecond(0));
 
 
     const handleStringElementChange = (event : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
