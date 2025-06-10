@@ -1,5 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import useAddTask from "../hooks/useAddTask";
+import dayjs, { Dayjs } from "dayjs";
 
 function createMockChangeEvent(
   value: string,
@@ -10,6 +11,16 @@ function createMockChangeEvent(
     currentTarget: { value },
     preventDefault: jest.fn(),
   } as unknown as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+}
+
+function createMockDayjs(dateStr: string): Dayjs {
+  const actual = dayjs(dateStr, "MM/DD/YYYY");
+
+  return {
+    ...actual,
+    format: jest.fn((formatStr?: string) => actual.format(formatStr)),
+    toString: jest.fn(() => actual.toString()),
+  } as unknown as Dayjs;
 }
 
 describe("handleStringElementChange targets correct elements", () => {
@@ -51,4 +62,16 @@ describe("handleStringElementChange targets correct elements", () => {
     });
     expect(addTaskHook.current.taskDescription).toBe(expectedTaskDesc);
   });
+});
+
+test("Task due date updates correcly", () => {
+  const addTaskHook = renderHook(() => useAddTask()).result;
+  const expectedDate = "06/10/2025";
+  const mockObject = createMockDayjs("06/10/2025");
+  act(() => {
+    addTaskHook.current.setTaskDueDate(mockObject);
+  });
+  expect(addTaskHook.current.taskDueDate?.format("MM/DD/YYYY")).toBe(
+    expectedDate
+  );
 });
