@@ -75,3 +75,15 @@ test("Task due date updates correcly", () => {
     expectedDate
   );
 });
+
+test("Task time due updates correctly", () => {
+  const addTaskHook = renderHook(() => useAddTask()).result;
+  const expectedTime = "11:00 AM";
+  const mockObject = createMockDayjs("06/10/2025 11:00 AM");
+
+  act(() => {
+    addTaskHook.current.setTaskDueDate(mockObject);
+  });
+
+  expect(addTaskHook.current.taskDueDate?.format("hh:mm A")).toBe(expectedTime);
+});
