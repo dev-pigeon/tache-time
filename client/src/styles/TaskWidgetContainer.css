@@ -10,9 +10,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    bottom: 5%;
-    right: 10%;
+   
 }
 
 .task-widget-button {
