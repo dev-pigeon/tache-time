@@ -1,0 +1,92 @@
+#add-task-outercontainer {
+    z-index: 10;
+    position: absolute;
+    background-color: #101315;
+    width: 400px;
+    height: 425px;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    right: 50px;
+    bottom: 5%;
+    border-radius: 15px;
+    border-color: #585a5b;
+    border: solid;
+    border-width: .5px;
+    box-shadow: 20px;
+}
+
+#title-container {
+    position: absolute;
+    left:3%;
+    flex-direction: row;
+    width: 98%;
+    display: flex;
+
+}
+
+#title-label {
+    color: var(--text-primary);
+    font-size: 28px;
+    font-family: 'Times New Roman', Times, serif;
+}
+ 
+#close-button {
+    position: absolute;
+    right: 7px;
+    top: 1px;
+}
+
+#name-time-container {
+    position : absolute;
+    top: 18%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#duedate-container {
+    width: 100%;
+    position : absolute;
+    top: 36%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#button-container {
+    position: absolute;
+    top: 88%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#confirm-button {
+    position: relative;
+    text-transform: none;
+    border-radius: 15px;
+    width: 125px;
+    left: 65%;
+    background-color: #4f88c1;
+}
+
+#cancel-button {
+    position: relative;
+    text-transform: none;
+    border-radius: 15px;
+    width: 125px;
+    right: 0%;
+    background-color: #d3362e;
+}
+
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
