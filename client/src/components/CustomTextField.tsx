@@ -1,13 +1,16 @@
 import { InputAdornment, TextField, Typography } from "@mui/material";
 
 interface CustomTextFieldProps {
+  id: string;
   widthIn: number | string;
   label: string;
   sxIn?: object;
   rows?: number;
   adornment?: string;
-  // onChange
-  // value
+  value: string | number;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
 
 const CustomTextField = ({
@@ -16,9 +19,15 @@ const CustomTextField = ({
   sxIn,
   rows,
   adornment,
+  onChange,
+  id,
+  value,
 }: CustomTextFieldProps) => {
   return (
     <TextField
+      value={value}
+      id={id}
+      onChange={onChange}
       slotProps={{
         input: {
           endAdornment: (

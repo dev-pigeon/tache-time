@@ -5,7 +5,11 @@ import CustomTextField from "../CustomTextField";
 
 import CustomDatePicker from "../CustomDatePicker";
 import CustomTimePicker from "../CustomTimePicker";
+
+import useAddTask from "../../hooks/useAddTask";
 const AddTask = () => {
+  const addTaskHook = useAddTask();
+
   return (
     <Paper id={"add-task-outercontainer"}>
       <Stack width={"100%"} position={"relative"} alignItems={"center"}>
@@ -26,11 +30,17 @@ const AddTask = () => {
 
         <Stack id={"name-time-container"} direction={"row"}>
           <CustomTextField
+            id={"task-name"}
+            onChange={addTaskHook.handleStringElementChange}
+            value={addTaskHook.taskName}
             sxIn={{ left: "3%" }}
             widthIn={"40%"}
             label="Task Name"
           />
           <CustomTextField
+            id="task-est-time"
+            value={addTaskHook.estimatedHours}
+            onChange={addTaskHook.handleStringElementChange}
             widthIn={"40%"}
             label="Estimated Time"
             sxIn={{ left: "15%" }}
@@ -40,14 +50,21 @@ const AddTask = () => {
 
         <Stack direction={"row"} id={"duedate-container"}>
           <CustomDatePicker
+            value={addTaskHook.taskDueDate}
+            onChange={addTaskHook.setTaskDueDate}
             sxIn={{ position: "relative", width: "40%", left: "3%" }}
           />
           <CustomTimePicker
+            value={addTaskHook.taskTimeDue}
+            onChange={addTaskHook.setTaskTimeDue}
             sxIn={{ position: "relative", width: "40%", left: "15%" }}
           />
         </Stack>
 
         <CustomTextField
+          id="task-desc"
+          value={addTaskHook.taskDescription}
+          onChange={addTaskHook.handleStringElementChange}
           widthIn={"80%"}
           label="Description"
           rows={2}
