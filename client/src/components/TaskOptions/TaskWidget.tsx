@@ -5,7 +5,7 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import "../../styles/TaskWidgetContainer.css";
 import TaskOptions from "./TaskOptions";
 
-const TaskWidgetContainer = () => {
+const TaskWidget = () => {
   const [openTaskWidget, setOpenTaskWidget] = useState<boolean>(false);
 
   const toggleTaskWidget = () => {
@@ -31,4 +31,4 @@ const TaskWidgetContainer = () => {
   );
 };
 
-export default TaskWidgetContainer;
+export default TaskWidget;
