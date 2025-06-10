@@ -4,8 +4,13 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 
 import "../../styles/TaskWidgetContainer.css";
 import TaskOptions from "./TaskOptions";
+import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
 
-const TaskWidget = () => {
+export interface TaskWidgetProps {
+  changeRenderedComponent: (type: TaskViewStateEnum) => void;
+}
+
+const TaskWidget = ({ changeRenderedComponent }: TaskWidgetProps) => {
   const [openTaskWidget, setOpenTaskWidget] = useState<boolean>(false);
 
   const toggleTaskWidget = () => {
@@ -15,7 +20,7 @@ const TaskWidget = () => {
   return (
     <Paper id={"task-widget-container"}>
       <Collapse in={openTaskWidget}>
-        <TaskOptions />
+        <TaskOptions changeRenderedComponent={changeRenderedComponent} />
       </Collapse>
 
       <Tooltip
