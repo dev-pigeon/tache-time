@@ -14,7 +14,7 @@ const CustomDatePicker = ({ value, onChange, sxIn }: CustomDatePickerProps) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-        label="Due Date"
+        label="Due Date*"
         value={value}
         onChange={onChange}
         sx={{

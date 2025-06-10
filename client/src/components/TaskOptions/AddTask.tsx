@@ -35,14 +35,14 @@ const AddTask = () => {
             value={addTaskHook.taskName}
             sxIn={{ left: "3%" }}
             widthIn={"40%"}
-            label="Task Name"
+            label="Task Name*"
           />
           <CustomTextField
             id="task-est-time"
             value={addTaskHook.estimatedHours}
             onChange={addTaskHook.handleStringElementChange}
             widthIn={"40%"}
-            label="Estimated Time"
+            label="Estimated Time*"
             sxIn={{ left: "15%" }}
             adornment="hours"
           />
