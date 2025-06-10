@@ -37,7 +37,18 @@ const CustomTextField = ({
   }, [value, focused]);
 
   return (
-    <Tooltip arrow placement="top" title={tooltip}>
+    <Tooltip
+      slotProps={{
+        tooltip: {
+          sx: {
+            width: 150,
+          },
+        },
+      }}
+      arrow
+      placement="top"
+      title={tooltip}
+    >
       <TextField
         onFocus={() => {
           setFocused(true);
