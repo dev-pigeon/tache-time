@@ -9,7 +9,11 @@ const TaskWidgetContainer = () => {
   return (
     <Box sx={{ position: "fixed", bottom: "5%", right: "10%" }}>
       {TaskViewController.renderedComponent ==
-        TaskViewStateEnum.TASK_WIDGET && <TaskWidget />}
+        TaskViewStateEnum.TASK_WIDGET && (
+        <TaskWidget
+          changeRenderedComponent={TaskViewController.changeRenderedComponent}
+        />
+      )}
 
       {TaskViewController.renderedComponent == TaskViewStateEnum.ADD_TASK && (
         <AddTask />

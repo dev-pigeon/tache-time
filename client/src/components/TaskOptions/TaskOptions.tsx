@@ -3,8 +3,12 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
 
 import "../../styles/ViewControl.css";
+import { TaskWidgetProps } from "./TaskWidget";
+import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
 
-const TaskOptions = () => {
+interface TaskOptionsProps extends TaskWidgetProps {}
+
+const TaskOptions = ({ changeRenderedComponent }: TaskOptionsProps) => {
   return (
     <Stack
       display={"flex"}
@@ -21,7 +25,11 @@ const TaskOptions = () => {
       </Tooltip>
 
       <Tooltip title="Create Task" arrow placement="left">
-        <IconButton>
+        <IconButton
+          onClick={() => {
+            changeRenderedComponent(TaskViewStateEnum.ADD_TASK);
+          }}
+        >
           <AddCircleOutlineIcon sx={{ fill: "black", fontSize: 30 }} />
         </IconButton>
       </Tooltip>
