@@ -4,6 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import CustomTextField from "../CustomTextField";
 
 import CustomDatePicker from "../CustomDatePicker";
+import CustomTimePicker from "../CustomTimePicker";
 const AddTask = () => {
   return (
     <Paper id={"add-task-outercontainer"}>
@@ -41,7 +42,7 @@ const AddTask = () => {
           <CustomDatePicker
             sxIn={{ position: "relative", width: "40%", left: "3%" }}
           />
-          <CustomDatePicker
+          <CustomTimePicker
             sxIn={{ position: "relative", width: "40%", left: "15%" }}
           />
         </Stack>
