@@ -1,0 +1,20 @@
+#task-widget-container {
+    background-color:var(--text-primary);
+    z-index: 10;
+    width: 100px;
+    min-height: 100px;
+    max-height: 400px;
+    margin: 5px;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.task-widget-button {
+    position: absolute;
+    bottom: 20px;
+    left: 1px;
+}

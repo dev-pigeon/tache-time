@@ -4,13 +4,12 @@ import { Dispatch, SetStateAction, useState } from "react"
 
 
 const useAddTask = () => {
-  
+
     const [taskName, setTaskName] = useState<string>("");
     const [taskDescription, setTaskDescription] = useState<string>("");
     const [estimatedHours, setEstimatedHours] = useState<string>("");
     const [taskDueDate, setTaskDueDate] = useState<Dayjs | null>(null);
     const [taskTimeDue, setTaskTimeDue] = useState<Dayjs | null>(null);
-
 
     const handleStringElementChange = (event : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const target = event.target;
@@ -40,9 +39,12 @@ const useAddTask = () => {
         taskTimeDue,
         estimatedHours,
         setTaskDueDate,
-        setTaskTimeDue
+        setTaskTimeDue,
+        
     }
 }
 
 
 export default useAddTask;
+
+
