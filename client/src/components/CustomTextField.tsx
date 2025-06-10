@@ -1,4 +1,4 @@
-import { InputAdornment, TextField, Typography } from "@mui/material";
+import { InputAdornment, TextField, Tooltip, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 interface CustomTextFieldProps {
@@ -9,6 +9,7 @@ interface CustomTextFieldProps {
   rows?: number;
   adornment?: string;
   multiline?: boolean;
+  tooltip?: string;
   value: string;
   onChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,6 +26,7 @@ const CustomTextField = ({
   id,
   value,
   multiline,
+  tooltip,
 }: CustomTextFieldProps) => {
   const [adornmentOpacity, setAdornmentOpacity] = useState<number>(0);
   const [focused, setFocused] = useState(false);
@@ -35,56 +37,58 @@ const CustomTextField = ({
   }, [value, focused]);
 
   return (
-    <TextField
-      onFocus={() => {
-        setFocused(true);
-      }}
-      onBlur={() => setFocused(false)}
-      value={value}
-      id={id}
-      onChange={onChange}
-      slotProps={{
-        input: {
-          endAdornment: (
-            <InputAdornment
-              position="end"
-              sx={{
-                color: "#6a6c6d",
-                opacity: adornmentOpacity,
-                transition: "opacity 0.2s",
-              }}
-            >
-              <Typography>{adornment}</Typography>
-            </InputAdornment>
-          ),
-        },
-      }}
-      minRows={rows}
-      multiline={multiline}
-      sx={{
-        position: "relative",
-        ...sxIn,
-        width: widthIn,
-
-        "& .MuiInputBase-input": {
-          caretColor: "white",
-          color: "white",
-        },
-
-        "& label": {
-          color: "#6a6c6d",
-        },
-
-        "& .MuiOutlinedInput-root": {
-          backgroundColor: "#25282a",
-
-          "& fieldset": {
-            borderColor: "#585a5b",
+    <Tooltip arrow placement="top" title={tooltip}>
+      <TextField
+        onFocus={() => {
+          setFocused(true);
+        }}
+        onBlur={() => setFocused(false)}
+        value={value}
+        id={id}
+        onChange={onChange}
+        slotProps={{
+          input: {
+            endAdornment: (
+              <InputAdornment
+                position="end"
+                sx={{
+                  color: "#6a6c6d",
+                  opacity: adornmentOpacity,
+                  transition: "opacity 0.2s",
+                }}
+              >
+                <Typography>{adornment}</Typography>
+              </InputAdornment>
+            ),
           },
-        },
-      }}
-      label={label}
-    ></TextField>
+        }}
+        minRows={rows}
+        multiline={multiline}
+        sx={{
+          position: "relative",
+          ...sxIn,
+          width: widthIn,
+
+          "& .MuiInputBase-input": {
+            caretColor: "white",
+            color: "white",
+          },
+
+          "& label": {
+            color: "#6a6c6d",
+          },
+
+          "& .MuiOutlinedInput-root": {
+            backgroundColor: "#25282a",
+
+            "& fieldset": {
+              borderColor: "#585a5b",
+            },
+          },
+        }}
+        label={label}
+      />
+    </Tooltip>
   );
 };
 
