@@ -1,0 +1,18 @@
+#task-list-outer-container {
+    position: absolute;
+    top: 25%;
+    right: 9%;
+    background-color: #1e1e1e;
+    min-height: 50px;
+    min-width: 135px;
+    display: flex;
+    align-items: center;   
+    border-radius: 30px;
+    padding-left: 1%; 
+    flex-direction: column;        
+}
+
+
+.task-list-icon {
+    color: white ;
+}
