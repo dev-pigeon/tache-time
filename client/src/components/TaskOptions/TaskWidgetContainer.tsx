@@ -3,7 +3,6 @@ import TaskWidget from "./TaskWidget";
 import TaskContainerViewController from "../../misc/TaskContainerViewController";
 import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
 import AddTask from "./AddTask";
-import "../../styles/TaskWidgetContainer.css";
 
 const TaskWidgetContainer = () => {
   const TaskViewController = TaskContainerViewController();
