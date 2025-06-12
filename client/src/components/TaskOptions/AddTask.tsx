@@ -5,10 +5,19 @@ import CustomTextField from "../CustomTextField";
 
 import CustomDatePicker from "../CustomDatePicker";
 import CustomTimePicker from "../CustomTimePicker";
-
 import useAddTask from "../../hooks/useAddTask";
-const AddTask = () => {
+import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
+
+interface AddTaskProps {
+  changeRenderedComponent: (type: TaskViewStateEnum) => void;
+}
+
+const AddTask = ({ changeRenderedComponent }: AddTaskProps) => {
   const addTaskHook = useAddTask();
+
+  const closeAddTask = () => {
+    changeRenderedComponent(TaskViewStateEnum.TASK_WIDGET);
+  };
 
   return (
     <Paper id={"add-task-outercontainer"}>
@@ -16,6 +25,7 @@ const AddTask = () => {
         <Stack id={"title-container"} direction={"row"}>
           <Typography id={"title-label"}>Create Task</Typography>
           <IconButton
+            onClick={closeAddTask}
             sx={{
               "& .MuiTouchRipple-root .MuiTouchRipple-rippleVisible": {
                 color: "#d3362e",
@@ -78,7 +88,11 @@ const AddTask = () => {
           <Button id="confirm-button" variant="contained">
             Confirm
           </Button>
-          <Button id={"cancel-button"} variant="contained">
+          <Button
+            onClick={closeAddTask}
+            id={"cancel-button"}
+            variant="contained"
+          >
             Cancel
           </Button>
         </Stack>

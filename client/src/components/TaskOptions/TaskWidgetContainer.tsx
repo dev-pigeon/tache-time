@@ -16,7 +16,9 @@ const TaskWidgetContainer = () => {
       )}
 
       {TaskViewController.renderedComponent == TaskViewStateEnum.ADD_TASK && (
-        <AddTask />
+        <AddTask
+          changeRenderedComponent={TaskViewController.changeRenderedComponent}
+        />
       )}
     </Box>
   );
