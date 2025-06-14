@@ -31,11 +31,32 @@ const useAddTask = () => {
 
     const validateInputs = () => {
       try {
+        isDueDateMissing()
+        isTitleMissing()
+        isDueTimeMissing()
         validateDueDate()
         validateEstimatedTime()
       } catch(error) {
         throw new Error(error as string)
       }
+     }
+
+     const isDueDateMissing = () => {
+        if(taskDueDate == null) {
+            throw new Error("Task due date is a required field.")
+        }
+     }
+
+     const isTitleMissing = () => {
+        if(taskName == null) {
+            throw new Error("Task name is a required field.")
+        }
+     }
+
+     const isDueTimeMissing  = () => {
+        if(taskTimeDue == null) {
+            throw new Error("The time the task is due is a required field.")
+        }
      }
 
      const validateEstimatedTime = () => {
