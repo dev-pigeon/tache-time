@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { TaskListItem } from "../interfaces/TaskListItem";
 
 const useTaskList = () => {
     const [listOpen, setListOpen] = useState<boolean>(false);
+    const [taskList, setTaskList] = useState<TaskListItem[]>([]);
 
     const toggleList = () => {
         console.log("m")
@@ -11,6 +13,7 @@ const useTaskList = () => {
     return {
         listOpen,
         toggleList,
+        taskList,
     }
 }
 
