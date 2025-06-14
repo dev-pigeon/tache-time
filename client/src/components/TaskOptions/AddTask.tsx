@@ -85,7 +85,11 @@ const AddTask = ({ changeRenderedComponent }: AddTaskProps) => {
         />
 
         <Stack direction={"row"} id={"button-container"}>
-          <Button id="confirm-button" variant="contained">
+          <Button
+            onClick={addTaskHook.createTask}
+            id="confirm-button"
+            variant="contained"
+          >
             Confirm
           </Button>
           <Button
