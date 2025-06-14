@@ -1,4 +1,5 @@
 import { act, renderHook } from "@testing-library/react";
+import useTaskList from "../hooks/useTaskList";
 import useAddTask from "../hooks/useAddTask";
 import dayjs, { Dayjs } from "dayjs";
 
@@ -26,7 +27,10 @@ function createMockDayjs(dateStr: string): Dayjs {
 describe("handleStringElementChange targets correct elements", () => {
   let addTaskHook: { current: any };
   beforeEach(() => {
-    addTaskHook = renderHook(() => useAddTask()).result;
+    const taskListHook = renderHook(() => useTaskList()).result;
+    addTaskHook = renderHook(() =>
+      useAddTask({ taskListHook: taskListHook.current })
+    ).result;
   });
 
   test("handleStringElementChange correctly modifies task name", () => {
@@ -65,7 +69,10 @@ describe("handleStringElementChange targets correct elements", () => {
 });
 
 test("Task due date updates correcly", () => {
-  const addTaskHook = renderHook(() => useAddTask()).result;
+  const taskListHook = renderHook(() => useTaskList()).result;
+  const addTaskHook = renderHook(() =>
+    useAddTask({ taskListHook: taskListHook.current })
+  ).result;
   const expectedDate = "06/10/2025";
   const mockObject = createMockDayjs("06/10/2025");
   act(() => {
@@ -77,7 +84,10 @@ test("Task due date updates correcly", () => {
 });
 
 test("Task time due updates correctly", () => {
-  const addTaskHook = renderHook(() => useAddTask()).result;
+  const taskListHook = renderHook(() => useTaskList()).result;
+  const addTaskHook = renderHook(() =>
+    useAddTask({ taskListHook: taskListHook.current })
+  ).result;
   const expectedTime = "11:00 AM";
   const mockObject = createMockDayjs("06/10/2025 11:00 AM");
 

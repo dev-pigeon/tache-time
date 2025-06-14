@@ -1,8 +1,13 @@
 import dayjs, { Dayjs } from "dayjs";
 import { Dispatch, SetStateAction, useState } from "react"
 import { TaskListItem } from "../interfaces/TaskListItem";
+import { useTaskListReturn } from "./useTaskList";
 
-const useAddTask = () => {
+interface useAddTask {
+    taskListHook: useTaskListReturn;
+}
+
+const useAddTask = ({taskListHook} : useAddTask) => {
 
     const [taskName, setTaskName] = useState<string>("");
     const [taskDescription, setTaskDescription] = useState<string>("");
@@ -34,8 +39,8 @@ const useAddTask = () => {
     const createTask = () => {
         try {
             validateInputs()
-            // @ts-ignore
             const newTaskItem = buildTaskListItem();
+            taskListHook.addTask(newTaskItem)
             clearInputFields()
         } catch(error) {
             throw new Error(error as string)

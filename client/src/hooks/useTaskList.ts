@@ -1,12 +1,26 @@
 import { useState } from "react";
 import { TaskListItem } from "../interfaces/TaskListItem";
 
-const useTaskList = () => {
+export interface useTaskListReturn {
+    listOpen : boolean,
+    taskList : TaskListItem[],
+    addTask : (item : TaskListItem) => void,
+    toggleList : () => void,
+}
+
+const useTaskList = () : useTaskListReturn => {
     const [listOpen, setListOpen] = useState<boolean>(false);
-    const [taskList, _setTaskList] = useState<TaskListItem[]>([]);
+    const [taskList, setTaskList] = useState<TaskListItem[]>([]);
+
 
     const toggleList = () => {
         setListOpen(!listOpen);
+    }
+
+     const addTask = (newItem : TaskListItem) => {
+        let updatedList : TaskListItem[] = [...taskList];
+        updatedList.push(newItem)
+        setTaskList(updatedList)
     }
 
     
@@ -14,6 +28,7 @@ const useTaskList = () => {
         listOpen,
         toggleList,
         taskList,
+        addTask
     }
 }
 

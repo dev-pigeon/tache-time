@@ -7,12 +7,15 @@ import {
   Typography,
 } from "@mui/material";
 import "../../styles/TaskList.css";
-import useTaskList from "../../hooks/useTaskList";
+import { useTaskListReturn } from "../../hooks/useTaskList";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-const TaskList = () => {
-  const taskListHook = useTaskList();
+interface TaskListProps {
+  taskListHook: useTaskListReturn;
+}
+
+const TaskList = ({ taskListHook }: TaskListProps) => {
   return (
     <Paper id="task-list-outer-container">
       <Stack
