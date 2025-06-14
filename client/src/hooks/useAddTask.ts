@@ -32,9 +32,17 @@ const useAddTask = () => {
     const validateInputs = () => {
       try {
         validateDueDate()
+        validateEstimatedTime()
       } catch(error) {
         throw new Error(error as string)
       }
+     }
+
+     const validateEstimatedTime = () => {
+        const parsedTime = Number(estimatedHours)
+        if(isNaN(parsedTime)) {
+            throw new Error("Estimated task time must be a number.")
+        }
      }
 
     const validateDueDate = () => {
@@ -52,6 +60,7 @@ const useAddTask = () => {
         taskDueDate,
         taskTimeDue,
         estimatedHours,
+        setEstimatedHours,
         setTaskDueDate,
         setTaskTimeDue,
         validateInputs,
