@@ -1,5 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import { Dispatch, SetStateAction, useState } from "react"
+import { TaskListItem } from "../interfaces/TaskListItem";
 
 const useAddTask = () => {
 
@@ -28,6 +29,33 @@ const useAddTask = () => {
         }
         return setEstimatedHours
     }
+
+    
+    const createTask = () => {
+        try {
+            validateInputs()
+            const newTaskItem = buildTaskListItem();
+            // call add task
+        } catch(error) {
+            throw new Error(error as string)
+        }
+    }
+
+    const buildTaskListItem = () => {
+        const dateFormatted = taskDueDate!.format("DD/MM/YYYY");
+        const id = `${taskName}-${dateFormatted}`
+        const parsedEstTime = Number(estimatedHours)
+        const newTask : TaskListItem = {
+            title : taskName,
+            description: taskDescription,
+            dueTime : taskTimeDue!.format('hh:mm A'),
+            dueDate : dateFormatted,
+            id : id,
+            estimatedTime : parsedEstTime
+        }
+        return newTask;
+    }
+    
 
     const validateInputs = () => {
       try {
@@ -85,6 +113,7 @@ const useAddTask = () => {
         setTaskDueDate,
         setTaskTimeDue,
         validateInputs,
+        createTask,
     }
 }
 
