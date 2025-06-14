@@ -3,12 +3,13 @@ import { TaskListItem } from "../interfaces/TaskListItem";
 
 const useTaskList = () => {
     const [listOpen, setListOpen] = useState<boolean>(false);
-    const [taskList, setTaskList] = useState<TaskListItem[]>([]);
+    const [taskList, _setTaskList] = useState<TaskListItem[]>([]);
 
     const toggleList = () => {
         setListOpen(!listOpen);
     }
 
+    
     return {
         listOpen,
         toggleList,

@@ -34,6 +34,7 @@ const useAddTask = () => {
     const createTask = () => {
         try {
             validateInputs()
+            // @ts-ignore
             const newTaskItem = buildTaskListItem();
             clearInputFields()
         } catch(error) {
