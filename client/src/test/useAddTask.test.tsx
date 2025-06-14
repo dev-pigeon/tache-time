@@ -82,8 +82,40 @@ test("Task time due updates correctly", () => {
   const mockObject = createMockDayjs("06/10/2025 11:00 AM");
 
   act(() => {
-    addTaskHook.current.setTaskDueDate(mockObject);
+    addTaskHook.current.setTaskTimeDue(mockObject);
   });
 
-  expect(addTaskHook.current.taskDueDate?.format("hh:mm A")).toBe(expectedTime);
+  expect(addTaskHook.current.taskTimeDue?.format("hh:mm A")).toBe(expectedTime);
+});
+
+describe("ValidateTask works as expected", () => {
+  test("ValidateTask rejects out of date task in the future", () => {
+    const addTaskHook = renderHook(() => useAddTask()).result;
+
+    act(() => {
+      addTaskHook.current.setTaskDueDate(dayjs().add(1, "month"));
+    });
+
+    expect(() => addTaskHook.current.validateInputs()).toThrow();
+  });
+
+  test("ValidateTask rejects out of date task in the past", () => {
+    const addTaskHook = renderHook(() => useAddTask()).result;
+
+    act(() => {
+      addTaskHook.current.setTaskDueDate(dayjs().subtract(1, "month"));
+    });
+
+    expect(() => addTaskHook.current.validateInputs()).toThrow();
+  });
+
+  test("ValidateTask accepts task within date range", () => {
+    const addTaskHook = renderHook(() => useAddTask()).result;
+
+    act(() => {
+      addTaskHook.current.setTaskDueDate(dayjs().add(1, "days"));
+    });
+
+    expect(() => addTaskHook.current.validateInputs()).not.toThrow();
+  });
 });

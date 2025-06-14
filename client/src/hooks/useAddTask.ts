@@ -1,7 +1,5 @@
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { Dispatch, SetStateAction, useState } from "react"
-
-
 
 const useAddTask = () => {
 
@@ -31,6 +29,22 @@ const useAddTask = () => {
         return setEstimatedHours
     }
 
+    const validateInputs = () => {
+      try {
+        validateDueDate()
+      } catch(error) {
+        throw new Error(error as string)
+      }
+     }
+
+    const validateDueDate = () => {
+        const upperBound = dayjs().add(7,'days');
+        const difference = upperBound.diff(taskDueDate!,'days')
+        if(!(difference >= 0 && difference <= 7)) {
+            throw new Error("Task due date must be within one week of todays date.");
+        }
+    }
+
     return {
         handleStringElementChange,
         taskName,
@@ -40,7 +54,7 @@ const useAddTask = () => {
         estimatedHours,
         setTaskDueDate,
         setTaskTimeDue,
-        
+        validateInputs,
     }
 }
 
