@@ -7,13 +7,15 @@ import CustomDatePicker from "../CustomDatePicker";
 import CustomTimePicker from "../CustomTimePicker";
 import useAddTask from "../../hooks/useAddTask";
 import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
+import { useTaskListReturn } from "../../hooks/useTaskList";
 
 interface AddTaskProps {
   changeRenderedComponent: (type: TaskViewStateEnum) => void;
+  taskListHook: useTaskListReturn;
 }
 
-const AddTask = ({ changeRenderedComponent }: AddTaskProps) => {
-  const addTaskHook = useAddTask();
+const AddTask = ({ changeRenderedComponent, taskListHook }: AddTaskProps) => {
+  const addTaskHook = useAddTask({ taskListHook });
 
   const closeAddTask = () => {
     changeRenderedComponent(TaskViewStateEnum.TASK_WIDGET);
