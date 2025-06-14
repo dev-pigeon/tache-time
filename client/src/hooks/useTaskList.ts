@@ -6,7 +6,6 @@ const useTaskList = () => {
     const [taskList, setTaskList] = useState<TaskListItem[]>([]);
 
     const toggleList = () => {
-        console.log("m")
         setListOpen(!listOpen);
     }
 
