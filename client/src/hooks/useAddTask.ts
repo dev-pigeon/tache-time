@@ -35,14 +35,22 @@ const useAddTask = () => {
         try {
             validateInputs()
             const newTaskItem = buildTaskListItem();
-            // call add task
+            clearInputFields()
         } catch(error) {
             throw new Error(error as string)
         }
     }
 
+    const clearInputFields = () => {
+        setEstimatedHours("")
+        setTaskDescription("")
+        setTaskName("")
+        setTaskDueDate(null)
+        setTaskTimeDue(null)
+    }
+
     const buildTaskListItem = () => {
-        const dateFormatted = taskDueDate!.format("DD/MM/YYYY");
+        const dateFormatted = taskDueDate!.format("MM/DD/YYYY");
         const id = `${taskName}-${dateFormatted}`
         const parsedEstTime = Number(estimatedHours)
         const newTask : TaskListItem = {
