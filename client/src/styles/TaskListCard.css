@@ -1,0 +1,58 @@
+#task-list-card-outer-container {
+    width: 350px;
+    background-color: "white";
+    z-index: 10000;
+    position: relative;
+    border-radius: 20px;
+    left: 100px;
+}
+
+
+
+#task-list-item-title {
+    position: absolute;
+    padding:1.5px;
+    top: 5%;
+    left: 2%;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+#task-list-item-delete {
+    color:white;
+    right: 1%;
+    top: 2.5%;
+    position: absolute;
+}
+
+#task-list-item-date {
+    position: absolute;
+    font-size: 12px;
+
+    left: 3%;
+    color: var(--text-subtitle)
+}
+
+#task-list-item-est-time {
+    color: var(--text-subtitle);
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    bottom: 0.5%;
+    right: 5%;
+}
+
+#task-list-item-description-container {
+  
+    position: absolute;
+    width: 80%;
+    max-height: 75px;
+    white-space: normal;
+    overflow-y: scroll;
+    display: flex;
+    left: 3%;
+    top: 40%;
+    align-items: center;
+}
