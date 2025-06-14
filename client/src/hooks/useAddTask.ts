@@ -55,8 +55,44 @@ const useAddTask = ({taskListHook} : useAddTask) => {
         setTaskTimeDue(null)
     }
 
+    const getMonthString = (monthNum : number) => {
+        switch(monthNum) {
+            case 0:
+                return "Jan"
+            case 1:
+                return "Feb"
+            case 2:
+                return "Mar"
+            case 3:
+                return "Apr"
+            case 4:
+                return "May"
+            case 5:
+                return "Jun"
+            case 6:
+                return "Jul"
+            case 7:
+                return "Aug"
+            case 8:
+                return "Sep"
+            case 9:
+                return "Oct"
+            case 10:
+                return "Nov"
+        }
+        return "Dec"
+    } 
+
+    const formatDateDue = () => {
+        const monthNum = taskDueDate!.month()
+        const monthStr = getMonthString(monthNum);
+        const dayOfYear = taskDueDate?.format("DD")
+        const formattedDate = `${monthStr} ${dayOfYear}`
+        return formattedDate
+    }
+
     const buildTaskListItem = () => {
-        const dateFormatted = taskDueDate!.format("MM/DD/YYYY");
+        const dateFormatted = formatDateDue();
         const id = `${taskName}-${dateFormatted}`
         const parsedEstTime = Number(estimatedHours)
         const newTask : TaskListItem = {
