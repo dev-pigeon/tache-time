@@ -1,11 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import "../../styles/TimeUnit.css";
-
-interface TimeUnitProps {
-  height: number;
-  time: string;
-}
+import { TimeUnitProps } from "../../interfaces/TimeUnitProps";
 
 const TimeUnit = ({ height, time }: TimeUnitProps) => {
   const [selected, setSelected] = useState<boolean>(false);
