@@ -1,5 +1,6 @@
 import { DayProps } from "../interfaces/DayProps";
 import { TaskListItem } from "../interfaces/TaskListItem";
+import { buildRequestBody, sendJsonRequest } from "./Api";
 
 export interface useScheduleTasksReturn {
     handleScheduleTasksClick : () => void,
@@ -10,12 +11,16 @@ interface useScheduleTasksProps {
     getTaskList : () => TaskListItem[];
 }
 
+
 const useScheduleTasks = ({packageDays, getTaskList} : useScheduleTasksProps) : useScheduleTasksReturn => {
-    const handleScheduleTasksClick = () => {
+    const SERVER_URL = "http://localhost:8080"
+    const handleScheduleTasksClick =  async() => {
         const packagedDays = packageDays()
         const taskList = getTaskList()
         const requestParams = buildScheduleRequestParams(packagedDays, taskList);
-        console.log(requestParams)
+        const requestBody = buildRequestBody(requestParams);
+        const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
+        console.log(response);
     }
 
     const buildScheduleRequestParams = (packagedDays : DayProps[], taskList : TaskListItem[]) => {
