@@ -73,6 +73,7 @@ const CustomTextField = ({
             ),
           },
         }}
+        maxRows={4}
         minRows={rows}
         multiline={multiline}
         sx={{
