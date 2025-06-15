@@ -1,9 +1,12 @@
 import { useState } from "react"
-import { DateLabelProps } from "../components/Calendar/DateLabel";
+
+import { DayProps } from "../interfaces/DayProps";
+import dayjs, { Dayjs } from "dayjs";
+import { TimeUnitProps } from "../interfaces/TimeUnitProps";
 
 interface useCalendarContainerReturnProps {
-    initializeDates : (dateIn? : Date) => void;
-    dates : DateLabelProps[] | undefined;
+    initializeDates : (dateIn? : Dayjs) => void;
+    days : DayProps[] | undefined;
     getCalendarContainerHeight : () => number;
     getDayOfWeekString : (dayNum : number) => string;
 }
@@ -13,39 +16,60 @@ export const getCalendarContainerHeight = () : number => {
 }
 
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
-    const [dates, setDates] = useState<DateLabelProps[] | undefined>(undefined)
+    const [days, setDays] = useState<DayProps[] | undefined>(undefined)
 
-    const initializeDates = (dateIn? : Date) => {
-        let date : Date = dateIn ? dateIn : new Date();
-        let newDates : DateLabelProps[] = [];
+    const initializeDates = (dateIn? : Dayjs) => {
+        let date : Dayjs = dateIn ? dateIn : dayjs();
+        date = date.hour(8).minute(0).second(0).millisecond(0); // sets each days start time to 8am
+        let newDates : DayProps[] = [];
         for(let i = 0; i < 7; ++i) {
-            const dateString = getDateString(date);
-            const dayOfWeek = getDayOfWeekString(date.getDay());
-            const dateLabel : DateLabelProps = {
-                date : dateString,
-                dayOfWeek : dayOfWeek
+            // bacially just need to initialize the time slots here...
+            const dayTimeUnits = initializeTimeUnits(date);
+            const day : DayProps = {
+                dayOfWeek : getDayOfWeekString(date.day()),
+                dayStr : getDateString(date),
+                date : date,
+                timeSlots : dayTimeUnits,
             }
-            newDates.push(dateLabel);
-            date.setDate(date.getDate() + 1)
+            newDates.push(day);
+            date = date.add(1, 'days')
         }
-        setDates(newDates)
+        setDays(newDates)
     }
+
+    const initializeTimeUnits = (date : Dayjs) : TimeUnitProps[] => {
+        let newUnits : TimeUnitProps[] = [];
+        const numTimeUnits = 13;
+        const timeUnitHeight = getCalendarContainerHeight() / numTimeUnits;
+        for(let i = 0; i < numTimeUnits; ++i) {
+            const timeUnit : TimeUnitProps = {
+                time : date,
+                height : timeUnitHeight,
+                available : false,
+            }
+            newUnits.push(timeUnit);
+            date = date.add(1,'hours')
+        }
+        
+        return newUnits;
+    }
+
 
     const getDayOfWeekString = (dayNum : number) : string => {
         const days = ["Sun","Mon","Tue", "Wed", "Thu", "Fri", "Sat"]
         return days[dayNum];
     }
 
-    const getDateString = (date : Date) : string => {
+    const getDateString = (date : Dayjs) : string => {
         const monthString : string = getMonthString(date);
-        const dayOfMonth : number = date.getDate();
+        const dayOfMonth : number = date.date();
         const oridinalSuffix = getDateOrdinalSuffix(dayOfMonth);
         return `${monthString} ${dayOfMonth}${oridinalSuffix}`;
     }
 
-    const getMonthString = (date : Date) : string => {
+    const getMonthString = (date : Dayjs) : string => {
         const months = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
-        const monthIndex = date.getMonth();
+        const monthIndex = date.month();
         return months[monthIndex];
     }
 
@@ -64,7 +88,7 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
 
     return {
         initializeDates,
-        dates,
+        days,
         getCalendarContainerHeight,
         getDayOfWeekString,
     }

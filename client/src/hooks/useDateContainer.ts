@@ -12,7 +12,6 @@ interface useDateContainerReturn {
 const useDateContainer = () : useDateContainerReturn => {
     const [units, setUnits] = useState<TimeUnitProps[] | undefined>();
 
-
     const initializeUnits = () => {
     let newUnits: TimeUnitProps[] = [];
     const numTimeUnits = 12;

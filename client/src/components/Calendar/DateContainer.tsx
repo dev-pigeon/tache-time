@@ -1,38 +1,30 @@
 import { Stack } from "@mui/material";
 import "../../styles/DateContainer.css";
-import { useEffect } from "react";
-import useDateContainer from "../../hooks/useDateContainer";
-import DateLabel, { DateLabelProps } from "./DateLabel";
+import DateLabel from "./DateLabel";
 import TimeUnit from "./TimeUnit";
+import { DayProps } from "../../interfaces/DayProps";
 
 interface DateContainerProps {
-  date: DateLabelProps;
-  heightIn: number | string;
+  heightIn: number;
+  day: DayProps;
 }
 
-const DateContainer = ({ date, heightIn }: DateContainerProps) => {
-  const dateContainerHook = useDateContainer();
-
-  useEffect(() => {
-    dateContainerHook.initializeUnits();
-  }, []);
-
+const DateContainer = ({ day, heightIn }: DateContainerProps) => {
   return (
     <Stack className="date-container" direction={"column"} gap={1}>
-      <DateLabel date={date.date} dayOfWeek={date.dayOfWeek} />
+      <DateLabel date={day.dayStr} dayOfWeek={day.dayOfWeek} />
       <Stack
         height={heightIn}
         className="time-unit-container"
         direction={"column"}
       >
-        {dateContainerHook.units &&
-          dateContainerHook.units.map((unit, _index) => (
-            <TimeUnit
-              available={unit.available}
-              time={unit.time}
-              height={unit.height}
-            />
-          ))}
+        {day.timeSlots.map((value, _index) => (
+          <TimeUnit
+            available={value.available}
+            height={heightIn}
+            time={value.time}
+          />
+        ))}
       </Stack>
     </Stack>
   );

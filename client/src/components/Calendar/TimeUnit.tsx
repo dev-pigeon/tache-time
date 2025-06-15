@@ -25,7 +25,7 @@ const TimeUnit = ({ height, time, available }: TimeUnitProps) => {
         color={selected ? "black" : "#C0B9B2"}
         className="time-unit-typography"
       >
-        {time.format("hh:mm A")}
+        {time.format("h:mm A")}
       </Typography>
     </Box>
   );
