@@ -7,6 +7,7 @@ export interface useTaskListReturn {
     addTask : (item : TaskListItem) => void,
     toggleList : () => void,
     removeTask : (taskID : string) => void,
+    getTaskList : () => void,
 }
 
 const useTaskList = () : useTaskListReturn => {
@@ -20,6 +21,10 @@ const useTaskList = () : useTaskListReturn => {
 
     const toggleList = () => {
         setListOpen(!listOpen);
+    }
+
+    const getTaskList = () => {
+        return taskList;
     }
 
      const addTask = (newItem : TaskListItem) => {
@@ -38,7 +43,8 @@ const useTaskList = () : useTaskListReturn => {
         toggleList,
         taskList,
         addTask,
-        removeTask
+        removeTask,
+        getTaskList
     }
 }
 

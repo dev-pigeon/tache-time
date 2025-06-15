@@ -4,6 +4,7 @@ export interface useScheduleTasksReturn {
 
 interface useScheduleTasksProps {
     packageDays : () => void;
+    getTaskList : () => void;
 }
 
 const useScheduleTasks = ({packageDays} : useScheduleTasksProps) : useScheduleTasksReturn => {
