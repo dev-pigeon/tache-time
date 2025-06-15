@@ -1,18 +1,21 @@
 #task-list-outer-container {
     position: absolute;
-    top: 25%;
-    right: 9%;
+    top: 15%;
+    right: 2%;
     background-color: #1e1e1e;
     min-height: 50px;
-    min-width: 135px;
+    max-height: 350px;
+    min-width: 370px;
+    overflow-y: auto;
     display: flex;
     align-items: center;   
+    justify-content: center;
     border-radius: 30px;
     padding-left: 1%; 
     flex-direction: column;        
 }
 
 
-.task-list-icon {
+.task-list-icon {  
     color: white ;
 }

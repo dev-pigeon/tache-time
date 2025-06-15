@@ -1,5 +1,5 @@
 #add-task-outercontainer {
-    z-index: 10;
+    z-index: 100000;
     position: fixed;
     background-color: #101315;
     width: 400px;
