@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getCalendarContainerHeight } from "./useCalendarContainer";
 import { TimeUnitProps } from "../interfaces/TimeUnitProps";
 import dayjs from "dayjs";
@@ -12,9 +12,6 @@ interface useDateContainerReturn {
 const useDateContainer = () : useDateContainerReturn => {
     const [units, setUnits] = useState<TimeUnitProps[] | undefined>();
 
-    useEffect(() => {
-      console.log(units)
-    },[units])
 
     const initializeUnits = () => {
     let newUnits: TimeUnitProps[] = [];
