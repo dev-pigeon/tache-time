@@ -33,7 +33,7 @@ describe("initialize dates works as expected", () => {
 
 test("useCalendarContainer.getCalendarContainerHeight returns proper height", ()=> {
   const calendarContainerHook = renderHook(() => useCalendarContainer()).result;
-  const expectedHeight = Math.round(window.innerHeight * .85);
+  const expectedHeight = Math.round(window.innerHeight * .75);
   expect(calendarContainerHook.current.getCalendarContainerHeight()).toBe(expectedHeight);
 })
 

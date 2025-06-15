@@ -1,5 +1,5 @@
 .time-unit-container {
-    width:75px;
+    width:100px;
     background-color:#555555; 
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
 .date-container {
     align-items: center;
     display: flex;
-    width: 75px;
+    width: 100px;
     padding-top:45px
     
 }
