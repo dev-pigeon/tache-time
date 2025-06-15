@@ -1,6 +1,6 @@
 import CalendarContainer from "./components/Calendar/CalendarContainer";
 import Header from "./components/Header";
-// import TaskList from "./components/TaskList/TaskList";
+import TaskList from "./components/TaskList/TaskList";
 import TaskWidgetContainer from "./components/TaskOptions/TaskWidgetContainer";
 
 import ViewControlContainer from "./components/ViewControl/ViewControlContainer";
@@ -15,7 +15,7 @@ function App() {
       <CalendarContainer />
       <ViewControlContainer />
       <TaskWidgetContainer taskListHook={taskListHook} />
-      {/* <TaskList taskListHook={taskListHook} /> */}
+      <TaskList taskListHook={taskListHook} />
     </div>
   );
 }

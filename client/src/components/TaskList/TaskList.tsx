@@ -10,6 +10,7 @@ import "../../styles/TaskList.css";
 import { useTaskListReturn } from "../../hooks/useTaskList";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import TaskListCard from "./TaskListCard";
 
 interface TaskListProps {
   taskListHook: useTaskListReturn;
@@ -35,7 +36,19 @@ const TaskList = ({ taskListHook }: TaskListProps) => {
         </IconButton>
       </Stack>
       <Collapse in={taskListHook.listOpen}>
-        <List>{/** map out the list items here */}</List>
+        <List>
+          {taskListHook.taskList.map((item, index) => (
+            <TaskListCard
+              key={`tasklistcard#${index}`}
+              title={item.title}
+              estimatedTime={item.estimatedTime}
+              description={item.description}
+              dueDate={item.dueDate}
+              dueTime={item.dueTime}
+              id={item.id}
+            />
+          ))}
+        </List>
       </Collapse>
     </Paper>
   );

@@ -13,7 +13,13 @@ const TaskListCard = ({
 }: TaskListItem) => {
   return (
     <Paper
-      sx={{ height: description ? 150 : 75 }}
+      sx={{
+        height: description ? 150 : 75,
+        transition: "box-shadow 1s ease",
+        ":hover": {
+          boxShadow: "0px 0px 5px 2.5px rgba(255, 255, 255, 0.5)",
+        },
+      }}
       id={"task-list-card-outer-container"}
     >
       <Typography id={"task-list-item-title"}>{title}</Typography>
@@ -22,7 +28,7 @@ const TaskListCard = ({
       </IconButton>
 
       <Typography
-        sx={{ top: description ? "23%" : "35%" }}
+        sx={{ top: description ? "25%" : "40%" }}
         id={"task-list-item-date"}
       >
         {`Due ${dueDate} | ${dueTime}`}
