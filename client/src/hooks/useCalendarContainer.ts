@@ -1,4 +1,4 @@
-import { useState } from "react"
+import {  useState } from "react"
 
 import { DayProps } from "../interfaces/DayProps";
 import dayjs, { Dayjs } from "dayjs";
@@ -9,6 +9,7 @@ interface useCalendarContainerReturnProps {
     days : DayProps[] | undefined;
     getCalendarContainerHeight : () => number;
     getDayOfWeekString : (dayNum : number) => string;
+    toggleTimeUnit : (unitTime : Dayjs) => void;
 }
 
 export const getCalendarContainerHeight = () : number => {
@@ -16,7 +17,37 @@ export const getCalendarContainerHeight = () : number => {
 }
 
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
-    const [days, setDays] = useState<DayProps[] | undefined>(undefined)
+    const [days, setDays] = useState<DayProps[] | undefined>(undefined);
+
+
+    const toggleTimeUnit = (unitTime : Dayjs) => {
+        const unitDayIndex : number = getTimeUnitDayIndex(unitTime);
+        const timeUnitIndex = getTimeUnitSlotIndex(days![unitDayIndex], unitTime);
+        let updatedDays = [...days!];
+        updatedDays[unitDayIndex].timeSlots[timeUnitIndex].available = !updatedDays[unitDayIndex].timeSlots[timeUnitIndex].available;
+        setDays(updatedDays);
+    }
+
+    const getTimeUnitDayIndex = (unitTime : Dayjs) : number => {
+        let unitDayIndex : number = 0;
+        for(let i = 0; i < days!.length; ++i) {
+            if(unitTime.isSame(days![i].date, 'day')) {
+                unitDayIndex = i;
+                break;
+            }
+        } 
+        return unitDayIndex;
+    }
+
+    const getTimeUnitSlotIndex = (day : DayProps, unitTime : Dayjs) => {
+        let index : number = 0;
+        for(let i = 0; i < day.timeSlots.length; ++i)  {
+            if(unitTime.isSame(day.timeSlots[i].time, 'hour')) {
+                index = i;
+            }
+        }
+        return index;
+    }
 
     const initializeDates = (dateIn? : Dayjs) => {
         let date : Dayjs = dateIn ? dateIn : dayjs();
@@ -91,6 +122,7 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
         days,
         getCalendarContainerHeight,
         getDayOfWeekString,
+        toggleTimeUnit
     }
 }
 

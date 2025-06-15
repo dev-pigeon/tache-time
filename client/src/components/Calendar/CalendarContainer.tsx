@@ -16,10 +16,6 @@ const CalendarContainer = () => {
       calendarContainerHook.getCalendarContainerHeight();
   }, []);
 
-  useEffect(() => {
-    console.log(calendarContainerHook.days);
-  }, [calendarContainerHook.days]);
-
   return (
     <Stack
       height={containerHeight.current}
@@ -36,6 +32,7 @@ const CalendarContainer = () => {
       {calendarContainerHook.days &&
         calendarContainerHook.days.map((value, index) => (
           <DateContainer
+            toggleTimeUnit={calendarContainerHook.toggleTimeUnit}
             heightIn={containerHeight.current * 0.75}
             key={`date-container#${index}`}
             day={value}
