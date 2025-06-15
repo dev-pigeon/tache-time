@@ -95,7 +95,9 @@ const useAddTask = ({taskListHook} : useAddTask) => {
         const dateFormatted = formatDateDue();
         const id = `${taskName}-${dateFormatted}`
         const parsedEstTime = Number(estimatedHours)
+        // get the actual dayjs date here!
         const newTask : TaskListItem = {
+            date : getTaskDateObject(),
             title : taskName,
             description: taskDescription,
             dueTime : taskTimeDue!.format('hh:mm A'),
@@ -104,6 +106,12 @@ const useAddTask = ({taskListHook} : useAddTask) => {
             estimatedTime : parsedEstTime
         }
         return newTask;
+    }
+
+    const getTaskDateObject = () => {
+        let taskDateObject = dayjs(taskDueDate) // sets the day, month, and year
+        taskDateObject = taskDateObject.hour(taskTimeDue!.hour()).minute(taskTimeDue!.minute()).second(taskTimeDue!.second()).millisecond(taskTimeDue!.millisecond())
+        return taskDateObject
     }
     
 
