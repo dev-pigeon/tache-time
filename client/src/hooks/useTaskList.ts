@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import {  useState } from "react";
 import { TaskListItem } from "../interfaces/TaskListItem";
 
 export interface useTaskListReturn {
@@ -7,7 +7,7 @@ export interface useTaskListReturn {
     addTask : (item : TaskListItem) => void,
     toggleList : () => void,
     removeTask : (taskID : string) => void,
-    getTaskList : () => void,
+    getTaskList : () => TaskListItem[],
 }
 
 const useTaskList = () : useTaskListReturn => {
@@ -15,15 +15,11 @@ const useTaskList = () : useTaskListReturn => {
     const [listOpen, setListOpen] = useState<boolean>(false);
     const [taskList, setTaskList] = useState<TaskListItem[]>([]);
 
-    useEffect(() => {
-        console.log(taskList);
-    },[taskList])
-
     const toggleList = () => {
         setListOpen(!listOpen);
     }
 
-    const getTaskList = () => {
+    const getTaskList  = () : TaskListItem[] => {
         return taskList;
     }
 
