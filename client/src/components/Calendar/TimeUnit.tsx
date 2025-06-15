@@ -1,31 +1,36 @@
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
+
 import "../../styles/TimeUnit.css";
 import { TimeUnitProps } from "../../interfaces/TimeUnitProps";
+import { Dayjs } from "dayjs";
 
-const TimeUnit = ({ height, time, available }: TimeUnitProps) => {
-  const [selected, setSelected] = useState<boolean>(false);
+interface TimeUnitComponent extends TimeUnitProps {
+  toggleTimeUnit: (unitTime: Dayjs) => void;
+}
 
-  const handleClick = () => {
-    available = !available;
-    setSelected(!selected);
-  };
-
+const TimeUnit = ({
+  height,
+  time,
+  available,
+  toggleTimeUnit,
+}: TimeUnitComponent) => {
   return (
     <Box
       className="time-unit"
       sx={{
-        backgroundColor: selected ? "#67ba6b" : "",
+        backgroundColor: available ? "#67ba6b" : "",
       }}
       date-testid="time-unit"
-      onClick={handleClick}
+      onClick={() => {
+        toggleTimeUnit(time);
+      }}
       height={height}
     >
       <Typography
-        color={selected ? "black" : "#C0B9B2"}
+        color={available ? "black" : "#C0B9B2"}
         className="time-unit-typography"
       >
-        {time.format("hh:mm A")}
+        {time.format("h:mm A")}
       </Typography>
     </Box>
   );

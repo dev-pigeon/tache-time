@@ -29,12 +29,13 @@ const CalendarContainer = () => {
         <WorkLabel text="Unavailable" bgColor="#545454" />
       </Stack>
 
-      {calendarContainerHook.dates &&
-        calendarContainerHook.dates.map((value, index) => (
+      {calendarContainerHook.days &&
+        calendarContainerHook.days.map((value, index) => (
           <DateContainer
+            toggleTimeUnit={calendarContainerHook.toggleTimeUnit}
             heightIn={containerHeight.current * 0.75}
             key={`date-container#${index}`}
-            date={value}
+            day={value}
           />
         ))}
     </Stack>
