@@ -1,10 +1,11 @@
 import { Box } from "@mui/material";
 import TaskWidget from "./TaskWidget";
 import TaskContainerViewController from "../../misc/TaskContainerViewController";
-import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
+
 import AddTask from "./AddTask";
 import { useTaskListReturn } from "../../hooks/useTaskList";
 import { useScheduleTasksReturn } from "../../hooks/useScheduleTasks";
+import "../../styles/TransitionContainer.css";
 
 interface TaskWidgetContainer {
   taskListHook: useTaskListReturn;
@@ -19,18 +20,17 @@ const TaskWidgetContainer = ({
 
   return (
     <Box sx={{ position: "fixed", bottom: "9%", right: "11%" }}>
-      {TaskViewController.renderedComponent ==
-        TaskViewStateEnum.TASK_WIDGET && (
+      {TaskViewController.renderedComponent.widget == true && (
         <TaskWidget
           scheduleTasksHook={scheduleTasksHook}
           changeRenderedComponent={TaskViewController.changeRenderedComponent}
         />
       )}
 
-      {TaskViewController.renderedComponent == TaskViewStateEnum.ADD_TASK && (
+      {TaskViewController.renderedComponent.addTask == true && (
         <AddTask
-          taskListHook={taskListHook}
           changeRenderedComponent={TaskViewController.changeRenderedComponent}
+          taskListHook={taskListHook}
         />
       )}
     </Box>
