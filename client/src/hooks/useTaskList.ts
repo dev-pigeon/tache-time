@@ -6,6 +6,7 @@ export interface useTaskListReturn {
     taskList : TaskListItem[],
     addTask : (item : TaskListItem) => void,
     toggleList : () => void,
+    removeTask : (taskID : string) => void,
 }
 
 const useTaskList = () : useTaskListReturn => {
@@ -24,12 +25,17 @@ const useTaskList = () : useTaskListReturn => {
         setTaskList(updatedList)
     }
 
+    const removeTask = (taskID : string) => {
+        const updatedTaskList = taskList.filter(task => task.id != taskID);
+        setTaskList(updatedTaskList)
+    }
     
     return {
         listOpen,
         toggleList,
         taskList,
-        addTask
+        addTask,
+        removeTask
     }
 }
 
