@@ -3,10 +3,11 @@ import { useState } from "react";
 import "../../styles/TimeUnit.css";
 import { TimeUnitProps } from "../../interfaces/TimeUnitProps";
 
-const TimeUnit = ({ height, time }: TimeUnitProps) => {
+const TimeUnit = ({ height, time, available }: TimeUnitProps) => {
   const [selected, setSelected] = useState<boolean>(false);
 
   const handleClick = () => {
+    available = !available;
     setSelected(!selected);
   };
 
@@ -24,7 +25,7 @@ const TimeUnit = ({ height, time }: TimeUnitProps) => {
         color={selected ? "black" : "#C0B9B2"}
         className="time-unit-typography"
       >
-        {time}
+        {time.format("hh:mm A")}
       </Typography>
     </Box>
   );

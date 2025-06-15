@@ -1,4 +1,7 @@
+import { Dayjs } from "dayjs";
+
 export interface TimeUnitProps {
   height: number;
-  time: string;
+  time: Dayjs;
+  available: boolean;
 }

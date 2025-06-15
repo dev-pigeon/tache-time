@@ -1,38 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getCalendarContainerHeight } from "./useCalendarContainer";
+import { TimeUnitProps } from "../interfaces/TimeUnitProps";
+import dayjs from "dayjs";
 
-interface unit {
-  time: string;
-  height: number;
-}
 
 interface useDateContainerReturn {
-  units : unit[] | undefined,
+  units : TimeUnitProps[] | undefined,
   initializeUnits : () => void,
 }
 
 const useDateContainer = () : useDateContainerReturn => {
-    const [units, setUnits] = useState<unit[] | undefined>();
+    const [units, setUnits] = useState<TimeUnitProps[] | undefined>();
+
+    useEffect(() => {
+      console.log(units)
+    },[units])
 
     const initializeUnits = () => {
-    let newUnits: unit[] = [];
+    let newUnits: TimeUnitProps[] = [];
     const numTimeUnits = 12;
-    let date = new Date(); // 8 am today;
-    date.setHours(8);
-    date.setMinutes(0);
+    let date = dayjs().hour(8).minute(0).second(0).millisecond(0); // 8 am today;
     const timeUnitHeight = getCalendarContainerHeight() / numTimeUnits;
     for (let i = 0; i < numTimeUnits; ++i) {
-      const hourString = date.toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
-      });
-      const unit: unit = {
-        time: hourString,
+      const unit: TimeUnitProps = {
+        time: date,
         height: timeUnitHeight,
+        available : false,
       };
       newUnits.push(unit);
-      date.setHours(date.getHours() + 1);
+      date = date.add(1,'hours');
     }
     setUnits(newUnits);
   };

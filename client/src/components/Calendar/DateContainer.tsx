@@ -27,7 +27,11 @@ const DateContainer = ({ date, heightIn }: DateContainerProps) => {
       >
         {dateContainerHook.units &&
           dateContainerHook.units.map((unit, _index) => (
-            <TimeUnit time={unit.time} height={unit.height} />
+            <TimeUnit
+              available={unit.available}
+              time={unit.time}
+              height={unit.height}
+            />
           ))}
       </Stack>
     </Stack>
