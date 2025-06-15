@@ -14,6 +14,7 @@ function App() {
   const taskListHook = useTaskList();
   const scheduleTasksHook = useScheduleTasks({
     packageDays: calendarContainerHook.packageDays,
+    getTaskList: taskListHook.getTaskList,
   });
   return (
     <div id="outer-container">
