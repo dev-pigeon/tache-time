@@ -4,13 +4,19 @@ import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined
 
 import "../../styles/TaskListCard.css";
 
+interface TaskListCardProps extends TaskListItem {
+  removeTask: (taskID: string) => void;
+}
+
 const TaskListCard = ({
   title,
   description,
   dueDate,
   dueTime,
   estimatedTime,
-}: TaskListItem) => {
+  removeTask,
+  id,
+}: TaskListCardProps) => {
   return (
     <Paper
       sx={{
@@ -23,7 +29,12 @@ const TaskListCard = ({
       id={"task-list-card-outer-container"}
     >
       <Typography id={"task-list-item-title"}>{title}</Typography>
-      <IconButton id={"task-list-item-delete"}>
+      <IconButton
+        onClick={() => {
+          removeTask(id);
+        }}
+        id={"task-list-item-delete"}
+      >
         <DeleteForeverOutlinedIcon />
       </IconButton>
 

@@ -39,6 +39,7 @@ const TaskList = ({ taskListHook }: TaskListProps) => {
         <List>
           {taskListHook.taskList.map((item, index) => (
             <TaskListCard
+              removeTask={taskListHook.removeTask}
               key={`tasklistcard#${index}`}
               title={item.title}
               estimatedTime={item.estimatedTime}
