@@ -2,7 +2,7 @@
     position: relative;
     width: 100vw;
     height: 40%;
-    max-height: 50px;
+    max-height: 75px;
     background-color:  #1e1e1e;
     display: flex;
     justify-content: center;
@@ -15,6 +15,6 @@
 #header-title {
     color:var(--text-primary);
     font-weight: bolder;
-    font-size: 28px;
+    font-size: 38px;
     font-family: 'Times New Roman', Times, serif;
 }
