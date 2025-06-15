@@ -39,12 +39,13 @@ const TaskList = ({ taskListHook }: TaskListProps) => {
         <List>
           {taskListHook.taskList.map((item, index) => (
             <TaskListCard
+              date={item.date}
               removeTask={taskListHook.removeTask}
               key={`tasklistcard#${index}`}
               title={item.title}
               estimatedTime={item.estimatedTime}
               description={item.description}
-              dueDate={item.dueDate}
+              dateString={item.dateString}
               dueTime={item.dueTime}
               id={item.id}
             />
