@@ -6,11 +6,11 @@ import CustomTextField from "../CustomTextField";
 import CustomDatePicker from "../CustomDatePicker";
 import CustomTimePicker from "../CustomTimePicker";
 import useAddTask from "../../hooks/useAddTask";
-import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
 import { useTaskListReturn } from "../../hooks/useTaskList";
+import { renderedComponentProps } from "../../misc/TaskContainerViewController";
 
 interface AddTaskProps {
-  changeRenderedComponent: (type: TaskViewStateEnum) => void;
+  changeRenderedComponent: (props: renderedComponentProps) => void;
   taskListHook: useTaskListReturn;
 }
 
@@ -18,7 +18,7 @@ const AddTask = ({ changeRenderedComponent, taskListHook }: AddTaskProps) => {
   const addTaskHook = useAddTask({ taskListHook });
 
   const closeAddTask = () => {
-    changeRenderedComponent(TaskViewStateEnum.TASK_WIDGET);
+    changeRenderedComponent({ addTask: false, widget: true });
   };
 
   return (

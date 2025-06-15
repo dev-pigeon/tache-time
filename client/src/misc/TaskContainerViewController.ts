@@ -1,16 +1,25 @@
 import { useState } from "react"
-import TaskViewStateEnum from "./TaskViewControllerEnum"
+
+
+export interface renderedComponentProps {
+    widget : boolean,
+    addTask : boolean
+}
 
 const TaskContainerViewController = () => {
-    const [renderedComponent, setRenderedComponent] = useState<TaskViewStateEnum>(TaskViewStateEnum.TASK_WIDGET)
+    const [renderedComponent, setRenderedComponent] = useState<renderedComponentProps>({
+        widget : true,
+        addTask : false,
+    })
 
-    const changeRenderedComponent = (type : TaskViewStateEnum) => {
-        setRenderedComponent(type);
+
+    const changeRenderedComponent = (updatedProps : renderedComponentProps) => {
+       setRenderedComponent(updatedProps)
     }
 
     return {
         renderedComponent,
-        changeRenderedComponent,
+         changeRenderedComponent
     }
 }
 

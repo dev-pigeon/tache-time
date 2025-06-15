@@ -4,7 +4,6 @@ import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
 
 import "../../styles/ViewControl.css";
 import { TaskWidgetProps } from "./TaskWidget";
-import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
 
 interface TaskOptionsProps extends TaskWidgetProps {}
 
@@ -30,7 +29,7 @@ const TaskOptions = ({
       <Tooltip title="Create Task" arrow placement="left">
         <IconButton
           onClick={() => {
-            changeRenderedComponent(TaskViewStateEnum.ADD_TASK);
+            changeRenderedComponent({ addTask: true, widget: false });
           }}
         >
           <AddCircleOutlineIcon sx={{ fill: "black", fontSize: 30 }} />

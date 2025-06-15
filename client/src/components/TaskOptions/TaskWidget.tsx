@@ -4,11 +4,12 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 
 import "../../styles/TaskWidget.css";
 import TaskOptions from "./TaskOptions";
-import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
+
 import { useScheduleTasksReturn } from "../../hooks/useScheduleTasks";
+import { renderedComponentProps } from "../../misc/TaskContainerViewController";
 
 export interface TaskWidgetProps {
-  changeRenderedComponent: (type: TaskViewStateEnum) => void;
+  changeRenderedComponent: (props: renderedComponentProps) => void;
   scheduleTasksHook: useScheduleTasksReturn;
 }
 
