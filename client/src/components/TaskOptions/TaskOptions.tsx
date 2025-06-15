@@ -8,7 +8,10 @@ import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
 
 interface TaskOptionsProps extends TaskWidgetProps {}
 
-const TaskOptions = ({ changeRenderedComponent }: TaskOptionsProps) => {
+const TaskOptions = ({
+  changeRenderedComponent,
+  scheduleTasksHook,
+}: TaskOptionsProps) => {
   return (
     <Stack
       display={"flex"}
@@ -19,7 +22,7 @@ const TaskOptions = ({ changeRenderedComponent }: TaskOptionsProps) => {
       spacing={3}
     >
       <Tooltip title="Schedule Tasks" arrow placement="left">
-        <IconButton>
+        <IconButton onClick={scheduleTasksHook.handleScheduleTasksClick}>
           <ScheduleSendIcon sx={{ fill: "black", fontSize: 30 }} />
         </IconButton>
       </Tooltip>

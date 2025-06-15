@@ -5,12 +5,17 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import "../../styles/TaskWidget.css";
 import TaskOptions from "./TaskOptions";
 import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
+import { useScheduleTasksReturn } from "../../hooks/useScheduleTasks";
 
 export interface TaskWidgetProps {
   changeRenderedComponent: (type: TaskViewStateEnum) => void;
+  scheduleTasksHook: useScheduleTasksReturn;
 }
 
-const TaskWidget = ({ changeRenderedComponent }: TaskWidgetProps) => {
+const TaskWidget = ({
+  changeRenderedComponent,
+  scheduleTasksHook,
+}: TaskWidgetProps) => {
   const [openTaskWidget, setOpenTaskWidget] = useState<boolean>(false);
 
   const toggleTaskWidget = () => {
@@ -20,7 +25,10 @@ const TaskWidget = ({ changeRenderedComponent }: TaskWidgetProps) => {
   return (
     <Paper id={"task-widget-container"}>
       <Collapse in={openTaskWidget}>
-        <TaskOptions changeRenderedComponent={changeRenderedComponent} />
+        <TaskOptions
+          scheduleTasksHook={scheduleTasksHook}
+          changeRenderedComponent={changeRenderedComponent}
+        />
       </Collapse>
 
       <Tooltip

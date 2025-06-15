@@ -4,12 +4,17 @@ import TaskContainerViewController from "../../misc/TaskContainerViewController"
 import TaskViewStateEnum from "../../misc/TaskViewControllerEnum";
 import AddTask from "./AddTask";
 import { useTaskListReturn } from "../../hooks/useTaskList";
+import { useScheduleTasksReturn } from "../../hooks/useScheduleTasks";
 
 interface TaskWidgetContainer {
   taskListHook: useTaskListReturn;
+  scheduleTasksHook: useScheduleTasksReturn;
 }
 
-const TaskWidgetContainer = ({ taskListHook }: TaskWidgetContainer) => {
+const TaskWidgetContainer = ({
+  taskListHook,
+  scheduleTasksHook,
+}: TaskWidgetContainer) => {
   const TaskViewController = TaskContainerViewController();
 
   return (
@@ -17,6 +22,7 @@ const TaskWidgetContainer = ({ taskListHook }: TaskWidgetContainer) => {
       {TaskViewController.renderedComponent ==
         TaskViewStateEnum.TASK_WIDGET && (
         <TaskWidget
+          scheduleTasksHook={scheduleTasksHook}
           changeRenderedComponent={TaskViewController.changeRenderedComponent}
         />
       )}
