@@ -11,7 +11,7 @@ interface TaskListCardProps extends TaskListItem {
 const TaskListCard = ({
   title,
   description,
-  dueDate,
+  dateString,
   dueTime,
   estimatedTime,
   removeTask,
@@ -42,7 +42,7 @@ const TaskListCard = ({
         sx={{ top: description ? "25%" : "40%" }}
         id={"task-list-item-date"}
       >
-        {`Due ${dueDate} | ${dueTime}`}
+        {`Due ${dateString} | ${dueTime}`}
       </Typography>
 
       <Typography

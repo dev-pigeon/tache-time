@@ -101,7 +101,7 @@ const useAddTask = ({taskListHook} : useAddTask) => {
             title : taskName,
             description: taskDescription,
             dueTime : taskTimeDue!.format('hh:mm A'),
-            dueDate : dateFormatted,
+            dateString : dateFormatted,
             id : id,
             estimatedTime : parsedEstTime
         }

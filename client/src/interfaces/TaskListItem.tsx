@@ -2,7 +2,7 @@ import { Dayjs } from "dayjs";
 
 export interface TaskListItem {
   title: string;
-  dueDate: string;
+  dateString: string;
   dueTime: string;
   estimatedTime: number;
   description?: string;
