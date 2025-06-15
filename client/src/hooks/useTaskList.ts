@@ -24,6 +24,10 @@ const useTaskList = () : useTaskListReturn => {
         setTaskList(updatedList)
     }
 
+    const removeTask = (taskID : string) => {
+        const updatedTaskList = taskList.filter(task => task.id != taskID);
+        setTaskList(updatedTaskList)
+    }
     
     return {
         listOpen,
