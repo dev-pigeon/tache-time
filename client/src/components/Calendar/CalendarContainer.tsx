@@ -1,13 +1,18 @@
 import { Stack } from "@mui/material";
 import { useRef, useEffect } from "react";
-import useCalendarContainer from "../../hooks/useCalendarContainer";
+import { useCalendarContainerReturnProps } from "../../hooks/useCalendarContainer";
 
 import "../../styles/CalendarContainer.css";
 import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
 
-const CalendarContainer = () => {
-  const calendarContainerHook = useCalendarContainer();
+interface CalendarContainerProps {
+  calendarContainerHook: useCalendarContainerReturnProps;
+}
+
+const CalendarContainer = ({
+  calendarContainerHook,
+}: CalendarContainerProps) => {
   const containerHeight = useRef<number>(0);
 
   useEffect(() => {

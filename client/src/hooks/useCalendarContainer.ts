@@ -4,12 +4,13 @@ import { DayProps } from "../interfaces/DayProps";
 import dayjs, { Dayjs } from "dayjs";
 import { TimeUnitProps } from "../interfaces/TimeUnitProps";
 
-interface useCalendarContainerReturnProps {
+export interface useCalendarContainerReturnProps {
     initializeDates : (dateIn? : Dayjs) => void;
     days : DayProps[] | undefined;
     getCalendarContainerHeight : () => number;
     getDayOfWeekString : (dayNum : number) => string;
     toggleTimeUnit : (unitTime : Dayjs) => void;
+    packageDays : () => void;
 }
 
 export const getCalendarContainerHeight = () : number => {
@@ -18,6 +19,14 @@ export const getCalendarContainerHeight = () : number => {
 
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
     const [days, setDays] = useState<DayProps[] | undefined>(undefined);
+
+    const packageDays = () => {
+    const packagedDays: DayProps[] = days!.map((day) => ({
+        ...day,
+        timeSlots: day.timeSlots.filter((timeslot) => timeslot.available === true),
+    }));
+    return packagedDays;
+};
 
 
     const toggleTimeUnit = (unitTime : Dayjs) => {
@@ -122,7 +131,8 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
         days,
         getCalendarContainerHeight,
         getDayOfWeekString,
-        toggleTimeUnit
+        toggleTimeUnit,
+        packageDays
     }
 }
 
