@@ -6,6 +6,10 @@ exports.scheduleTasks = (req, res) => {
   const scheduler = new TaskScheduler();
   const requestBody = req.body;
   const tasks = parser.parseScheduleRequest(requestBody);
-  const scheduledTaskDictionary = scheduler.scheduleTasks(tasks);
-  res.status(200).json({ scheduleDictionary: scheduledTaskDictionary });
+  try {
+    const scheduledTaskDictionary = scheduler.scheduleTasks(tasks);
+    res.status(200).json({ scheduleDictionary: scheduledTaskDictionary });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
 };
