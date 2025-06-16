@@ -12,6 +12,7 @@ function createMockDays(numDays) {
       new TimeSlot(today.toISOString(), true),
     ]);
     days.push(day);
+    today = today.add(1, "day");
   }
   return days;
 }
@@ -19,6 +20,8 @@ function createMockDays(numDays) {
 test("getDayIndex returns the correct index", () => {
   const parser = new ScheduleRequestParser();
   const days = createMockDays(5);
+  const taskItemDay = dayjs().add(2, "days");
+
   const taskListItem = new TaskListItem(
     "test task",
     "Jun 15",
@@ -26,7 +29,7 @@ test("getDayIndex returns the correct index", () => {
     1,
     undefined,
     "taskID",
-    dayjs().add(2, "days").toISOString()
+    taskItemDay.toISOString()
   );
 
   const expectedIndex = 2;

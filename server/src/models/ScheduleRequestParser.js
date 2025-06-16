@@ -14,7 +14,14 @@ class ScheduleRequestParser {
   }
 
   getDayIndex(taskListItem, days) {
-    return -1;
+    let index = -1;
+    for (let i = 0; i < days.length; ++i) {
+      if (taskListItem.date.isSame(days[i].date, "day")) {
+        index = i;
+        break;
+      }
+    }
+    return index;
   }
 
   #parseTaskListItems(taskListItems) {
