@@ -1,7 +1,7 @@
 class Task {
-  constructor(name, description, deadline, timeRemaining) {
+  constructor(name, id, deadline, timeRemaining) {
     this.name = name;
-    this.description = description;
+    this.id = id;
     this.deadline = deadline;
     this.timeRemaining = timeRemaining;
   }

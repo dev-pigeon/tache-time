@@ -38,7 +38,7 @@ jobs:
       ###########################
 
       - name: Install backend dependencies
-        run: npm install && npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
+        run: npm install && npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer dayjs
         working-directory: ./server/src
 
       - name: Run backend tests
