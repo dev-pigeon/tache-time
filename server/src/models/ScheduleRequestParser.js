@@ -13,6 +13,36 @@ class ScheduleRequestParser {
     const taskListItems = this.#parseTaskListItems(requestListItems);
   }
 
+  getTimeTillDue(taskListItem, days, dayIndex) {
+    const day = days[dayIndex];
+    const slotsInDay = this.getSlotsInDay(day, taskListItem);
+    const previousSlotsSum = this.accumulatePreviousTimeSlots(days, dayIndex);
+    const timeTillDue = slotsInDay + previousSlotsSum;
+    return timeTillDue;
+  }
+
+  getSlotsInDay(day, taskListItem) {
+    const taskItemHour = taskListItem.date.hour();
+    let numSlots = -1;
+    const timeSlots = day.timeSlots;
+    for (let i = timeSlots.length - 1; i >= 0; --i) {
+      if (timeSlots[i].time.hour() - taskItemHour < 0) {
+        numSlots = i;
+        break;
+      }
+    }
+    return numSlots + 1;
+  }
+
+  accumulatePreviousTimeSlots(days, dayIndex) {
+    let sum = 0;
+    for (let i = 0; i < dayIndex; ++i) {
+      const day = days[i];
+      sum += day.timeSlots.length;
+    }
+    return sum;
+  }
+
   getDayIndex(taskListItem, days) {
     let index = -1;
     for (let i = 0; i < days.length; ++i) {
