@@ -8,8 +8,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post("/", (_req, res) => {
-  res.json({ message: "Hello world!" });
+const taskScheduleRouter = require("./routes/taskRoutes");
+
+app.use("/tasks", taskScheduleRouter);
+
+app.use((req, res, next) => {
+  res.status(403).send("Route not found");
 });
 
 app.listen(PORT, () => {

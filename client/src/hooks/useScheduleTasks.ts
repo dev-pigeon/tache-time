@@ -13,7 +13,7 @@ interface useScheduleTasksProps {
 
 
 const useScheduleTasks = ({packageDays, getTaskList} : useScheduleTasksProps) : useScheduleTasksReturn => {
-    const SERVER_URL = "http://localhost:8080"
+    const SERVER_URL = "http://localhost:8080/tasks/schedule"
     const handleScheduleTasksClick =  async() => {
         const packagedDays = packageDays()
         const taskList = getTaskList()
