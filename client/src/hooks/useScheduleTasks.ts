@@ -19,8 +19,9 @@ const useScheduleTasks = ({packageDays, getTaskList} : useScheduleTasksProps) : 
         const taskList = getTaskList()
         const requestParams = buildScheduleRequestParams(packagedDays, taskList);
         const requestBody = buildRequestBody(requestParams);
+        console.log(requestBody)
+        // @ts-ignore
         const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
-        console.log(response);
     }
 
     const buildScheduleRequestParams = (packagedDays : DayProps[], taskList : TaskListItem[]) => {
