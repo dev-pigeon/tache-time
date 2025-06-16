@@ -1,5 +1,6 @@
 const TimeSlot = require("./TimeSlot");
 const Day = require("./Day");
+const TaskListItem = require("./TaskListItem");
 
 class ScheduleRequestParser {
   constructor() {}
@@ -9,7 +10,25 @@ class ScheduleRequestParser {
     const taskListItems = requestBody["taskList"];
 
     const days = this.#parseRequestDays(requestDays);
-    console.log(days);
+    const tasks = this.#parseTaskListItems(taskListItems);
+  }
+
+  #parseTaskListItems(taskListItems) {
+    let tasks = [];
+    for (let i = 0; i < taskListItems.length; ++i) {
+      const taskListItem = taskListItems[i];
+      const task = new TaskListItem(
+        taskListItem["title"],
+        taskListItem["dateString"],
+        taskListItem["dueTime"],
+        taskListItem["estimatedTime"],
+        taskListItem["description"],
+        taskListItem["id"],
+        taskListItem["date"]
+      );
+      tasks.push(task);
+    }
+    return tasks;
   }
 
   #parseRequestDays(requestDays) {
