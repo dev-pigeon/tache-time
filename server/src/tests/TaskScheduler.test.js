@@ -62,17 +62,6 @@ describe("TaskScheduler correctly schedules tasks", () => {
     task5 = new Task("Task5", "t5", 9, 3);
   });
 
-  function mapTaskIndices(workUnits) {
-    const map = {};
-    workUnits.forEach((unit, index) => {
-      if (!map[unit.name]) {
-        map[unit.name] = [];
-      }
-      map[unit.name].push(index);
-    });
-    return map;
-  }
-
   test("Simple two task scheduling", () => {
     const taskList = [task1, task2];
     const expected = {
