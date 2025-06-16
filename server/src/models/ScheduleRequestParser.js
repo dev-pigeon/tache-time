@@ -7,10 +7,14 @@ class ScheduleRequestParser {
 
   parseScheduleRequest(requestBody) {
     const requestDays = requestBody["packagedDays"];
-    const taskListItems = requestBody["taskList"];
+    const requestListItems = requestBody["taskList"];
 
     const days = this.#parseRequestDays(requestDays);
-    const tasks = this.#parseTaskListItems(taskListItems);
+    const taskListItems = this.#parseTaskListItems(requestListItems);
+  }
+
+  getDayIndex(taskListItem, days) {
+    return -1;
   }
 
   #parseTaskListItems(taskListItems) {
