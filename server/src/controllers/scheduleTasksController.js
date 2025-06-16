@@ -7,6 +7,5 @@ exports.scheduleTasks = (req, res) => {
   const requestBody = req.body;
   const tasks = parser.parseScheduleRequest(requestBody);
   const scheduledTaskDictionary = scheduler.scheduleTasks(tasks);
-  console.log(scheduledTaskDictionary);
-  res.status(503).json({ message: "Route not in service!" });
+  res.status(200).json({ scheduleDictionary: scheduledTaskDictionary });
 };
