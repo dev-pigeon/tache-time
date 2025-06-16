@@ -62,33 +62,37 @@ describe("TaskScheduler correctly schedules tasks", () => {
     task5 = new Task("Task5", "t5", 9, 3);
   });
 
+  function mapTaskIndices(workUnits) {
+    const map = {};
+    workUnits.forEach((unit, index) => {
+      if (!map[unit.name]) {
+        map[unit.name] = [];
+      }
+      map[unit.name].push(index);
+    });
+    return map;
+  }
+
   test("Simple two task scheduling", () => {
     const taskList = [task1, task2];
-    const expectedOrder = ["Task1", "Task1", "Task2", "Task2", "Task2"];
+    const expected = {
+      t1: [0, 1],
+      t2: [2, 3, 4],
+    };
     const workUnits = scheduler.scheduleTasks(taskList);
-    for (let i = 0; i < workUnits.length; ++i) {
-      const unit = workUnits[i];
-      expect(unit.name).toBe(expectedOrder[i]);
-    }
+
+    expect(workUnits).toEqual(expected);
   });
 
   test("Interleaving tasks", () => {
     const taskList = [task3, task4, task5];
-    const expectedOrder = [
-      "Task3",
-      "Task3",
-      "Task4",
-      "Task3",
-      "Task4",
-      "Task5",
-      "Task5",
-      "Task5",
-    ];
+    const expected = {
+      t3: [0, 1, 3],
+      t4: [2, 4],
+      t5: [5, 6, 7],
+    };
     const workUnits = scheduler.scheduleTasks(taskList);
-    for (let i = 0; i < workUnits.length; ++i) {
-      const unit = workUnits[i];
-      expect(unit.name).toBe(expectedOrder[i]);
-    }
+    expect(workUnits).toEqual(expected);
   });
 
   test("Non-whole number time remaining", () => {
@@ -97,24 +101,13 @@ describe("TaskScheduler correctly schedules tasks", () => {
     const t3 = new Task("t3", "t3", 7, 3.27);
     const t4 = new Task("t4", "t4", 13, 4.4);
     const taskList = [t1, t2, t3, t4];
-    const expectedOrder = [
-      "t1",
-      "t2",
-      "t1",
-      "t3",
-      "t3",
-      "t3",
-      "t3",
-      "t4",
-      "t4",
-      "t4",
-      "t4",
-      "t4",
-    ];
+    const expected = {
+      t1: [0, 2],
+      t2: [1],
+      t3: [3, 4, 5, 6],
+      t4: [7, 8, 9, 10, 11],
+    };
     const workUnits = scheduler.scheduleTasks(taskList);
-    for (let i = 0; i < workUnits.length; ++i) {
-      const unit = workUnits[i];
-      expect(unit.name).toBe(expectedOrder[i]);
-    }
+    expect(workUnits).toEqual(expected);
   });
 });
