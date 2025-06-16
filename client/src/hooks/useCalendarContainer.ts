@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react"
+import {  useState } from "react"
 
 import { DayProps } from "../interfaces/DayProps";
 import dayjs, { Dayjs } from "dayjs";
@@ -20,10 +20,6 @@ export const getCalendarContainerHeight = () : number => {
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
 
     const [days, setDays] = useState<DayProps[] | undefined>(undefined);
-
-    useEffect(() => {
-        console.log(days);
-    },[days])
 
     const packageDays = () : DayProps[] => {
     const packagedDays: DayProps[] = days!.map((day) => ({

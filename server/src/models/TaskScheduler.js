@@ -6,7 +6,7 @@ class TaskScheduler {
 
   scheduleTasks(taskList) {
     try {
-      let scheduledWorkUnits = [];
+      let scheduleDictionary = this.#initializeScheduleDictionary(taskList);
       this.verifyTasks(taskList);
       let systemTime = 0;
 
@@ -16,21 +16,34 @@ class TaskScheduler {
           systemTime
         );
         const taskToSchedule = taskList[taskToScheduleIndex];
-        const dispatchedWorkUnit = new WorkUnit(
-          taskToSchedule.name,
-          taskToSchedule.description
+        this.#updateTaskDictionary(
+          taskToSchedule.id,
+          scheduleDictionary,
+          systemTime
         );
-        scheduledWorkUnits.push(dispatchedWorkUnit);
+
         taskToSchedule.timeRemaining -= 1;
         if (this.#shouldRemoveTask(taskToSchedule)) {
           taskList.splice(taskToScheduleIndex, 1);
         }
         systemTime++;
       }
-      return scheduledWorkUnits;
+      return scheduleDictionary;
     } catch (error) {
       throw new Error(error);
     }
+  }
+
+  #updateTaskDictionary(taskID, dictionary, i) {
+    dictionary[taskID].push(i);
+  }
+
+  #initializeScheduleDictionary(taskList) {
+    let dictionary = {};
+    for (let i = 0; i < taskList.length; ++i) {
+      dictionary[taskList[i].id] = [];
+    }
+    return dictionary;
   }
 
   verifyTasks(taskList) {
