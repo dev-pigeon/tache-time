@@ -1,27 +1,32 @@
 import { Box } from "@mui/material";
 import TaskWidget from "./TaskWidget";
-import { TaskWidgetContainerReturn } from "../../misc/TaskContainerViewController";
+import TaskContainerViewController from "../../misc/TaskContainerViewController";
 
 import AddTask from "./AddTask";
 import { useTaskListReturn } from "../../hooks/useTaskList";
-import { useScheduleTasksReturn } from "../../hooks/useScheduleTasks";
+import useScheduleTasks from "../../hooks/useScheduleTasks";
 import "../../styles/TransitionContainer.css";
 import { useValidationReturn } from "../../hooks/useValidation";
 import ValidationContainer from "../ValidationContainer";
+import { DayProps } from "../../interfaces/DayProps";
 
 interface TaskWidgetContainer {
   taskListHook: useTaskListReturn;
-  scheduleTasksHook: useScheduleTasksReturn;
   validationHook: useValidationReturn;
-  TaskViewController: TaskWidgetContainerReturn;
+  packageDays: () => DayProps[];
 }
 
 const TaskWidgetContainer = ({
   taskListHook,
-  scheduleTasksHook,
   validationHook,
-  TaskViewController,
+  packageDays,
 }: TaskWidgetContainer) => {
+  const TaskViewController = TaskContainerViewController(validationHook);
+  const scheduleTasksHook = useScheduleTasks({
+    packageDays: packageDays,
+    getTaskList: taskListHook.getTaskList,
+    displayValidation: TaskViewController.displayValidation,
+  });
   return (
     <Box sx={{ position: "fixed", bottom: "9%", right: "11%" }}>
       {TaskViewController.renderedComponent.widget == true && (
