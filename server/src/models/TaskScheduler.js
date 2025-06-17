@@ -55,7 +55,7 @@ class TaskScheduler {
       const totalTaskTime = this.#getTotalTaskTime(taskDictionary[deadline]);
       if (!this.#isValidDeadline(relativeDeadline, totalTaskTime)) {
         throw new Error(
-          "ERROR: Tasks cannot be scheduled, impossible to complete before the deadline."
+          "The given tasks are impossible to complete before their deadlines."
         );
       }
       overtime = relativeDeadline - totalTaskTime;

@@ -20,10 +20,14 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation} : useSch
         const taskList = getTaskList()
         const requestParams = buildScheduleRequestParams(packagedDays, taskList);
         const requestBody = buildRequestBody(requestParams);
-        // @ts-ignore
-        const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
-
-        
+        try {
+            // @ts-ignore
+            const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
+        } catch(error) {
+            if(error instanceof Error) {
+                displayValidation(error.message, "error");
+            }
+        }
         
     }
 
