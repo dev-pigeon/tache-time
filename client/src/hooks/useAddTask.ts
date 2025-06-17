@@ -5,9 +5,10 @@ import { useTaskListReturn } from "./useTaskList";
 
 interface useAddTask {
     taskListHook: useTaskListReturn;
+    displayValidation : (message : string, status : "error" | "success") => void;
 }
 
-const useAddTask = ({taskListHook} : useAddTask) => {
+const useAddTask = ({taskListHook, displayValidation} : useAddTask) => {
 
     const [taskName, setTaskName] = useState<string>("");
     const [taskDescription, setTaskDescription] = useState<string>("");
@@ -42,8 +43,11 @@ const useAddTask = ({taskListHook} : useAddTask) => {
             const newTaskItem = buildTaskListItem();
             taskListHook.addTask(newTaskItem)
             clearInputFields()
+            displayValidation("Task added successfully!", "success")
         } catch(error) {
-            throw new Error(error as string)
+            if(error instanceof Error) {
+                displayValidation(error.message, "error")
+            }
         }
     }
 

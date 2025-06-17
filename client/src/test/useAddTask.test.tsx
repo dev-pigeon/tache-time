@@ -24,12 +24,20 @@ function createMockDayjs(dateStr: string): Dayjs {
   } as unknown as Dayjs;
 }
 
+const mockDisplayValidation = (
+  _message: string,
+  _status: "success" | "error"
+): void => {};
+
 describe("handleStringElementChange targets correct elements", () => {
   let addTaskHook: { current: any };
   beforeEach(() => {
     const taskListHook = renderHook(() => useTaskList()).result;
     addTaskHook = renderHook(() =>
-      useAddTask({ taskListHook: taskListHook.current })
+      useAddTask({
+        taskListHook: taskListHook.current,
+        displayValidation: mockDisplayValidation,
+      })
     ).result;
   });
 
@@ -71,7 +79,10 @@ describe("handleStringElementChange targets correct elements", () => {
 test("Task due date updates correcly", () => {
   const taskListHook = renderHook(() => useTaskList()).result;
   const addTaskHook = renderHook(() =>
-    useAddTask({ taskListHook: taskListHook.current })
+    useAddTask({
+      taskListHook: taskListHook.current,
+      displayValidation: mockDisplayValidation,
+    })
   ).result;
   const expectedDate = "06/10/2025";
   const mockObject = createMockDayjs("06/10/2025");
@@ -86,7 +97,10 @@ test("Task due date updates correcly", () => {
 test("Task time due updates correctly", () => {
   const taskListHook = renderHook(() => useTaskList()).result;
   const addTaskHook = renderHook(() =>
-    useAddTask({ taskListHook: taskListHook.current })
+    useAddTask({
+      taskListHook: taskListHook.current,
+      displayValidation: mockDisplayValidation,
+    })
   ).result;
   const expectedTime = "11:00 AM";
   const mockObject = createMockDayjs("06/10/2025 11:00 AM");

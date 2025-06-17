@@ -12,13 +12,22 @@ import { renderedComponentProps } from "../../misc/TaskContainerViewController";
 interface AddTaskProps {
   changeRenderedComponent: (props: renderedComponentProps) => void;
   taskListHook: useTaskListReturn;
+  displayValidation: (message: string, status: "error" | "success") => void;
 }
 
-const AddTask = ({ changeRenderedComponent, taskListHook }: AddTaskProps) => {
-  const addTaskHook = useAddTask({ taskListHook });
+const AddTask = ({
+  changeRenderedComponent,
+  taskListHook,
+  displayValidation,
+}: AddTaskProps) => {
+  const addTaskHook = useAddTask({ taskListHook, displayValidation });
 
   const closeAddTask = () => {
-    changeRenderedComponent({ addTask: false, widget: true });
+    changeRenderedComponent({
+      addTask: false,
+      widget: true,
+      validation: false,
+    });
   };
 
   return (

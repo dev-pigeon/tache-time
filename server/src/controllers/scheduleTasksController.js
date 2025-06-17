@@ -10,6 +10,6 @@ exports.scheduleTasks = (req, res) => {
     const scheduledTaskDictionary = scheduler.scheduleTasks(tasks);
     res.status(200).json({ scheduleDictionary: scheduledTaskDictionary });
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ error: error.message });
   }
 };

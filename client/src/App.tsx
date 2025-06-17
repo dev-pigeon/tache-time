@@ -5,24 +5,23 @@ import TaskWidgetContainer from "./components/TaskOptions/TaskWidgetContainer";
 
 import ViewControlContainer from "./components/ViewControl/ViewControlContainer";
 import useCalendarContainer from "./hooks/useCalendarContainer";
-import useScheduleTasks from "./hooks/useScheduleTasks";
 import useTaskList from "./hooks/useTaskList";
+import useValidation from "./hooks/useValidation";
 import "./styles/App.css";
 
 function App() {
   const calendarContainerHook = useCalendarContainer();
   const taskListHook = useTaskList();
-  const scheduleTasksHook = useScheduleTasks({
-    packageDays: calendarContainerHook.packageDays,
-    getTaskList: taskListHook.getTaskList,
-  });
+  const taskValidationHook = useValidation();
+
   return (
     <div id="outer-container">
       <Header />
       <CalendarContainer calendarContainerHook={calendarContainerHook} />
       <ViewControlContainer />
       <TaskWidgetContainer
-        scheduleTasksHook={scheduleTasksHook}
+        packageDays={calendarContainerHook.packageDays}
+        validationHook={taskValidationHook}
         taskListHook={taskListHook}
       />
       <TaskList taskListHook={taskListHook} />

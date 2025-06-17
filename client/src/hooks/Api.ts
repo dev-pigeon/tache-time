@@ -10,15 +10,23 @@ export const buildRequestBody = (params : object) => {
 }
 
 
+const checkResponse = async (response : Response, json_response : any) => {
+    if(!response.ok) {
+        const errorMsg = json_response['error']
+        throw new Error(errorMsg);
+    }
+}
+
 export async function sendJsonRequest(url : string, body : object) {
     try {
-        console.log(url)
+        
     const response = await fetch(url, body);
-    const json_response = response.json();
+    const json_response = await response.json();
+    await checkResponse(response, json_response);
     return json_response;
     } catch(error) {
         if(error instanceof Error) {
-            console.error("Error fetching json data: ", error);
+            throw new Error(error.message);
         }
     }
 }
