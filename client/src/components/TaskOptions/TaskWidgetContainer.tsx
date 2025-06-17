@@ -1,26 +1,27 @@
 import { Box } from "@mui/material";
 import TaskWidget from "./TaskWidget";
-import TaskContainerViewController from "../../misc/TaskContainerViewController";
+import { TaskWidgetContainerReturn } from "../../misc/TaskContainerViewController";
 
 import AddTask from "./AddTask";
 import { useTaskListReturn } from "../../hooks/useTaskList";
 import { useScheduleTasksReturn } from "../../hooks/useScheduleTasks";
 import "../../styles/TransitionContainer.css";
-import useValidation from "../../hooks/useValidation";
+import { useValidationReturn } from "../../hooks/useValidation";
 import ValidationContainer from "../ValidationContainer";
 
 interface TaskWidgetContainer {
   taskListHook: useTaskListReturn;
   scheduleTasksHook: useScheduleTasksReturn;
+  validationHook: useValidationReturn;
+  TaskViewController: TaskWidgetContainerReturn;
 }
 
 const TaskWidgetContainer = ({
   taskListHook,
   scheduleTasksHook,
+  validationHook,
+  TaskViewController,
 }: TaskWidgetContainer) => {
-  const validationHook = useValidation();
-  const TaskViewController = TaskContainerViewController(validationHook);
-
   return (
     <Box sx={{ position: "fixed", bottom: "9%", right: "11%" }}>
       {TaskViewController.renderedComponent.widget == true && (

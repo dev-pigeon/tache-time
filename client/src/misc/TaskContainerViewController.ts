@@ -8,7 +8,14 @@ export interface renderedComponentProps {
     validation : boolean,
 }
 
-const TaskContainerViewController = (validationHook : useValidationReturn) => {
+export interface TaskWidgetContainerReturn {
+    renderedComponent : renderedComponentProps,
+    changeRenderedComponent : (updatedProps : renderedComponentProps) => void;
+    displayValidation : (message : string, status : "error" | "success") => void;
+
+}
+
+const TaskContainerViewController = (validationHook : useValidationReturn) :TaskWidgetContainerReturn => {
     const [renderedComponent, setRenderedComponent] = useState<renderedComponentProps>({
         widget : true,
         addTask : false,
@@ -31,7 +38,7 @@ const TaskContainerViewController = (validationHook : useValidationReturn) => {
     }
 
     return {
-        renderedComponent,
+         renderedComponent,
          changeRenderedComponent,
          displayValidation
     }

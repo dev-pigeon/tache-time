@@ -9,10 +9,11 @@ export interface useScheduleTasksReturn {
 interface useScheduleTasksProps {
     packageDays : () => DayProps[];
     getTaskList : () => TaskListItem[];
+    displayValidation : (message : string, status : "error" | "success") => void;
 }
 
 
-const useScheduleTasks = ({packageDays, getTaskList} : useScheduleTasksProps) : useScheduleTasksReturn => {
+const useScheduleTasks = ({packageDays, getTaskList, displayValidation} : useScheduleTasksProps) : useScheduleTasksReturn => {
     const SERVER_URL = "http://localhost:8080/tasks/schedule"
     const handleScheduleTasksClick =  async() => {
         const packagedDays = packageDays()
@@ -21,6 +22,9 @@ const useScheduleTasks = ({packageDays, getTaskList} : useScheduleTasksProps) : 
         const requestBody = buildRequestBody(requestParams);
         // @ts-ignore
         const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
+
+        
+        
     }
 
     const buildScheduleRequestParams = (packagedDays : DayProps[], taskList : TaskListItem[]) => {

@@ -12,7 +12,7 @@ export const buildRequestBody = (params : object) => {
 
 export async function sendJsonRequest(url : string, body : object) {
     try {
-        console.log(url)
+        
     const response = await fetch(url, body);
     const json_response = response.json();
     return json_response;

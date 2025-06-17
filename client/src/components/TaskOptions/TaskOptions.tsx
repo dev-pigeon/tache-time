@@ -29,7 +29,11 @@ const TaskOptions = ({
       <Tooltip title="Create Task" arrow placement="left">
         <IconButton
           onClick={() => {
-            changeRenderedComponent({ addTask: true, widget: false });
+            changeRenderedComponent({
+              addTask: true,
+              widget: false,
+              validation: false,
+            });
           }}
         >
           <AddCircleOutlineIcon sx={{ fill: "black", fontSize: 30 }} />
