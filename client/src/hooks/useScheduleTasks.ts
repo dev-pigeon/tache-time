@@ -17,6 +17,7 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation} : useSch
     const SERVER_URL = "http://localhost:8080/tasks/schedule"
     const handleScheduleTasksClick =  async() => {
         const packagedDays = packageDays()
+        console.log(packagedDays)
         const taskList = getTaskList()
         const requestParams = buildScheduleRequestParams(packagedDays, taskList);
         const requestBody = buildRequestBody(requestParams);
