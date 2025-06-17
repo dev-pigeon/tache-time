@@ -65,20 +65,34 @@ describe("TaskScheduler correctly schedules tasks", () => {
   test("Simple two task scheduling", () => {
     const taskList = [task1, task2];
     const expected = {
-      t1: [0, 1],
-      t2: [2, 3, 4],
+      t1: {
+        taskName: "Task1",
+        timesScheduled: [0, 1],
+      },
+      t2: {
+        taskName: "Task2",
+        timesScheduled: [2, 3, 4],
+      },
     };
     const workUnits = scheduler.scheduleTasks(taskList);
-
     expect(workUnits).toEqual(expected);
   });
 
   test("Interleaving tasks", () => {
     const taskList = [task3, task4, task5];
     const expected = {
-      t3: [0, 1, 3],
-      t4: [2, 4],
-      t5: [5, 6, 7],
+      t3: {
+        taskName: "Task3",
+        timesScheduled: [0, 1, 3],
+      },
+      t4: {
+        taskName: "Task4",
+        timesScheduled: [2, 4],
+      },
+      t5: {
+        taskName: "Task5",
+        timesScheduled: [5, 6, 7],
+      },
     };
     const workUnits = scheduler.scheduleTasks(taskList);
     expect(workUnits).toEqual(expected);
@@ -91,10 +105,22 @@ describe("TaskScheduler correctly schedules tasks", () => {
     const t4 = new Task("t4", "t4", 13, 4.4);
     const taskList = [t1, t2, t3, t4];
     const expected = {
-      t1: [0, 2],
-      t2: [1],
-      t3: [3, 4, 5, 6],
-      t4: [7, 8, 9, 10, 11],
+      t1: {
+        taskName: "t1",
+        timesScheduled: [0, 2],
+      },
+      t2: {
+        taskName: "t2",
+        timesScheduled: [1],
+      },
+      t3: {
+        taskName: "t3",
+        timesScheduled: [3, 4, 5, 6],
+      },
+      t4: {
+        taskName: "t4",
+        timesScheduled: [7, 8, 9, 10, 11],
+      },
     };
     const workUnits = scheduler.scheduleTasks(taskList);
     expect(workUnits).toEqual(expected);
