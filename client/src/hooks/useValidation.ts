@@ -2,22 +2,22 @@ import { useState } from "react"
 
 export interface useValidationReturn {
     message : string | null;
-    success : boolean;
+    success : "success" | "error";
     setValidationMessage : (msg : string | null) => void;
-    setValidationStatus : (status : boolean) => void;
+    setValidationStatus : (status : "success" | "error") => void;
     clearValidation : (time : number) => void;
  }
 
 const useValidation = () : useValidationReturn => {
-    const [message, setMessage] = useState<string | null>(null);
-    const [success, setSuccess] = useState<boolean>(true);
+    const [message, setMessage] = useState<string | null>("Task added succesfully!");
+    const [success, setSuccess] = useState<"success" | "error">("success");
 
 
      const setValidationMessage = (newMessage: string | null) => {
-        setMessage(message)
+        setMessage(newMessage)
       };
     
-      const setValidationStatus = (status: boolean) => {
+      const setValidationStatus = (status: "success" | "error") => {
         setSuccess(status);
       };
     
