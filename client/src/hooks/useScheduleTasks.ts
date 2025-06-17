@@ -23,6 +23,7 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation} : useSch
         try {
             // @ts-ignore
             const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
+            console.log(response);
         } catch(error) {
             if(error instanceof Error) {
                 displayValidation(error.message, "error");

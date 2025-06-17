@@ -35,13 +35,16 @@ class TaskScheduler {
   }
 
   #updateTaskDictionary(taskID, dictionary, i) {
-    dictionary[taskID].push(i);
+    dictionary[taskID]["timesScheduled"].push(i);
   }
 
   #initializeScheduleDictionary(taskList) {
     let dictionary = {};
     for (let i = 0; i < taskList.length; ++i) {
-      dictionary[taskList[i].id] = [];
+      dictionary[taskList[i].id] = {
+        taskName: taskList[i].name,
+        timesScheduled: [],
+      };
     }
     return dictionary;
   }
@@ -55,7 +58,7 @@ class TaskScheduler {
       const totalTaskTime = this.#getTotalTaskTime(taskDictionary[deadline]);
       if (!this.#isValidDeadline(relativeDeadline, totalTaskTime)) {
         throw new Error(
-          "The given tasks are impossible to complete before their deadlines."
+          "ERROR: Tasks cannot be scheduled, impossible to complete before the deadline."
         );
       }
       overtime = relativeDeadline - totalTaskTime;
