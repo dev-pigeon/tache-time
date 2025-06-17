@@ -9,23 +9,30 @@ import "../../styles/TransitionContainer.css";
 import { useValidationReturn } from "../../hooks/useValidation";
 import ValidationContainer from "../ValidationContainer";
 import { DayProps } from "../../interfaces/DayProps";
+import { ScheduledTask } from "../../interfaces/ScheduledTask";
 
 interface TaskWidgetContainer {
   taskListHook: useTaskListReturn;
   validationHook: useValidationReturn;
   packageDays: () => DayProps[];
+  insertScheduledTasks: (
+    packagedDays: DayProps[],
+    scheduledTasks: ScheduledTask[]
+  ) => void;
 }
 
 const TaskWidgetContainer = ({
   taskListHook,
   validationHook,
   packageDays,
+  insertScheduledTasks,
 }: TaskWidgetContainer) => {
   const TaskViewController = TaskContainerViewController(validationHook);
   const scheduleTasksHook = useScheduleTasks({
     packageDays: packageDays,
     getTaskList: taskListHook.getTaskList,
     displayValidation: TaskViewController.displayValidation,
+    insertScheduledTasks,
   });
   return (
     <Box sx={{ position: "fixed", bottom: "9%", right: "11%" }}>

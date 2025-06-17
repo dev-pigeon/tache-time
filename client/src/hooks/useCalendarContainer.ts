@@ -3,6 +3,7 @@ import {  useState } from "react"
 import { DayProps } from "../interfaces/DayProps";
 import dayjs, { Dayjs } from "dayjs";
 import { TimeUnitProps } from "../interfaces/TimeUnitProps";
+import { ScheduledTask } from "../interfaces/ScheduledTask";
 
 export interface useCalendarContainerReturnProps {
     initializeDates : (dateIn? : Dayjs) => void;
@@ -11,7 +12,8 @@ export interface useCalendarContainerReturnProps {
     getDayOfWeekString : (dayNum : number) => string;
     toggleTimeUnit : (unitTime : Dayjs) => void;
     packageDays : () => DayProps[];
-}
+    insertScheduledTasks : (packagedDays : DayProps[], scheduledTasks : ScheduledTask[]) => void;
+ }
 
 export const getCalendarContainerHeight = () : number => {
     return Math.round(window.innerHeight * .75);
@@ -28,6 +30,10 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     }));
     return packagedDays;
 };
+
+    const insertScheduledTasks = (packagedDays : DayProps[], scheduledTasks : ScheduledTask[]) => {
+        return;
+    }
 
 
     const toggleTimeUnit = (unitTime : Dayjs) => {
@@ -131,7 +137,8 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
         getCalendarContainerHeight,
         getDayOfWeekString,
         toggleTimeUnit,
-        packageDays
+        packageDays,
+        insertScheduledTasks
     }
 }
 

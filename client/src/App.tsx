@@ -20,6 +20,7 @@ function App() {
       <CalendarContainer calendarContainerHook={calendarContainerHook} />
       <ViewControlContainer />
       <TaskWidgetContainer
+        insertScheduledTasks={calendarContainerHook.insertScheduledTasks}
         packageDays={calendarContainerHook.packageDays}
         validationHook={taskValidationHook}
         taskListHook={taskListHook}
