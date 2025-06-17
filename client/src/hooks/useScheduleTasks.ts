@@ -1,4 +1,5 @@
 import { DayProps } from "../interfaces/DayProps";
+import { ScheduledTask } from "../interfaces/ScheduledTask";
 import { TaskListItem } from "../interfaces/TaskListItem";
 import { buildRequestBody, sendJsonRequest } from "./Api";
 
@@ -22,15 +23,29 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation} : useSch
         const requestParams = buildScheduleRequestParams(packagedDays, taskList);
         const requestBody = buildRequestBody(requestParams);
         try {
-            // @ts-ignore
             const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
-            console.log(response);
+            // @ts-ignore
+            const scheduledTasks = parseScheduledTaskDictionary(response);
         } catch(error) {
             if(error instanceof Error) {
                 displayValidation(error.message, "error");
             }
         }
         
+    }
+
+    const parseScheduledTaskDictionary = (response : any) => {
+        const scheduledTasks : ScheduledTask[] = []
+        const scheduleDictionary = response['scheduleDictionary'];
+        for(const key in scheduleDictionary) {
+            const value = scheduleDictionary[key];
+            const task : ScheduledTask = {
+                name : value['taskName'],
+                timesScheduled : value['timesScheduled']
+            }
+            scheduledTasks.push(task);
+        }
+        return scheduledTasks;
     }
 
     const buildScheduleRequestParams = (packagedDays : DayProps[], taskList : TaskListItem[]) => {
