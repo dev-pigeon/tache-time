@@ -26,6 +26,7 @@ const DateContainer = ({
       >
         {day.timeSlots.map((value, _index) => (
           <TimeUnit
+            key={`TimeUnit-${value.time.toISOString()}`}
             toggleTimeUnit={toggleTimeUnit}
             available={value.available}
             height={heightIn}
