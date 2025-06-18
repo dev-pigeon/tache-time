@@ -100,7 +100,7 @@ class TaskScheduler {
   }
 
   #isValidDeadline(relativeDeadline, totalTaskTime) {
-    return totalTaskTime < relativeDeadline;
+    return totalTaskTime <= relativeDeadline;
   }
 
   #getTotalTaskTime(deadlineList) {
