@@ -11,14 +11,14 @@ interface useScheduleTasksProps {
     packageDays : () => DayProps[];
     getTaskList : () => TaskListItem[];
     displayValidation : (message : string, status : "error" | "success") => void;
+    insertScheduledTasks : (packagedDays : DayProps[], scheduledTasks : ScheduledTask[]) => void;
 }
 
 
-const useScheduleTasks = ({packageDays, getTaskList, displayValidation} : useScheduleTasksProps) : useScheduleTasksReturn => {
+const useScheduleTasks = ({packageDays, getTaskList, displayValidation, insertScheduledTasks} : useScheduleTasksProps) : useScheduleTasksReturn => {
     const SERVER_URL = "http://localhost:8080/tasks/schedule"
     const handleScheduleTasksClick =  async() => {
         const packagedDays = packageDays()
-        console.log(packagedDays)
         const taskList = getTaskList()
         const requestParams = buildScheduleRequestParams(packagedDays, taskList);
         const requestBody = buildRequestBody(requestParams);
@@ -26,6 +26,7 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation} : useSch
             const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
             // @ts-ignore
             const scheduledTasks = parseScheduledTaskDictionary(response);
+            insertScheduledTasks(packagedDays, scheduledTasks);
         } catch(error) {
             if(error instanceof Error) {
                 displayValidation(error.message, "error");

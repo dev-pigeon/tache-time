@@ -1,8 +1,10 @@
-import {  useState } from "react"
+import { useState } from "react"
 
 import { DayProps } from "../interfaces/DayProps";
 import dayjs, { Dayjs } from "dayjs";
 import { TimeUnitProps } from "../interfaces/TimeUnitProps";
+import { ScheduledTask } from "../interfaces/ScheduledTask";
+import { TaskChipProps } from "../interfaces/TaskChipProps";
 
 export interface useCalendarContainerReturnProps {
     initializeDates : (dateIn? : Dayjs) => void;
@@ -11,7 +13,8 @@ export interface useCalendarContainerReturnProps {
     getDayOfWeekString : (dayNum : number) => string;
     toggleTimeUnit : (unitTime : Dayjs) => void;
     packageDays : () => DayProps[];
-}
+    insertScheduledTasks : (packagedDays : DayProps[], scheduledTasks : ScheduledTask[]) => void;
+ }
 
 export const getCalendarContainerHeight = () : number => {
     return Math.round(window.innerHeight * .75);
@@ -21,6 +24,7 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
 
     const [days, setDays] = useState<DayProps[] | undefined>(undefined);
 
+
     const packageDays = () : DayProps[] => {
     const packagedDays: DayProps[] = days!.map((day) => ({
         ...day,
@@ -28,6 +32,52 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     }));
     return packagedDays;
 };
+
+    const insertScheduledTasks = (packagedDays : DayProps[], scheduledTasks : ScheduledTask[]) => {
+        let flattenedTimeSlots = flattenDayTimeSlots(packagedDays);
+        flattenedTimeSlots = insertTasksIntoSlots(flattenedTimeSlots, scheduledTasks);
+        insertTasksIntoDays(flattenedTimeSlots);
+
+    }
+
+    const insertTasksIntoDays = (flattenedTimeSlots : TimeUnitProps[]) => {
+        let updatedDays : DayProps[] = [...days!];
+        for(let x = 0; x < flattenedTimeSlots.length; ++x) {
+            const slot = flattenedTimeSlots[x];
+           for(let i = 0; i < updatedDays.length; ++i) {
+            let daySlots = updatedDays[i].timeSlots;
+            for(let j = 0; j < daySlots.length; ++j) {
+                if(daySlots[j].time.isSame(slot.time,'hour')) {
+                    daySlots[j] = slot;
+                    break;
+                }
+            }
+           }
+        }
+        setDays(updatedDays);
+    }
+
+    const insertTasksIntoSlots = (flattenedTimeSlots : TimeUnitProps[], scheduledTasks : ScheduledTask[]) : TimeUnitProps[] => {
+        for(let i = 0; i < scheduledTasks.length; ++i) {
+            const task = scheduledTasks[i];
+            for(let j = 0; j < task.timesScheduled.length; ++j) {
+                const taskChip : TaskChipProps = {
+                    title : task.name
+                }
+                flattenedTimeSlots[task.timesScheduled[j]].TaskChip = taskChip;
+            } 
+        }
+        return flattenedTimeSlots.filter((slot => slot.TaskChip != undefined));
+    }
+
+    const flattenDayTimeSlots = (packagedDays : DayProps[]) : TimeUnitProps[] => {
+        let flattenedSlots : TimeUnitProps[] = [];
+        for(let i = 0; i < packagedDays.length; ++i) {
+            const slots = packagedDays[i].timeSlots;
+            flattenedSlots.push(...slots);
+        }
+        return flattenedSlots;
+    }
 
 
     const toggleTimeUnit = (unitTime : Dayjs) => {
@@ -131,7 +181,8 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
         getCalendarContainerHeight,
         getDayOfWeekString,
         toggleTimeUnit,
-        packageDays
+        packageDays,
+        insertScheduledTasks
     }
 }
 
