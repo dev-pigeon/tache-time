@@ -20,13 +20,21 @@ const ViewControl = ({ viewControlHook }: ViewControlProps) => {
       spacing={3}
     >
       <Tooltip title="Edit Mode" arrow placement="left">
-        <IconButton>
+        <IconButton
+          onClick={() => {
+            viewControlHook.changeMode("Edit");
+          }}
+        >
           <ModeEditIcon sx={{ fill: "black" }} />
         </IconButton>
       </Tooltip>
 
       <Tooltip title="View Mode" arrow placement="left">
-        <IconButton>
+        <IconButton
+          onClick={() => {
+            viewControlHook.changeMode("View");
+          }}
+        >
           <VisibilityIcon sx={{ fill: "black" }} />
         </IconButton>
       </Tooltip>
