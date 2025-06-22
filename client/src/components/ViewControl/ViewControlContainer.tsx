@@ -3,9 +3,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import "../../styles/ViewControl.css";
 import { useState } from "react";
-import ViewControl from "./ViewControl";
+import ViewControl, { ViewControlProps } from "./ViewControl";
 
-const ViewControlContainer = () => {
+const ViewControlContainer = ({ viewControlHook }: ViewControlProps) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   const toggleMenu = () => {
@@ -24,7 +24,7 @@ const ViewControlContainer = () => {
         </IconButton>
       </Tooltip>
       <Collapse in={showMenu}>
-        <ViewControl />
+        <ViewControl viewControlHook={viewControlHook} />
       </Collapse>
     </Paper>
   );

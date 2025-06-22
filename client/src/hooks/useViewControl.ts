@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-interface useViewControlReturn {
+export interface useViewControlReturn {
     mode : "View" | "Edit";
     changeMode : (newMode : "View" | "Edit") => void;
 }

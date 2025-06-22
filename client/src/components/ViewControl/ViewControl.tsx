@@ -3,8 +3,13 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 import "../../styles/ViewControl.css";
+import { useViewControlReturn } from "../../hooks/useViewControl";
 
-const ViewControl = () => {
+export interface ViewControlProps {
+  viewControlHook: useViewControlReturn;
+}
+
+const ViewControl = ({ viewControlHook }: ViewControlProps) => {
   return (
     <Stack
       height={150}
