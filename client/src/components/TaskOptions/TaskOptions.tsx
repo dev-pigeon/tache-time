@@ -27,7 +27,13 @@ const TaskOptions = ({
         </IconButton>
       </Tooltip>
 
-      <Tooltip title="Create Task" arrow placement="left">
+      <Tooltip
+        title={
+          mode == "Edit" ? "Create Task" : "Switch to edit mode to add tasks."
+        }
+        arrow
+        placement="left"
+      >
         <IconButton
           onClick={() => {
             mode == "Edit"
