@@ -16,6 +16,7 @@ const TimeUnit = ({
   available,
   toggleTimeUnit,
   mode,
+  TaskChip,
 }: TimeUnitComponent) => {
   return (
     <Box
@@ -29,12 +30,14 @@ const TimeUnit = ({
       }}
       height={height}
     >
-      <Typography
-        color={available ? "black" : "#C0B9B2"}
-        className="time-unit-typography"
-      >
-        {time.format("h:mm A")}
-      </Typography>
+      {TaskChip == undefined && (
+        <Typography
+          color={available ? "black" : "#C0B9B2"}
+          className="time-unit-typography"
+        >
+          {time.format("h:mm A")}
+        </Typography>
+      )}
     </Box>
   );
 };
