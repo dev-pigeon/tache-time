@@ -31,7 +31,7 @@ function App() {
         validationHook={taskValidationHook}
         taskListHook={taskListHook}
       />
-      <TaskList taskListHook={taskListHook} />
+      <TaskList mode={viewControlHook.mode} taskListHook={taskListHook} />
     </div>
   );
 }
