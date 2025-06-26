@@ -19,7 +19,10 @@ function App() {
   return (
     <div id="outer-container">
       <Header />
-      <CalendarContainer calendarContainerHook={calendarContainerHook} />
+      <CalendarContainer
+        mode={viewControlHook.mode}
+        calendarContainerHook={calendarContainerHook}
+      />
       <ViewControlContainer viewControlHook={viewControlHook} />
       <TaskWidgetContainer
         insertScheduledTasks={calendarContainerHook.insertScheduledTasks}

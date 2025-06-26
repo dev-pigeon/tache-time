@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useRef, useEffect } from "react";
 import { useCalendarContainerReturnProps } from "../../hooks/useCalendarContainer";
 
@@ -8,10 +8,12 @@ import WorkLabel from "./WorkLabel";
 
 interface CalendarContainerProps {
   calendarContainerHook: useCalendarContainerReturnProps;
+  mode: "View" | "Edit";
 }
 
 const CalendarContainer = ({
   calendarContainerHook,
+  mode,
 }: CalendarContainerProps) => {
   const containerHeight = useRef<number>(0);
 
@@ -29,6 +31,7 @@ const CalendarContainer = ({
       id="calendar-container"
       sx={{ boxShadow: 10 }}
     >
+      <Typography id="calendar-container-label">{`${mode} Mode`}</Typography>
       <Stack position={"absolute"} top={10} right={25}>
         <WorkLabel text="Available" bgColor="#67ba6b" />
         <WorkLabel text="Unavailable" bgColor="#545454" />
