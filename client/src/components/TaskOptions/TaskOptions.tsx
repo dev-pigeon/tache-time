@@ -10,6 +10,7 @@ interface TaskOptionsProps extends TaskWidgetProps {}
 const TaskOptions = ({
   changeRenderedComponent,
   scheduleTasksHook,
+  mode,
 }: TaskOptionsProps) => {
   return (
     <Stack
@@ -29,11 +30,13 @@ const TaskOptions = ({
       <Tooltip title="Create Task" arrow placement="left">
         <IconButton
           onClick={() => {
-            changeRenderedComponent({
-              addTask: true,
-              widget: false,
-              validation: false,
-            });
+            mode == "Edit"
+              ? changeRenderedComponent({
+                  addTask: true,
+                  widget: false,
+                  validation: false,
+                })
+              : {};
           }}
         >
           <AddCircleOutlineIcon sx={{ fill: "black", fontSize: 30 }} />
