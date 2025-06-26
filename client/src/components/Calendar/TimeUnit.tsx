@@ -15,6 +15,7 @@ const TimeUnit = ({
   time,
   available,
   toggleTimeUnit,
+  mode,
 }: TimeUnitComponent) => {
   return (
     <Box
@@ -24,7 +25,7 @@ const TimeUnit = ({
       }}
       date-testid="time-unit"
       onClick={() => {
-        toggleTimeUnit(time);
+        mode == "Edit" ? toggleTimeUnit(time) : {};
       }}
       height={height}
     >
