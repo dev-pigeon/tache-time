@@ -1,14 +1,14 @@
-import { Paper, Typography } from "@mui/material";
-
-interface TaskChipProps {
-  title: string;
-}
+import { Paper, Tooltip, Typography } from "@mui/material";
+import "../../styles/TaskChip.css";
+import { TaskChipProps } from "../../interfaces/TaskChipProps";
 
 const TaskChip = ({ title }: TaskChipProps) => {
   return (
-    <Paper className="task-chip-container">
-      <Typography className="task-chip-typography">{title}</Typography>
-    </Paper>
+    <Tooltip arrow placement="top" title={title}>
+      <Paper className="task-chip-container">
+        <Typography>{"Task"}</Typography>
+      </Paper>
+    </Tooltip>
   );
 };
 

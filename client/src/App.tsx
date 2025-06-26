@@ -1,4 +1,5 @@
 import CalendarContainer from "./components/Calendar/CalendarContainer";
+import TaskChip from "./components/Calendar/TaskChip";
 import Header from "./components/Header";
 import TaskList from "./components/TaskList/TaskList";
 import TaskWidgetContainer from "./components/TaskOptions/TaskWidgetContainer";

@@ -1,0 +1,11 @@
+.task-chip-container {
+    width: 75px;
+    height: 25px;
+    border-radius: 50px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent-main) !important;
+    white-space: normal;
+ 
+}

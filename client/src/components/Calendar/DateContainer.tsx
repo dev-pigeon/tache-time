@@ -34,7 +34,7 @@ const DateContainer = ({
             available={value.available}
             height={heightIn}
             time={value.time}
-            TaskChip={value.TaskChip}
+            taskChip={value.taskChip}
           />
         ))}
       </Stack>

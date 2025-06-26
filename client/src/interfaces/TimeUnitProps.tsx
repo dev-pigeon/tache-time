@@ -4,5 +4,5 @@ import { TaskChipProps } from "./TaskChipProps";
 export interface TimeUnitProps {
   time: Dayjs;
   available: boolean;
-  TaskChip?: TaskChipProps;
+  taskChip?: TaskChipProps;
 }
