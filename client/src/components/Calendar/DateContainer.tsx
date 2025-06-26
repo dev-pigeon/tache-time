@@ -9,12 +9,14 @@ interface DateContainerProps {
   heightIn: number;
   day: DayProps;
   toggleTimeUnit: (unitTime: Dayjs) => void;
+  mode: "Edit" | "View";
 }
 
 const DateContainer = ({
   day,
   heightIn,
   toggleTimeUnit,
+  mode,
 }: DateContainerProps) => {
   return (
     <Stack className="date-container" direction={"column"} gap={1}>
@@ -26,6 +28,7 @@ const DateContainer = ({
       >
         {day.timeSlots.map((value, _index) => (
           <TimeUnit
+            mode={mode}
             key={`TimeUnit-${value.time.toISOString()}`}
             toggleTimeUnit={toggleTimeUnit}
             available={value.available}

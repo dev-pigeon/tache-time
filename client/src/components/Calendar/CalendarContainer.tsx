@@ -57,6 +57,7 @@ const CalendarContainer = ({
       {calendarContainerHook.days &&
         calendarContainerHook.days.map((value, index) => (
           <DateContainer
+            mode={mode}
             toggleTimeUnit={calendarContainerHook.toggleTimeUnit}
             heightIn={containerHeight.current * 0.75}
             key={`date-container#${index}`}

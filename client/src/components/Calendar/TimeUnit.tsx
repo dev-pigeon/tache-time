@@ -7,6 +7,7 @@ import { Dayjs } from "dayjs";
 interface TimeUnitComponent extends TimeUnitProps {
   toggleTimeUnit: (unitTime: Dayjs) => void;
   height: number;
+  mode: "Edit" | "View";
 }
 
 const TimeUnit = ({
