@@ -19,6 +19,7 @@ interface TaskWidgetContainer {
     packagedDays: DayProps[],
     scheduledTasks: ScheduledTask[]
   ) => void;
+  mode: "Edit" | "View";
 }
 
 const TaskWidgetContainer = ({
@@ -26,6 +27,7 @@ const TaskWidgetContainer = ({
   validationHook,
   packageDays,
   insertScheduledTasks,
+  mode,
 }: TaskWidgetContainer) => {
   const TaskViewController = TaskContainerViewController(validationHook);
   const scheduleTasksHook = useScheduleTasks({
@@ -38,6 +40,7 @@ const TaskWidgetContainer = ({
     <Box sx={{ position: "fixed", bottom: "9%", right: "11%" }}>
       {TaskViewController.renderedComponent.widget == true && (
         <TaskWidget
+          mode={mode}
           scheduleTasksHook={scheduleTasksHook}
           changeRenderedComponent={TaskViewController.changeRenderedComponent}
         />

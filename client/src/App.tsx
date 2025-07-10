@@ -19,15 +19,19 @@ function App() {
   return (
     <div id="outer-container">
       <Header />
-      <CalendarContainer calendarContainerHook={calendarContainerHook} />
+      <CalendarContainer
+        mode={viewControlHook.mode}
+        calendarContainerHook={calendarContainerHook}
+      />
       <ViewControlContainer viewControlHook={viewControlHook} />
       <TaskWidgetContainer
+        mode={viewControlHook.mode}
         insertScheduledTasks={calendarContainerHook.insertScheduledTasks}
         packageDays={calendarContainerHook.packageDays}
         validationHook={taskValidationHook}
         taskListHook={taskListHook}
       />
-      <TaskList taskListHook={taskListHook} />
+      <TaskList mode={viewControlHook.mode} taskListHook={taskListHook} />
     </div>
   );
 }

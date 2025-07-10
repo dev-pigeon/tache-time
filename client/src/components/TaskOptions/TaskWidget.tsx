@@ -11,11 +11,13 @@ import { renderedComponentProps } from "../../misc/TaskContainerViewController";
 export interface TaskWidgetProps {
   changeRenderedComponent: (props: renderedComponentProps) => void;
   scheduleTasksHook: useScheduleTasksReturn;
+  mode: "Edit" | "View";
 }
 
 const TaskWidget = ({
   changeRenderedComponent,
   scheduleTasksHook,
+  mode,
 }: TaskWidgetProps) => {
   const [openTaskWidget, setOpenTaskWidget] = useState<boolean>(false);
 
@@ -27,6 +29,7 @@ const TaskWidget = ({
     <Paper id={"task-widget-container"}>
       <Collapse in={openTaskWidget}>
         <TaskOptions
+          mode={mode}
           scheduleTasksHook={scheduleTasksHook}
           changeRenderedComponent={changeRenderedComponent}
         />

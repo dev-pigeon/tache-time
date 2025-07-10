@@ -14,9 +14,10 @@ import TaskListCard from "./TaskListCard";
 
 interface TaskListProps {
   taskListHook: useTaskListReturn;
+  mode: "Edit" | "View";
 }
 
-const TaskList = ({ taskListHook }: TaskListProps) => {
+const TaskList = ({ taskListHook, mode }: TaskListProps) => {
   return (
     <Paper id="task-list-outer-container">
       <Stack
@@ -39,6 +40,7 @@ const TaskList = ({ taskListHook }: TaskListProps) => {
         <List>
           {taskListHook.taskList.map((item, index) => (
             <TaskListCard
+              mode={mode}
               date={item.date}
               removeTask={taskListHook.removeTask}
               key={`tasklistcard#${index}`}

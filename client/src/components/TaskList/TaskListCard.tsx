@@ -6,6 +6,7 @@ import "../../styles/TaskListCard.css";
 
 interface TaskListCardProps extends TaskListItem {
   removeTask: (taskID: string) => void;
+  mode: "Edit" | "View";
 }
 
 const TaskListCard = ({
@@ -16,6 +17,7 @@ const TaskListCard = ({
   estimatedTime,
   removeTask,
   id,
+  mode,
 }: TaskListCardProps) => {
   return (
     <Paper
@@ -31,7 +33,7 @@ const TaskListCard = ({
       <Typography id={"task-list-item-title"}>{title}</Typography>
       <IconButton
         onClick={() => {
-          removeTask(id);
+          mode == "Edit" ? removeTask(id) : {};
         }}
         id={"task-list-item-delete"}
       >
