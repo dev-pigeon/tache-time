@@ -64,10 +64,10 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
                 const taskChip : TaskChipProps = {
                     title : task.name
                 }
-                flattenedTimeSlots[task.timesScheduled[j]].TaskChip = taskChip;
+                flattenedTimeSlots[task.timesScheduled[j]].taskChip = taskChip;
             } 
         }
-        return flattenedTimeSlots.filter((slot => slot.TaskChip != undefined));
+        return flattenedTimeSlots.filter((slot => slot.taskChip != undefined));
     }
 
     const flattenDayTimeSlots = (packagedDays : DayProps[]) : TimeUnitProps[] => {
