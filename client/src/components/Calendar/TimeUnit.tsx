@@ -9,7 +9,6 @@ interface TimeUnitComponent extends TimeUnitProps {
   toggleTimeUnit: (unitTime: Dayjs) => void;
   height: number;
   mode: "Edit" | "View";
-  mode: "Edit" | "View";
 }
 
 const TimeUnit = ({
