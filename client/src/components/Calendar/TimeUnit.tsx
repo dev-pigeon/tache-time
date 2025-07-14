@@ -4,6 +4,7 @@ import "../../styles/TimeUnit.css";
 import { TimeUnitProps } from "../../interfaces/TimeUnitProps";
 import { Dayjs } from "dayjs";
 import TaskChip from "./TaskChip";
+import { useEffect } from "react";
 
 interface TimeUnitComponent extends TimeUnitProps {
   toggleTimeUnit: (unitTime: Dayjs) => void;
@@ -19,6 +20,10 @@ const TimeUnit = ({
   mode,
   taskChip,
 }: TimeUnitComponent) => {
+  useEffect(() => {
+    console.log(taskChip == undefined || mode == "Edit");
+  }, []);
+
   return (
     <Box
       className="time-unit"
@@ -28,11 +33,10 @@ const TimeUnit = ({
       date-testid="time-unit"
       onClick={() => {
         mode == "Edit" ? toggleTimeUnit(time) : {};
-        mode == "Edit" ? toggleTimeUnit(time) : {};
       }}
       height={height}
     >
-      {taskChip == undefined && (
+      {(taskChip == undefined || mode == "Edit") && (
         <Typography
           color={available ? "black" : "#C0B9B2"}
           className="time-unit-typography"
