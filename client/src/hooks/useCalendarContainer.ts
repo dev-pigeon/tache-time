@@ -37,10 +37,10 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
         let flattenedTimeSlots = flattenDayTimeSlots(packagedDays);
         flattenedTimeSlots = insertTasksIntoSlots(flattenedTimeSlots, scheduledTasks);
         insertTasksIntoDays(flattenedTimeSlots);
-
     }
 
     const insertTasksIntoDays = (flattenedTimeSlots : TimeUnitProps[]) => {
+        console.log(flattenedTimeSlots)
         let updatedDays : DayProps[] = [...days!];
         for(let x = 0; x < flattenedTimeSlots.length; ++x) {
             const slot = flattenedTimeSlots[x];
@@ -54,6 +54,7 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
             }
            }
         }
+    
         setDays(updatedDays);
     }
 
@@ -62,7 +63,8 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
             const task = scheduledTasks[i];
             for(let j = 0; j < task.timesScheduled.length; ++j) {
                 const taskChip : TaskChipProps = {
-                    title : task.name
+                    title : task.name,
+                    dateString : task.dateString
                 }
                 flattenedTimeSlots[task.timesScheduled[j]].taskChip = taskChip;
             } 
