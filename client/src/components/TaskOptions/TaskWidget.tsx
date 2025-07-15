@@ -11,7 +11,7 @@ import { renderedComponentProps } from "../../misc/TaskContainerViewController";
 export interface TaskWidgetProps {
   changeRenderedComponent: (props: renderedComponentProps) => void;
   scheduleTasksHook: useScheduleTasksReturn;
-  mode: "Edit" | "View";
+  mode: boolean;
 }
 
 const TaskWidget = ({

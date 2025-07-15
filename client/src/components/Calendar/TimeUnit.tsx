@@ -8,7 +8,7 @@ import TaskChip from "./TaskChip";
 interface TimeUnitComponent extends TimeUnitProps {
   toggleTimeUnit: (unitTime: Dayjs) => void;
   height: number;
-  mode: "Edit" | "View";
+  mode: boolean;
 }
 
 const TimeUnit = ({
@@ -27,11 +27,11 @@ const TimeUnit = ({
       }}
       date-testid="time-unit"
       onClick={() => {
-        mode == "Edit" ? toggleTimeUnit(time) : {};
+        mode == true ? toggleTimeUnit(time) : {};
       }}
       height={height}
     >
-      {(taskChip == undefined || mode == "Edit") && (
+      {(taskChip == undefined || mode == true) && (
         <Typography
           color={available ? "black" : "#C0B9B2"}
           className="time-unit-typography"
@@ -39,7 +39,7 @@ const TimeUnit = ({
           {time.format("h:mm A")}
         </Typography>
       )}
-      {taskChip && mode == "View" && (
+      {taskChip && mode == false && (
         <TaskChip title={taskChip.title} dateString={taskChip.dateString} />
       )}
     </Box>

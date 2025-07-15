@@ -19,7 +19,7 @@ interface TaskWidgetContainer {
     packagedDays: DayProps[],
     scheduledTasks: ScheduledTask[]
   ) => void;
-  mode: "Edit" | "View";
+  mode: boolean;
 }
 
 const TaskWidgetContainer = ({

@@ -2,20 +2,20 @@ import { useState } from "react";
 
 
 export interface useViewControlReturn {
-    mode : "View" | "Edit";
-    changeMode : (newMode : "View" | "Edit") => void;
+    editMode : boolean;
+    changeMode : () => void;
 }
 
 
 const useViewControl = () : useViewControlReturn => {
-    const [mode, setMode] = useState<"View" | "Edit">("Edit");
+    const [editMode, setEditMode] = useState<boolean>(true);
 
-    const changeMode = (newMode : "View" | "Edit") : void => {
-        setMode(newMode);
+    const changeMode = () : void => {
+        setEditMode(!editMode);
     }
 
     return {
-        mode,
+        editMode,
         changeMode
     }
 }

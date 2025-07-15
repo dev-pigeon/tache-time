@@ -9,7 +9,7 @@ interface DateContainerProps {
   heightIn: number;
   day: DayProps;
   toggleTimeUnit: (unitTime: Dayjs) => void;
-  mode: "Edit" | "View";
+  mode: boolean;
 }
 
 const DateContainer = ({
