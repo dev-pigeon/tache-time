@@ -6,7 +6,7 @@ const TaskChip = ({ title }: TaskChipProps) => {
   return (
     <Tooltip arrow placement="top" title={title}>
       <Paper className="task-chip-container">
-        <Typography>{"Task"}</Typography>
+        <Typography className="task-chip-text">{title}</Typography>
       </Paper>
     </Tooltip>
   );

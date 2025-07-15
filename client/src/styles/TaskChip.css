@@ -6,6 +6,11 @@
     justify-content: center;
     align-items: center;
     background-color: var(--accent-main) !important;
-    white-space: normal;
- 
+    overflow: hidden;
+}
+
+.task-chip-text {
+    font-size: 12px !important;
+    white-space: nowrap;
+    overflow-x: scroll;
 }
