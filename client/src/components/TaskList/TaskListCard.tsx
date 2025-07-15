@@ -6,7 +6,7 @@ import "../../styles/TaskListCard.css";
 
 interface TaskListCardProps extends TaskListItem {
   removeTask: (taskID: string) => void;
-  mode: "Edit" | "View";
+  mode: boolean;
 }
 
 const TaskListCard = ({
@@ -33,7 +33,7 @@ const TaskListCard = ({
       <Typography id={"task-list-item-title"}>{title}</Typography>
       <IconButton
         onClick={() => {
-          mode == "Edit" ? removeTask(id) : {};
+          mode == true ? removeTask(id) : {};
         }}
         sx={{
           transition: "background-color .5s ease",

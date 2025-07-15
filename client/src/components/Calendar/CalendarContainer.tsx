@@ -5,15 +5,17 @@ import { useCalendarContainerReturnProps } from "../../hooks/useCalendarContaine
 import "../../styles/CalendarContainer.css";
 import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
+import ViewControlContainer from "../ViewControl/ViewControlContainer";
+import { useViewControlReturn } from "../../hooks/useViewControl";
 
 interface CalendarContainerProps {
   calendarContainerHook: useCalendarContainerReturnProps;
-  mode: "View" | "Edit";
+  viewControlHook: useViewControlReturn;
 }
 
 const CalendarContainer = ({
   calendarContainerHook,
-  mode,
+  viewControlHook,
 }: CalendarContainerProps) => {
   const containerHeight = useRef<number>(0);
   const editModeTT =
@@ -43,12 +45,15 @@ const CalendarContainer = ({
             },
           },
         }}
-        title={mode == "Edit" ? editModeTT : viewModeTT}
+        title={viewControlHook.editMode == true ? editModeTT : viewModeTT}
         arrow
         placement="top"
       >
-        <Typography id="calendar-container-label">{`${mode} Mode`}</Typography>
+        <Typography id="calendar-container-label">
+          {viewControlHook.editMode ? `Edit Mode` : "View Mode"}{" "}
+        </Typography>
       </Tooltip>
+      <ViewControlContainer viewControlHook={viewControlHook} />
       <Stack position={"absolute"} top={10} right={25}>
         <WorkLabel text="Available" bgColor="#67ba6b" />
         <WorkLabel text="Unavailable" bgColor="#545454" />
@@ -57,7 +62,7 @@ const CalendarContainer = ({
       {calendarContainerHook.days &&
         calendarContainerHook.days.map((value, index) => (
           <DateContainer
-            mode={mode}
+            mode={viewControlHook.editMode}
             toggleTimeUnit={calendarContainerHook.toggleTimeUnit}
             heightIn={containerHeight.current * 0.75}
             key={`date-container#${index}`}

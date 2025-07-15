@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import TaskList from "./components/TaskList/TaskList";
 import TaskWidgetContainer from "./components/TaskOptions/TaskWidgetContainer";
 
-import ViewControlContainer from "./components/ViewControl/ViewControlContainer";
 import useCalendarContainer from "./hooks/useCalendarContainer";
 import useTaskList from "./hooks/useTaskList";
 import useValidation from "./hooks/useValidation";
@@ -20,18 +19,17 @@ function App() {
     <div id="outer-container">
       <Header />
       <CalendarContainer
-        mode={viewControlHook.mode}
+        viewControlHook={viewControlHook}
         calendarContainerHook={calendarContainerHook}
       />
-      <ViewControlContainer viewControlHook={viewControlHook} />
       <TaskWidgetContainer
-        mode={viewControlHook.mode}
+        mode={viewControlHook.editMode}
         insertScheduledTasks={calendarContainerHook.insertScheduledTasks}
         packageDays={calendarContainerHook.packageDays}
         validationHook={taskValidationHook}
         taskListHook={taskListHook}
       />
-      <TaskList mode={viewControlHook.mode} taskListHook={taskListHook} />
+      <TaskList mode={viewControlHook.editMode} taskListHook={taskListHook} />
     </div>
   );
 }
