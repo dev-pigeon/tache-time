@@ -23,9 +23,9 @@ const TaskListCard = ({
     <Paper
       sx={{
         height: description ? 150 : 75,
-        transition: "box-shadow 1s ease",
+        transition: "box-shadow .5s ease",
         ":hover": {
-          boxShadow: "0px 0px 5px 2.5px rgba(255, 255, 255, 0.5)",
+          boxShadow: "0px 0px 2px 1.5px rgba(255, 255, 255, 0.5)",
         },
       }}
       id={"task-list-card-outer-container"}
@@ -34,6 +34,12 @@ const TaskListCard = ({
       <IconButton
         onClick={() => {
           mode == "Edit" ? removeTask(id) : {};
+        }}
+        sx={{
+          transition: "background-color .5s ease",
+          "&:hover": {
+            backgroundColor: "rgba(255, 0, 17, 0.36)",
+          },
         }}
         id={"task-list-item-delete"}
       >
