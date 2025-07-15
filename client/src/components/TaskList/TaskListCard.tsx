@@ -35,6 +35,12 @@ const TaskListCard = ({
         onClick={() => {
           mode == "Edit" ? removeTask(id) : {};
         }}
+        sx={{
+          transition: "background-color .5s ease",
+          "&:hover": {
+            backgroundColor: "rgba(255, 0, 17, 0.36)",
+          },
+        }}
         id={"task-list-item-delete"}
       >
         <DeleteForeverOutlinedIcon />
