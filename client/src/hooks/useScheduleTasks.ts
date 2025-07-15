@@ -23,13 +23,17 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation, insertSc
         const requestParams = buildScheduleRequestParams(packagedDays, taskList);
         const requestBody = buildRequestBody(requestParams);
         try {
+            if(taskList.length == 0) {
+                throw new Error("Error: No tasks to schedule.")
+            }
             const response = await sendJsonRequest(`${SERVER_URL}/`,requestBody);
             // @ts-ignore
             const scheduledTasks = parseScheduledTaskDictionary(response);
             insertScheduledTasks(packagedDays, scheduledTasks);
+            displayValidation("Tasks scheduled succesfully! Please change to View Mode in order to inspect your scheduled tasks.", "success")
         } catch(error) {
             if(error instanceof Error) {
-                displayValidation(error.message, "error");
+                displayValidation( error.message, "error");
             }
         } 
     }
