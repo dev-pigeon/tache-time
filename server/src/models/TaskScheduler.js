@@ -42,6 +42,7 @@ class TaskScheduler {
     let dictionary = {};
     for (let i = 0; i < taskList.length; ++i) {
       dictionary[taskList[i].id] = {
+        dateString: taskList[i].dateString,
         taskName: taskList[i].name,
         timesScheduled: [],
       };

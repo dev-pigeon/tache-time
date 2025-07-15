@@ -31,8 +31,7 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation, insertSc
             if(error instanceof Error) {
                 displayValidation(error.message, "error");
             }
-        }
-        
+        } 
     }
 
     const parseScheduledTaskDictionary = (response : any) => {
@@ -42,7 +41,8 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation, insertSc
             const value = scheduleDictionary[key];
             const task : ScheduledTask = {
                 name : value['taskName'],
-                timesScheduled : value['timesScheduled']
+                timesScheduled : value['timesScheduled'],
+                dateString : value["dateString"],
             }
             scheduledTasks.push(task);
         }
