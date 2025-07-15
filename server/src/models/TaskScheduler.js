@@ -28,7 +28,6 @@ class TaskScheduler {
         }
         systemTime++;
       }
-      console.log(scheduleDictionary);
       return scheduleDictionary;
     } catch (error) {
       throw new Error(error);
