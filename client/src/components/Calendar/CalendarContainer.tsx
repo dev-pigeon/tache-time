@@ -37,23 +37,25 @@ const CalendarContainer = ({
       id="calendar-container"
       sx={{ boxShadow: 10 }}
     >
-      <Tooltip
-        slotProps={{
-          tooltip: {
-            sx: {
-              fontSize: "18px",
+      <Stack direction={"row"} id="calendar-label-container">
+        <Tooltip
+          slotProps={{
+            tooltip: {
+              sx: {
+                fontSize: "18px",
+              },
             },
-          },
-        }}
-        title={viewControlHook.editMode == true ? editModeTT : viewModeTT}
-        arrow
-        placement="top"
-      >
-        <Typography id="calendar-container-label">
-          {viewControlHook.editMode ? `Edit Mode` : "View Mode"}{" "}
-        </Typography>
-      </Tooltip>
-      <ViewControlContainer viewControlHook={viewControlHook} />
+          }}
+          title={viewControlHook.editMode == true ? editModeTT : viewModeTT}
+          arrow
+          placement="top"
+        >
+          <Typography id="calendar-label">
+            {viewControlHook.editMode ? `Edit Mode` : "View Mode"}{" "}
+          </Typography>
+        </Tooltip>
+        <ViewControlContainer viewControlHook={viewControlHook} />
+      </Stack>
       <Stack position={"absolute"} top={10} right={25}>
         <WorkLabel text="Available" bgColor="#67ba6b" />
         <WorkLabel text="Unavailable" bgColor="#545454" />

@@ -1,5 +1,6 @@
 #calendar-container {
     width: 55%;
+    min-width: 825px;
     top:15%;
     left: 5%;
     position: fixed;
@@ -9,11 +10,21 @@
     background-color: #1e1e1e;
 }
 
-#calendar-container-label {
+#calendar-label-container {
     color: var(--text-primary);
     font-size: 24px;
     font-weight: 500;
     position: absolute;
+    left: 45%;
     top: 20px;
     font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+
+#calendar-label {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 5px;
 }
