@@ -27,7 +27,8 @@ class ScheduleRequestParser {
         taskListItem.title,
         taskListItem.id,
         taskDeadline,
-        taskListItem.estimatedTime
+        taskListItem.estimatedTime,
+        days[i].dayStr
       );
       tasks.push(task);
     }
