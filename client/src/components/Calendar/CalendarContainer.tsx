@@ -1,12 +1,13 @@
-import { Stack, Tooltip, Typography } from "@mui/material";
+import { Icon, Stack, Tooltip, Typography } from "@mui/material";
 import { useRef, useEffect } from "react";
 import { useCalendarContainerReturnProps } from "../../hooks/useCalendarContainer";
-
+import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import "../../styles/CalendarContainer.css";
 import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
 import ViewControlContainer from "../ViewControl/ViewControlContainer";
 import { useViewControlReturn } from "../../hooks/useViewControl";
+import RemoveRedEyeTwoToneIcon from "@mui/icons-material/RemoveRedEyeTwoTone";
 
 interface CalendarContainerProps {
   calendarContainerHook: useCalendarContainerReturnProps;
@@ -17,6 +18,10 @@ const CalendarContainer = ({
   calendarContainerHook,
   viewControlHook,
 }: CalendarContainerProps) => {
+  const iconStyle = {
+    fill: "#4f88c1",
+  };
+
   const containerHeight = useRef<number>(0);
   const editModeTT =
     "In edit mode you can change your availability as well as add and delete tasks. To view your scheduled tasks, please switch to view mode.";
@@ -38,6 +43,13 @@ const CalendarContainer = ({
       sx={{ boxShadow: 10 }}
     >
       <Stack direction={"row"} id="calendar-label-container">
+        <Icon>
+          {viewControlHook.editMode ? (
+            <EditTwoToneIcon sx={iconStyle} />
+          ) : (
+            <RemoveRedEyeTwoToneIcon sx={iconStyle} />
+          )}
+        </Icon>
         <Tooltip
           slotProps={{
             tooltip: {
