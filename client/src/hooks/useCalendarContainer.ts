@@ -40,7 +40,6 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     }
 
     const insertTasksIntoDays = (flattenedTimeSlots : TimeUnitProps[]) => {
-        console.log(flattenedTimeSlots)
         let updatedDays : DayProps[] = [...days!];
         for(let x = 0; x < flattenedTimeSlots.length; ++x) {
             const slot = flattenedTimeSlots[x];
