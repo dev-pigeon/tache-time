@@ -16,6 +16,33 @@ export interface useCalendarContainerReturnProps {
     insertScheduledTasks : (packagedDays : DayProps[], scheduledTasks : ScheduledTask[]) => void;
  }
 
+
+ export const getDateString = (date : Dayjs) : string => {
+        const monthString : string = getMonthString(date);
+        const dayOfMonth : number = date.date();
+        const oridinalSuffix = getDateOrdinalSuffix(dayOfMonth);
+        return `${monthString} ${dayOfMonth}${oridinalSuffix}`;
+    }
+
+    const getMonthString = (date : Dayjs) : string => {
+        const months = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
+        const monthIndex = date.month();
+        return months[monthIndex];
+    }
+
+    const getDateOrdinalSuffix = (dayOfMonth : number) : string => {
+        if(dayOfMonth >= 11 && dayOfMonth <= 13) return "th"
+        const modulus = dayOfMonth % 10;
+        switch(modulus) {
+            case 1:
+                return "st";
+            case 2: 
+                return "nd";
+            case 3: return "rd"
+        }
+        return "th";
+    }
+
 export const getCalendarContainerHeight = () : number => {
     return Math.round(window.innerHeight * .75);
 }
@@ -148,32 +175,6 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
     const getDayOfWeekString = (dayNum : number) : string => {
         const days = ["Sun","Mon","Tue", "Wed", "Thu", "Fri", "Sat"]
         return days[dayNum];
-    }
-
-    const getDateString = (date : Dayjs) : string => {
-        const monthString : string = getMonthString(date);
-        const dayOfMonth : number = date.date();
-        const oridinalSuffix = getDateOrdinalSuffix(dayOfMonth);
-        return `${monthString} ${dayOfMonth}${oridinalSuffix}`;
-    }
-
-    const getMonthString = (date : Dayjs) : string => {
-        const months = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
-        const monthIndex = date.month();
-        return months[monthIndex];
-    }
-
-    const getDateOrdinalSuffix = (dayOfMonth : number) : string => {
-        if(dayOfMonth >= 11 && dayOfMonth <= 13) return "th"
-        const modulus = dayOfMonth % 10;
-        switch(modulus) {
-            case 1:
-                return "st";
-            case 2: 
-                return "nd";
-            case 3: return "rd"
-        }
-        return "th";
     }
 
     return {

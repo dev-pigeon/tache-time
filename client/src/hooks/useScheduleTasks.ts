@@ -20,6 +20,7 @@ const useScheduleTasks = ({packageDays, getTaskList, displayValidation, insertSc
     const handleScheduleTasksClick =  async() => {
         const packagedDays = packageDays()
         const taskList = getTaskList()
+        console.log(taskList);
         const requestParams = buildScheduleRequestParams(packagedDays, taskList);
         const requestBody = buildRequestBody(requestParams);
         try {
