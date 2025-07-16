@@ -76,7 +76,6 @@
 #task-list-item-date {
     position: absolute;
     font-size: 12px;
-
     left: 3%;
     color: var(--text-subtitle)
 }

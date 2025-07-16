@@ -15,10 +15,7 @@ export function ThemeVariablesProvider({
     root.style.setProperty("--background-paper", "#1e1e1e");
     root.style.setProperty("--text-secondary", "black");
     root.style.setProperty("--text-subtitle", "#CCCCCC");
-
-    root.style.setProperty("--accent-main", "#7851A9");
     root.style.setProperty("--text-primary", theme.palette.text.primary);
-    root.style.setProperty("--available", "#008673");
 
     return () => {
       root.style.removeProperty("--background-default");
