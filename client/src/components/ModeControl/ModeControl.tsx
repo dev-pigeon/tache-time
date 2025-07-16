@@ -3,11 +3,11 @@ import { Box, Switch, Tooltip } from "@mui/material";
 import "../../styles/ViewControl.css";
 import { useViewControlReturn } from "../../hooks/useViewControl";
 
-export interface ViewControlProps {
+export interface ModeControl {
   viewControlHook: useViewControlReturn;
 }
 
-const ViewControlContainer = ({ viewControlHook }: ViewControlProps) => {
+const ModeControl = ({ viewControlHook }: ModeControl) => {
   const checkedColor = "#67ba6b";
   const uncheckedColor = "#545454";
   return (
@@ -41,4 +41,4 @@ const ViewControlContainer = ({ viewControlHook }: ViewControlProps) => {
   );
 };
 
-export default ViewControlContainer;
+export default ModeControl;

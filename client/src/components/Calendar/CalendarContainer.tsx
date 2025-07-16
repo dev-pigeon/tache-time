@@ -4,7 +4,7 @@ import { useCalendarContainerReturnProps } from "../../hooks/useCalendarContaine
 import "../../styles/CalendarContainer.css";
 import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
-import ViewControlContainer from "../ViewControl/ModeControl";
+import ModeControl from "../ModeControl/ModeControl";
 import { useViewControlReturn } from "../../hooks/useViewControl";
 
 interface CalendarContainerProps {
@@ -53,7 +53,7 @@ const CalendarContainer = ({
             {viewControlHook.editMode ? `Edit Mode` : "View Mode"}{" "}
           </Typography>
         </Tooltip>
-        <ViewControlContainer viewControlHook={viewControlHook} />
+        <ModeControl viewControlHook={viewControlHook} />
       </Stack>
       <Stack position={"absolute"} top={10} right={25}>
         <WorkLabel text="Available" bgColor="#67ba6b" />
