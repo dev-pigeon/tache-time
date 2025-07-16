@@ -4,17 +4,17 @@ import "../../styles/ModeControl.css";
 import { useModeControlReturn } from "../../hooks/useModeControl";
 
 export interface ModeControl {
-  viewControlHook: useModeControlReturn;
+  modeControlHook: useModeControlReturn;
 }
 
-const ModeControl = ({ viewControlHook }: ModeControl) => {
+const ModeControl = ({ modeControlHook }: ModeControl) => {
   const checkedColor = "#67ba6b";
   const uncheckedColor = "#545454";
   return (
     <Tooltip
       arrow
       placement="top"
-      title={viewControlHook.editMode ? "Toggle View Mode" : "Toggle Edit Mode"}
+      title={modeControlHook.editMode ? "Toggle View Mode" : "Toggle Edit Mode"}
     >
       <Box id={"view-control-container"}>
         <Switch
@@ -32,8 +32,8 @@ const ModeControl = ({ viewControlHook }: ModeControl) => {
               backgroundColor: checkedColor,
             },
           }}
-          onChange={viewControlHook.changeMode}
-          checked={viewControlHook.editMode}
+          onChange={modeControlHook.changeMode}
+          checked={modeControlHook.editMode}
           color={"error"}
         ></Switch>
       </Box>

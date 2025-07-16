@@ -13,23 +13,23 @@ function App() {
   const calendarContainerHook = useCalendarContainer();
   const taskListHook = useTaskList();
   const taskValidationHook = useValidation();
-  const viewControlHook = useViewControl();
+  const modeControlHook = useViewControl();
 
   return (
     <div id="outer-container">
       <Header />
       <CalendarContainer
-        viewControlHook={viewControlHook}
+        modeControlHook={modeControlHook}
         calendarContainerHook={calendarContainerHook}
       />
       <TaskWidgetContainer
-        mode={viewControlHook.editMode}
+        mode={modeControlHook.editMode}
         insertScheduledTasks={calendarContainerHook.insertScheduledTasks}
         packageDays={calendarContainerHook.packageDays}
         validationHook={taskValidationHook}
         taskListHook={taskListHook}
       />
-      <TaskList mode={viewControlHook.editMode} taskListHook={taskListHook} />
+      <TaskList mode={modeControlHook.editMode} taskListHook={taskListHook} />
     </div>
   );
 }
