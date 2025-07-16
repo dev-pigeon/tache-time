@@ -17,6 +17,17 @@ const CustomDatePicker = ({ value, onChange, sxIn }: CustomDatePickerProps) => {
         label="Due Date*"
         value={value}
         onChange={onChange}
+        slotProps={{
+          previousIconButton: {
+            sx: { color: "white" },
+          },
+          nextIconButton: {
+            sx: { color: "white" },
+          },
+          switchViewIcon: {
+            sx: { color: "white" },
+          },
+        }}
         sx={{
           ...sxIn,
           "& label": {
