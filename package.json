@@ -1,0 +1,5 @@
+{
+"scripts": {
+  "start": "concurrently \"cd server/src && node index.js\" \"cd client && npm run dev\""
+}
+}
