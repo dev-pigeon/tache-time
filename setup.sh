@@ -8,6 +8,10 @@ cd ../
 ECHO "Installing backend dependencies..."
 cd ./server/src
 npm install && npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer dayjs
-cd ../
+cd ../../
+
+#Intall misc dependencies
+npm install --save-dev concurrently
+
 
 ECHO "Setup complete!"
