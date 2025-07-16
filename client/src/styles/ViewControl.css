@@ -1,16 +1,8 @@
-#view-control-container {
+#mode-control-container {
     z-index: 10;
     margin: 0px;
     display: flex;
     align-items: center;
    
 }
-
-#view-control {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 2;
-}
-
 
