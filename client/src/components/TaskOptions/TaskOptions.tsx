@@ -2,7 +2,6 @@ import { IconButton, Stack, Tooltip } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
 
-import "../../styles/ViewControl.css";
 import { TaskWidgetProps } from "./TaskWidget";
 
 interface TaskOptionsProps extends TaskWidgetProps {}

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 
-export interface useViewControlReturn {
+export interface useModeControlReturn {
     editMode : boolean;
     changeMode : () => void;
 }
 
 
-const useViewControl = () : useViewControlReturn => {
+const useModeControl = () : useModeControlReturn => {
     const [editMode, setEditMode] = useState<boolean>(true);
 
     const changeMode = () : void => {
@@ -20,4 +20,4 @@ const useViewControl = () : useViewControlReturn => {
     }
 }
 
-export default useViewControl;
+export default useModeControl;

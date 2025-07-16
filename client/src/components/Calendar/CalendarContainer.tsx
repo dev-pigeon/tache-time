@@ -4,17 +4,17 @@ import { useCalendarContainerReturnProps } from "../../hooks/useCalendarContaine
 import "../../styles/CalendarContainer.css";
 import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
-import ViewControlContainer from "../ViewControl/ViewControlContainer";
-import { useViewControlReturn } from "../../hooks/useViewControl";
+import ModeControl from "../ModeControl/ModeControl";
+import { useModeControlReturn } from "../../hooks/useModeControl";
 
 interface CalendarContainerProps {
   calendarContainerHook: useCalendarContainerReturnProps;
-  viewControlHook: useViewControlReturn;
+  modeControlHook: useModeControlReturn;
 }
 
 const CalendarContainer = ({
   calendarContainerHook,
-  viewControlHook,
+  modeControlHook,
 }: CalendarContainerProps) => {
   const containerHeight = useRef<number>(0);
   const editModeTT =
@@ -45,15 +45,15 @@ const CalendarContainer = ({
               },
             },
           }}
-          title={viewControlHook.editMode == true ? editModeTT : viewModeTT}
+          title={modeControlHook.editMode == true ? editModeTT : viewModeTT}
           arrow
           placement="top"
         >
           <Typography id="calendar-label">
-            {viewControlHook.editMode ? `Edit Mode` : "View Mode"}{" "}
+            {modeControlHook.editMode ? `Edit Mode` : "View Mode"}{" "}
           </Typography>
         </Tooltip>
-        <ViewControlContainer viewControlHook={viewControlHook} />
+        <ModeControl modeControlHook={modeControlHook} />
       </Stack>
       <Stack position={"absolute"} top={10} right={25}>
         <WorkLabel text="Available" bgColor="#67ba6b" />
@@ -63,7 +63,7 @@ const CalendarContainer = ({
       {calendarContainerHook.days &&
         calendarContainerHook.days.map((value, index) => (
           <DateContainer
-            mode={viewControlHook.editMode}
+            mode={modeControlHook.editMode}
             toggleTimeUnit={calendarContainerHook.toggleTimeUnit}
             heightIn={containerHeight.current * 0.75}
             key={`date-container#${index}`}

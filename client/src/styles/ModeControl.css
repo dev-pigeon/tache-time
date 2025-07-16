@@ -1,0 +1,8 @@
+#mode-control-container {
+    z-index: 10;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+   
+}
+

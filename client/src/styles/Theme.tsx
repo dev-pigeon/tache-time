@@ -6,7 +6,7 @@ export const theme = createTheme({
       default: "#1e1e1e",
       paper: "#333",
     },
-    secondary: { main: "#73cff" }, // accent color
+    secondary: { main: "#73cff" },
     text: {
       primary: "#ffffff",
       secondary: "#cccccc",
