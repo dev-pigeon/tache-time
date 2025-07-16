@@ -6,7 +6,7 @@ import TaskWidgetContainer from "./components/TaskOptions/TaskWidgetContainer";
 import useCalendarContainer from "./hooks/useCalendarContainer";
 import useTaskList from "./hooks/useTaskList";
 import useValidation from "./hooks/useValidation";
-import useViewControl from "./hooks/useViewControl";
+import useViewControl from "./hooks/useModeControl";
 import "./styles/App.css";
 
 function App() {

@@ -5,11 +5,11 @@ import "../../styles/CalendarContainer.css";
 import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
 import ModeControl from "../ModeControl/ModeControl";
-import { useViewControlReturn } from "../../hooks/useViewControl";
+import { useModeControlReturn } from "../../hooks/useModeControl";
 
 interface CalendarContainerProps {
   calendarContainerHook: useCalendarContainerReturnProps;
-  viewControlHook: useViewControlReturn;
+  viewControlHook: useModeControlReturn;
 }
 
 const CalendarContainer = ({

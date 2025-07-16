@@ -1,10 +1,10 @@
 import { Box, Switch, Tooltip } from "@mui/material";
 
 import "../../styles/ViewControl.css";
-import { useViewControlReturn } from "../../hooks/useViewControl";
+import { useModeControlReturn } from "../../hooks/useModeControl";
 
 export interface ModeControl {
-  viewControlHook: useViewControlReturn;
+  viewControlHook: useModeControlReturn;
 }
 
 const ModeControl = ({ viewControlHook }: ModeControl) => {
