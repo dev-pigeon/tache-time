@@ -1,6 +1,6 @@
 import { Box, Switch, Tooltip } from "@mui/material";
 
-import "../../styles/ViewControl.css";
+import "../../styles/ModeControl.css";
 import { useModeControlReturn } from "../../hooks/useModeControl";
 
 export interface ModeControl {
