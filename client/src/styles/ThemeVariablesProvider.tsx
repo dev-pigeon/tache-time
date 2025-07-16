@@ -12,7 +12,7 @@ export function ThemeVariablesProvider({
     const root = document.body;
 
     root.style.setProperty("--background-default", "#101517");
-    root.style.setProperty("--background-paper", "#545454");
+    root.style.setProperty("--background-paper", "#1e1e1e");
     root.style.setProperty("--text-secondary", "black");
     root.style.setProperty("--text-subtitle", "#CCCCCC");
 

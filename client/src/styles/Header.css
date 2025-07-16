@@ -3,7 +3,7 @@
     width: 100vw;
     height: 40%;
     max-height: 75px;
-    background-color:  #1e1e1e;
+    background-color:  var(--background-paper);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1e1e1e;
+    background-color: var(--background-paper);
 }
 
 #calendar-label-container {
