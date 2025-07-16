@@ -4,7 +4,7 @@ import { useCalendarContainerReturnProps } from "../../hooks/useCalendarContaine
 import "../../styles/CalendarContainer.css";
 import DateContainer from "./DateContainer";
 import WorkLabel from "./WorkLabel";
-import ViewControlContainer from "../ViewControl/ViewControlContainer";
+import ViewControlContainer from "../ViewControl/ModeControl";
 import { useViewControlReturn } from "../../hooks/useViewControl";
 
 interface CalendarContainerProps {
