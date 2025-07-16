@@ -1,6 +1,3 @@
-const { createTaskDictionary } = require("../util/util.js");
-const WorkUnit = require("./WorkUnit.js");
-
 class TaskScheduler {
   constructor() {}
 
@@ -34,6 +31,20 @@ class TaskScheduler {
     }
   }
 
+  #createTaskDictionary(taskList) {
+    let taskDictionary = {};
+    for (const task of taskList) {
+      if (task.deadline in taskDictionary) {
+        let deadLineList = taskDictionary[task.deadline];
+        deadLineList.push(task);
+        taskDictionary[task.deadline] = deadLineList;
+      } else {
+        taskDictionary[task.deadline] = [task];
+      }
+    }
+    return taskDictionary;
+  }
+
   #updateTaskDictionary(taskID, dictionary, i) {
     dictionary[taskID]["timesScheduled"].push(i);
   }
@@ -51,7 +62,7 @@ class TaskScheduler {
   }
 
   verifyTasks(taskList) {
-    const taskDictionary = createTaskDictionary(taskList);
+    const taskDictionary = this.#createTaskDictionary(taskList);
     let systemTime = 0;
     let overtime = 0;
     for (const deadline in taskDictionary) {
