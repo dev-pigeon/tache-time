@@ -48,7 +48,7 @@ Follow these steps to run Tâche-Time locally:
 3. From the root directory, run:
    ```bash
    ./setup.sh # Installs all dependencies
-   ./start.sh # Starts both the frontend and backend servers
+   npm start # Starts both the frontend and backend servers
    ```
 4. In your browser, navigate to `http://localhost:5173/`.
 
