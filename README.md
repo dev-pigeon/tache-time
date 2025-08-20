@@ -1,4 +1,4 @@
-## 📘 Introduction
+## Overview &nbsp; 🔎
 
 **Tâche-Time** is a full-stack scheduling and productivity application designed specifically for students. Its primary purpose is to help users manage their time by allowing them to:
 
@@ -8,51 +8,70 @@
 
 <br>
 
-## 🧰 Tech Stack
+## Tech Stack & Requirements &nbsp; 🧰
 
-**Frontend**
+### Stack 📚
+
+_Frontend_
 
 - React
 - TypeScript
 - Vite
 - MUI (MaterialUI)
 
-**Backend**
+_Backend_
 
 - Node.js (Express.js)
 - JavaScript
 
-**Testing**
+_Testing_
 
 - Jest
 
+### Requirements &nbsp; 📝
+
+- **Git**
+- **Unix-based shell** - Linux, MacOS, or WSL for Windows
+- **Docker Desktop** - Installed and running
+
+> **💡 Note:** If you wish to run the application locally and not via the container, you will also need **Node.js** and **npm** installed on your machine.
+
 <br>
 
-## ✅ Prerequisites
+## Setup & Run &nbsp; 🚀
 
-- Node.js
-- npm
-- Git
-- A Unix-like shell (macOS, Linux, or WSL for Windows users)
+Clone the repository:
 
-<br>
+```bash
+git clone https://github.com/dev-pigeon/tache-time.git
+```
 
-## ⛮ Local Setup Instructions
+### With Docker
 
-Follow these steps to run Tâche-Time locally:
+```bash
+docker-compose up --build
+```
 
-> 💡 **Note:** These steps require a Unix-like environment. On Windows, use WSL or Git Bash for compatibility.
+Click [here](http://localhost:80/) or open your browser of choice and navigate to `http://localhost:80/`
 
-1. Clone the repository.
-2. Run `chmod +x setup.sh` to make the setup script executable.
-3. From the root directory, run:
-   ```bash
-   ./setup.sh # Installs all dependencies
-   npm start # Starts both the frontend and backend servers
-   ```
-4. In your browser, navigate to `http://localhost:5173/`.
+### Without Docker
 
-⚠️ **Caution:** For steps 2&3 to function properly, the shell script must have executable permissions on your local machine. To allow these scripts to execute, please run the command: <br> `chmod +x file_name`.
+Give permissions to the setup script:
+
+```bash
+chmod +x setup.sh
+```
+
+From the root directory, run:
+
+```bash
+./setup.sh # Installs all dependencies
+npm start # Starts both the frontend and backend servers
+```
+
+Click [here](http://localhost:5173/) or open your browser of choice and navigate to `http://localhost:5173/`
+
+> ⚠️ **Caution** To run the application without a container, you must have **Node.js** and **npm** installed on your machine.
 
 <br>
 
