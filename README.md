@@ -34,7 +34,7 @@ _Testing_
 - **Unix-based shell** - Linux, MacOS, or WSL for Windows
 - **Docker Desktop** - Installed and running
 
-> **💡 Note:** If you wish to run the application locally and not via the container, you will also need Node.js and npm installed on your machine.
+> **💡 Note:** If you wish to run the application locally and not via the container, you will also need **Node.js** and **npm** installed on your machine.
 
 <br>
 
