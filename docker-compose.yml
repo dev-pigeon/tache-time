@@ -1,0 +1,23 @@
+services:
+  server:
+    build:
+      context: ./server/src
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - tache_time
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    networks:
+      - tache_time
+
+networks:
+  tache_time:

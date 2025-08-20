@@ -1,0 +1,7 @@
+node_modules
+.gitignore
+test
+jest.config.jest
+Dockerfile
+dist
+biuld
