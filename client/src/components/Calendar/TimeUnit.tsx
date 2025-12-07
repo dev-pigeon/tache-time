@@ -9,6 +9,9 @@ interface TimeUnitComponent extends TimeUnitProps {
   toggleTimeUnit: (unitTime: Dayjs) => void;
   height: number;
   mode: boolean;
+  onDragStart: (unitTime: Dayjs, currentAvailability: boolean) => void;
+  onDragEnter: (unitTime: Dayjs, currentAvailability: boolean) => void;
+  isDragging: boolean;
 }
 
 const TimeUnit = ({
@@ -18,17 +21,41 @@ const TimeUnit = ({
   toggleTimeUnit,
   mode,
   taskChip,
+  onDragStart,
+  onDragEnter,
+  isDragging,
 }: TimeUnitComponent) => {
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (mode) {
+      e.preventDefault();
+      onDragStart(time, available);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (mode) {
+      onDragEnter(time, available);
+    }
+  };
+
+  const handleClick = () => {
+    if (mode && !isDragging) {
+      toggleTimeUnit(time);
+    }
+  };
+
   return (
     <Box
       className="time-unit"
       sx={{
         backgroundColor: available ? "#67ba6b" : "",
+        cursor: mode ? (isDragging ? 'grabbing' : 'pointer') : 'default',
+        userSelect: 'none',
       }}
       date-testid="time-unit"
-      onClick={() => {
-        mode == true ? toggleTimeUnit(time) : {};
-      }}
+      onClick={handleClick}
+      onMouseDown={handleMouseDown}
+      onMouseEnter={handleMouseEnter}
       height={height}
     >
       {(taskChip == undefined || mode == true) && (

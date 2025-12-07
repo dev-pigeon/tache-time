@@ -10,6 +10,9 @@ interface DateContainerProps {
   day: DayProps;
   toggleTimeUnit: (unitTime: Dayjs) => void;
   mode: boolean;
+  onDragStart: (unitTime: Dayjs, currentAvailability: boolean) => void;
+  onDragEnter: (unitTime: Dayjs, currentAvailability: boolean) => void;
+  isDragging: boolean;
 }
 
 const DateContainer = ({
@@ -17,6 +20,9 @@ const DateContainer = ({
   heightIn,
   toggleTimeUnit,
   mode,
+  onDragStart,
+  onDragEnter,
+  isDragging,
 }: DateContainerProps) => {
   return (
     <Stack className="date-container" direction={"column"} gap={1}>
@@ -35,6 +41,9 @@ const DateContainer = ({
             height={heightIn}
             time={value.time}
             taskChip={value.taskChip}
+            onDragStart={onDragStart}
+            onDragEnter={onDragEnter}
+            isDragging={isDragging}
           />
         ))}
       </Stack>

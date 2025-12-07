@@ -35,6 +35,8 @@ const CalendarContainer = ({
       gap={2}
       id="calendar-container"
       sx={{ boxShadow: 10 }}
+      onMouseUp={calendarContainerHook.handleDragEnd}
+      onMouseLeave={calendarContainerHook.handleDragEnd}
     >
       <Stack direction={"row"} id="calendar-label-container">
         <Tooltip
@@ -68,6 +70,9 @@ const CalendarContainer = ({
             heightIn={containerHeight.current * 0.75}
             key={`date-container#${index}`}
             day={value}
+            onDragStart={calendarContainerHook.handleDragStart}
+            onDragEnter={calendarContainerHook.handleDragEnter}
+            isDragging={calendarContainerHook.isDragging}
           />
         ))}
     </Stack>
