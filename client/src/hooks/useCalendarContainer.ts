@@ -14,6 +14,10 @@ export interface useCalendarContainerReturnProps {
     toggleTimeUnit : (unitTime : Dayjs) => void;
     packageDays : () => DayProps[];
     insertScheduledTasks : (packagedDays : DayProps[], scheduledTasks : ScheduledTask[]) => void;
+    handleDragStart : (unitTime : Dayjs, currentAvailability : boolean) => void;
+    handleDragEnter : (unitTime : Dayjs, currentAvailability : boolean) => void;
+    handleDragEnd : () => void;
+    isDragging : boolean;
  }
 
 
@@ -50,6 +54,10 @@ export const getCalendarContainerHeight = () : number => {
 const useCalendarContainer = () : useCalendarContainerReturnProps => {
 
     const [days, setDays] = useState<DayProps[] | undefined>(undefined);
+    const [isDragging, setIsDragging] = useState<boolean>(false);
+    const [dragTargetState, setDragTargetState] = useState<boolean | null>(null); // slot where the drag starts
+    const [dragDay, setDragDay] = useState<Dayjs | null>(null);
+    const [dragStartTime, setDragStartTime] = useState<Dayjs | null>(null);
 
 
     const packageDays = () : DayProps[] => {
@@ -177,6 +185,51 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
         return days[dayNum];
     }
 
+    const handleDragStart = (unitTime : Dayjs, currentAvailability : boolean) => {
+        setDragStartTime(unitTime);
+        setDragDay(unitTime);
+        setDragTargetState(!currentAvailability);
+    }
+
+    const mouseEntersDifferentDay = (unitTime : Dayjs) : boolean => {
+        return !unitTime.isSame(dragDay, 'day')
+    }
+
+    const isNotDragTarget = (unitTime : Dayjs) : boolean => {
+        return !unitTime.isSame(dragStartTime, 'hour');
+    }
+
+   
+    const handleDragEnter = (unitTime : Dayjs, currentAvailability : boolean) => {
+        if (!dragStartTime || !dragDay) return;
+
+        if (mouseEntersDifferentDay(unitTime)) return;
+
+        if (isNotDragTarget(unitTime)) {
+            if (!isDragging) {
+                setIsDragging(true);
+                if (dragTargetState !== null) {
+                    const startDayIndex = getTimeUnitDayIndex(dragStartTime);
+                    const startTimeIndex = getTimeUnitSlotIndex(days![startDayIndex], dragStartTime);
+                    if (days![startDayIndex].timeSlots[startTimeIndex].available !== dragTargetState) {
+                        toggleTimeUnit(dragStartTime);
+                    }
+                }
+            }
+
+            if (currentAvailability !== dragTargetState) {
+                toggleTimeUnit(unitTime);
+            }
+        }
+    }
+
+    const handleDragEnd = () => {
+        setIsDragging(false);
+        setDragTargetState(null);
+        setDragDay(null);
+        setDragStartTime(null);
+    }
+
     return {
         initializeDates,
         days,
@@ -184,7 +237,11 @@ const useCalendarContainer = () : useCalendarContainerReturnProps => {
         getDayOfWeekString,
         toggleTimeUnit,
         packageDays,
-        insertScheduledTasks
+        insertScheduledTasks,
+        handleDragStart,
+        handleDragEnter,
+        handleDragEnd,
+        isDragging
     }
 }
 
