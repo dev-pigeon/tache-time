@@ -3,95 +3,55 @@
     position: fixed;
     background: var(--gradient-bg);
     width: 400px;
-    height: 425px;
-    margin: 2px;
+    height: 400px;
     display: flex;
-    justify-content: center;
     right: 50px;
     bottom: 5%;
-    border-radius: 15px;
-    border: var(--border-default);
+    border-radius: 16px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
     box-shadow: var(--shadow-glow);
-}
-
-#title-container {
-    position: absolute;
-    left: 3%;
-    flex-direction: row;
-    width: 98%;
-    display: flex;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
 }
 
 #title-label {
     color: var(--text-primary);
-    font-size: 28px;
+    font-size: 22px;
+    font-weight: 600;
     font-family: 'Times New Roman', Times, serif;
     text-shadow: var(--shadow-text);
-}
- 
-#close-button {
-    position: absolute;
-    right: 7px;
-    top: 1px;
-}
-
-#name-time-container {
-    position : absolute;
-    top: 18%;
-    width:100%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
-
-#duedate-container {
-    width: 100%;
-    position : absolute;
-    top: 36%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
-
-#button-container {
-    position: absolute;
-    top: 88%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    letter-spacing: 0.5px;
 }
 
 #confirm-button {
-    position: relative;
     text-transform: none;
-    border-radius: 15px;
-    width: 125px;
-    left: 65%;
+    border-radius: 12px;
     background: var(--gradient-accent);
     box-shadow: var(--shadow-button);
     border: 1px solid rgba(59, 130, 246, 0.5);
+    transition: all 0.2s ease;
 }
 
 #confirm-button:hover {
     background: var(--accent-dark);
     box-shadow: var(--shadow-button-hover);
+    transform: translateY(-1px);
 }
 
 #cancel-button {
-    position: relative;
     text-transform: none;
-    border-radius: 15px;
-    width: 125px;
-    right: 0%;
-    background: var(--error-main);
-    box-shadow: 0 4px 12px rgba(200, 60, 60, 0.4);
-    border: 1px solid rgba(200, 60, 60, 0.5);
+    border-radius: 12px;
+    background: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(100, 116, 139, 0.3);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
 }
 
 #cancel-button:hover {
-    background: rgba(180, 50, 50, .95);
-    box-shadow: 0 6px 20px rgba(200, 60, 60, 0.6);
+    background: rgba(100, 116, 139, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
 }
 
 
