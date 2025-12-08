@@ -8,8 +8,8 @@ export interface ModeControl {
 }
 
 const ModeControl = ({ modeControlHook }: ModeControl) => {
-  const checkedColor = "#67ba6b";
-  const uncheckedColor = "#545454";
+  const checkedColor = "#3b82f6"; // Modern blue
+  const uncheckedColor = "#64748b"; // Modern muted
   return (
     <Tooltip
       arrow

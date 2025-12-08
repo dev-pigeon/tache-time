@@ -3,18 +3,18 @@
     width: 100vw;
     height: 40%;
     max-height: 75px;
-    background-color:  var(--background-paper);
+    background: var(--gradient-bg);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: solid;
-    border-color: rgba(211, 211, 211, 0.61);
-    border-width: 1.5px;
+    border-bottom: var(--border-default);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
 }
 
 #header-title {
-    color:var(--text-primary);
+    color: var(--text-primary);
     font-weight: bolder;
     font-size: 38px;
     font-family: 'Times New Roman', Times, serif;
+    text-shadow: var(--shadow-text);
 }

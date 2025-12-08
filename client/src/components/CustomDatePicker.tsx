@@ -37,17 +37,17 @@ const CustomDatePicker = ({ value, onChange, sxIn }: CustomDatePickerProps) => {
             fill: "white",
           },
           "& fieldset": {
-            borderColor: "#585a5b",
+            borderColor: "rgba(59, 130, 246, 0.15)",
           },
           "& .MuiInputBase-root": {
             "&:hover fieldset": {
-              borderColor: "#888888",
+              borderColor: "rgba(59, 130, 246, 0.3)",
             },
             "&.Mui-focused fieldset": {
-              borderColor: "#7851A9",
+              borderColor: "#3b82f6",
             },
           },
-          backgroundColor: "#25282a",
+          backgroundColor: "#0f1729",
         }}
       />
     </LocalizationProvider>

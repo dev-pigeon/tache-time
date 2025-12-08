@@ -1,13 +1,16 @@
 #calendar-container {
     width: 55%;
     min-width: 825px;
-    top:15%;
+    top: 15%;
     left: 5%;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--background-paper);
+    background: var(--gradient-bg);
+    border: var(--border-default);
+    border-radius: 16px;
+    box-shadow: var(--shadow-glow);
 }
 
 #calendar-label-container {
@@ -21,6 +24,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    text-shadow: var(--shadow-text);
 }
 
 #calendar-label {

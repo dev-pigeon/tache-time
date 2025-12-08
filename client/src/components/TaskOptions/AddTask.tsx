@@ -39,7 +39,7 @@ const AddTask = ({
             onClick={closeAddTask}
             sx={{
               "& .MuiTouchRipple-root .MuiTouchRipple-rippleVisible": {
-                color: "#d3362e",
+                color: "rgba(200, 60, 60, .95)",
                 opacity: 0.5,
               },
             }}

@@ -1,13 +1,26 @@
 .time-unit {
-    border:solid;
-    border-width: .5px;
+    border: var(--border-input);
     justify-content: center;
     align-items: center;
     display: flex;
     width: 100px;
+    transition: all 0.3s ease;
+    background-color: rgba(15, 23, 41, 0.3);
+}
+
+.time-unit:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    background-color: rgba(15, 23, 41, 0.5);
 }
 
 .time-unit-typography {
     font-size: 14px !important;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Available state - blue gradient instead of green */
+.time-unit-available {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }

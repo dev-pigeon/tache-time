@@ -1,7 +1,7 @@
 #add-task-outercontainer {
     z-index: 100000;
     position: fixed;
-    background-color: #101315;
+    background: var(--gradient-bg);
     width: 400px;
     height: 425px;
     margin: 2px;
@@ -10,25 +10,23 @@
     right: 50px;
     bottom: 5%;
     border-radius: 15px;
-    border-color: #585a5b;
-    border: solid;
-    border-width: .5px;
-    box-shadow: 20px;
+    border: var(--border-default);
+    box-shadow: var(--shadow-glow);
 }
 
 #title-container {
     position: absolute;
-    left:3%;
+    left: 3%;
     flex-direction: row;
     width: 98%;
     display: flex;
-
 }
 
 #title-label {
     color: var(--text-primary);
     font-size: 28px;
     font-family: 'Times New Roman', Times, serif;
+    text-shadow: var(--shadow-text);
 }
  
 #close-button {
@@ -70,7 +68,14 @@
     border-radius: 15px;
     width: 125px;
     left: 65%;
-    background-color: #4f88c1;
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-button);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+}
+
+#confirm-button:hover {
+    background: var(--accent-dark);
+    box-shadow: var(--shadow-button-hover);
 }
 
 #cancel-button {
@@ -79,7 +84,14 @@
     border-radius: 15px;
     width: 125px;
     right: 0%;
-    background-color: #d3362e;
+    background: var(--error-main);
+    box-shadow: 0 4px 12px rgba(200, 60, 60, 0.4);
+    border: 1px solid rgba(200, 60, 60, 0.5);
+}
+
+#cancel-button:hover {
+    background: rgba(180, 50, 50, .95);
+    box-shadow: 0 6px 20px rgba(200, 60, 60, 0.6);
 }
 
 
