@@ -3,6 +3,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
 
 import { TaskWidgetProps } from "./TaskWidget";
+import { theme } from "../../styles/Theme";
 
 interface TaskOptionsProps extends TaskWidgetProps {}
 
@@ -22,7 +23,9 @@ const TaskOptions = ({
     >
       <Tooltip title="Schedule Tasks" arrow placement="left">
         <IconButton onClick={scheduleTasksHook.handleScheduleTasksClick}>
-          <ScheduleSendIcon sx={{ fill: "black", fontSize: 30 }} />
+          <ScheduleSendIcon
+            sx={{ fill: theme.palette.text.secondary, fontSize: 30 }}
+          />
         </IconButton>
       </Tooltip>
 
@@ -44,7 +47,9 @@ const TaskOptions = ({
               : {};
           }}
         >
-          <AddCircleOutlineIcon sx={{ fill: "black", fontSize: 30 }} />
+          <AddCircleOutlineIcon
+            sx={{ fill: theme.palette.text.secondary, fontSize: 30 }}
+          />
         </IconButton>
       </Tooltip>
     </Stack>

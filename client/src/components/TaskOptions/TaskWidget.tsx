@@ -7,6 +7,7 @@ import TaskOptions from "./TaskOptions";
 
 import { useScheduleTasksReturn } from "../../hooks/useScheduleTasks";
 import { renderedComponentProps } from "../../misc/TaskContainerViewController";
+import { theme } from "../../styles/Theme";
 
 export interface TaskWidgetProps {
   changeRenderedComponent: (props: renderedComponentProps) => void;
@@ -41,7 +42,9 @@ const TaskWidget = ({
         title={openTaskWidget ? "Close Task Options" : "Open Task Options"}
       >
         <IconButton className="task-widget-button" onClick={toggleTaskWidget}>
-          <AssignmentIndIcon sx={{ fill: "black", fontSize: 40 }} />
+          <AssignmentIndIcon
+            sx={{ fill: theme.palette.text.secondary, fontSize: 40 }}
+          />
         </IconButton>
       </Tooltip>
     </Paper>
