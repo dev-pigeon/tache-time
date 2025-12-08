@@ -13,4 +13,7 @@
     align-items: center;
     justify-content: center;
     white-space: normal;
+    backdrop-filter: blur(10px);
+    border: var(--border-default);
+    box-shadow: var(--shadow-glow);
 }

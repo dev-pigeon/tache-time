@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 interface CustomTextFieldProps {
   id: string;
-  widthIn: number | string;
   label: string;
   sxIn?: object;
   rows?: number;
@@ -17,7 +16,6 @@ interface CustomTextFieldProps {
 }
 
 const CustomTextField = ({
-  widthIn,
   label,
   sxIn,
   rows,
@@ -79,8 +77,6 @@ const CustomTextField = ({
         sx={{
           position: "relative",
           ...sxIn,
-          width: widthIn,
-
           "& .MuiInputBase-input": {
             caretColor: "white",
             color: "white",
@@ -91,10 +87,16 @@ const CustomTextField = ({
           },
 
           "& .MuiOutlinedInput-root": {
-            backgroundColor: "#25282a",
+            backgroundColor: "#0f1729",
 
             "& fieldset": {
-              borderColor: "#585a5b",
+              borderColor: "rgba(59, 130, 246, 0.15)",
+            },
+            "&:hover fieldset": {
+              borderColor: "rgba(59, 130, 246, 0.3)",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#3b82f6",
             },
           },
         }}

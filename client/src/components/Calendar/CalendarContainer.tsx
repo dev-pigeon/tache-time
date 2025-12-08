@@ -58,8 +58,8 @@ const CalendarContainer = ({
         <ModeControl modeControlHook={modeControlHook} />
       </Stack>
       <Stack position={"absolute"} top={10} right={25}>
-        <WorkLabel text="Available" bgColor="#67ba6b" />
-        <WorkLabel text="Unavailable" bgColor="#545454" />
+        <WorkLabel text="Available" bgColor="#3b82f6" />
+        <WorkLabel text="Unavailable" bgColor="#64748b" />
       </Stack>
 
       {calendarContainerHook.days &&

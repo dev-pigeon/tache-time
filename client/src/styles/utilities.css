@@ -1,0 +1,48 @@
+/* Gradient backgrounds */
+.gradient-bg {
+  background: var(--gradient-bg);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+/* Glow effects */
+.glow-shadow {
+  box-shadow: var(--shadow-glow);
+}
+
+.button-shadow {
+  box-shadow: var(--shadow-button);
+}
+
+.button-shadow:hover {
+  box-shadow: var(--shadow-button-hover);
+}
+
+.inset-shadow {
+  box-shadow: var(--shadow-inset);
+}
+
+/* Text effects */
+.text-glow {
+  text-shadow: var(--shadow-text);
+}
+
+/* Borders */
+.border-modern {
+  border: var(--border-default);
+}
+
+.border-input {
+  border: var(--border-input);
+}
+
+/* Hover states */
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0px 0px 2px 1.5px rgba(59, 130, 246, 0.5);
+}

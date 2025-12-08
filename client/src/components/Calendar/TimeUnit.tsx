@@ -46,9 +46,8 @@ const TimeUnit = ({
 
   return (
     <Box
-      className="time-unit"
+      className={available ? "time-unit time-unit-available" : "time-unit"}
       sx={{
-        backgroundColor: available ? "#67ba6b" : "",
         cursor: mode ? (isDragging ? 'grabbing' : 'pointer') : 'default',
         userSelect: 'none',
       }}
@@ -60,7 +59,7 @@ const TimeUnit = ({
     >
       {(taskChip == undefined || mode == true) && (
         <Typography
-          color={available ? "black" : "#C0B9B2"}
+          color={available ? "#ffffff" : "#94a3b8"}
           className="time-unit-typography"
         >
           {time.format("h:mm A")}

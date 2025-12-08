@@ -1,5 +1,7 @@
 #task-widget-container {
-    background-color:var(--text-primary);
+    background: var(--gradient-bg);
+    border: var(--border-default);
+    box-shadow: var(--shadow-glow);
     z-index: 10;
     width: 100px;
     min-height: 100px;
@@ -10,7 +12,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-   
 }
 
 .task-widget-button {

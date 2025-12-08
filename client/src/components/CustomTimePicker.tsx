@@ -16,9 +16,9 @@ const CustomTimePicker = ({ sxIn, value, onChange }: CustomTimePickerProps) => {
         onChange={onChange}
         sx={{
           ...sxIn,
-          backgroundColor: "#25282a",
+          backgroundColor: "#0f1729",
           "& fieldset": {
-            borderColor: "#585a5b",
+            borderColor: "rgba(59, 130, 246, 0.15)",
           },
           "& .MuiSvgIcon-root": {
             fill: "white",

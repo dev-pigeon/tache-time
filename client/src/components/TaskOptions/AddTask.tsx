@@ -32,83 +32,103 @@ const AddTask = ({
 
   return (
     <Paper id={"add-task-outercontainer"}>
-      <Stack width={"100%"} position={"relative"} alignItems={"center"}>
-        <Stack id={"title-container"} direction={"row"}>
+      <Stack
+        width={"100%"}
+        height={"100%"}
+        spacing={1.5}
+        padding={2.5}
+        boxSizing={"border-box"}
+      >
+        {/* Header */}
+        <Stack
+          direction={"row"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          mb={0.5}
+        >
           <Typography id={"title-label"}>Create Task</Typography>
           <IconButton
             onClick={closeAddTask}
+            size="small"
             sx={{
               "& .MuiTouchRipple-root .MuiTouchRipple-rippleVisible": {
-                color: "#d3362e",
+                color: "rgba(200, 60, 60, .95)",
                 opacity: 0.5,
               },
             }}
-            id={"close-button"}
           >
-            <CloseIcon sx={{ fill: "white", fontSize: 30 }} />
+            <CloseIcon sx={{ fill: "white", fontSize: 24 }} />
           </IconButton>
         </Stack>
 
-        <Stack id={"name-time-container"} direction={"row"}>
+        {/* Task Name & Estimated Time */}
+        <Stack direction={"row"} spacing={1.5} width={"100%"}>
           <CustomTextField
             id={"task-name"}
             onChange={addTaskHook.handleStringElementChange}
             value={addTaskHook.taskName}
-            sxIn={{ left: "3%" }}
-            widthIn={"40%"}
             label="Task Name*"
+            sxIn={{ flex: 1, minWidth: 0 }}
           />
-
           <CustomTextField
             tooltip="The estimated amount of time to complete the task."
             id="task-est-time"
             value={addTaskHook.estimatedHours}
             onChange={addTaskHook.handleStringElementChange}
-            widthIn={"40%"}
-            label="Estimated Time*"
-            sxIn={{ left: "15%" }}
+            label="Est. Time*"
             adornment="hours"
+            sxIn={{ width: "110px", flexShrink: 0 }}
           />
         </Stack>
 
-        <Stack direction={"row"} id={"duedate-container"}>
+        {/* Due Date & Time */}
+        <Stack direction={"row"} spacing={1.5} width={"100%"}>
           <CustomDatePicker
             value={addTaskHook.taskDueDate}
             onChange={addTaskHook.setTaskDueDate}
-            sxIn={{ position: "relative", width: "40%", left: "3%" }}
+            sxIn={{ flex: 1, minWidth: 0 }}
           />
           <CustomTimePicker
             value={addTaskHook.taskTimeDue}
             onChange={addTaskHook.setTaskTimeDue}
-            sxIn={{ position: "relative", width: "40%", left: "15%" }}
+            sxIn={{ flex: 1, minWidth: 0 }}
           />
         </Stack>
 
+        {/* Description */}
         <CustomTextField
           multiline
           id="task-desc"
           value={addTaskHook.taskDescription}
           onChange={addTaskHook.handleStringElementChange}
-          widthIn={"80%"}
           label="Description"
           rows={2}
-          sxIn={{ top: "55%", right: "7%" }}
+          sxIn={{ width: "100%" }}
         />
 
-        <Stack direction={"row"} id={"button-container"}>
-          <Button
-            onClick={addTaskHook.createTask}
-            id="confirm-button"
-            variant="contained"
-          >
-            Confirm
-          </Button>
+        {/* Action Buttons */}
+        <Stack
+          direction={"row"}
+          spacing={1.5}
+          justifyContent={"flex-end"}
+          width={"100%"}
+          sx={{ marginTop: "auto !important" }}
+        >
           <Button
             onClick={closeAddTask}
             id={"cancel-button"}
             variant="contained"
+            sx={{ minWidth: "90px" }}
           >
             Cancel
+          </Button>
+          <Button
+            onClick={addTaskHook.createTask}
+            id="confirm-button"
+            variant="contained"
+            sx={{ minWidth: "90px" }}
+          >
+            Confirm
           </Button>
         </Stack>
       </Stack>
